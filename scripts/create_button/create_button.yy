@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"Script5",
+  "%Name":"create_button",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Script5",
+  "name":"create_button",
   "parent":{
-    "name":"storyborads",
-    "path":"folders/Objects/storyborads.yy",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

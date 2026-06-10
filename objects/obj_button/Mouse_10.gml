@@ -1,0 +1,1 @@
+_color = hovering_text_color

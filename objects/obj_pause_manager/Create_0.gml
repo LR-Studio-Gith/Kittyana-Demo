@@ -16,7 +16,9 @@ unpause_object = function(_obj_or_id) {
 pause_tag = function(_tag_or_tags){
 	var _assets = tag_get_asset_ids(_tag_or_tags, asset_object)
 	for (var i = 0; i < array_length(_assets); ++i) {
-	    pause_object(_assets[i])
+		if not asset_has_tags(_assets[i], "unpauseable") or _assets[i].persistent == false {
+			pause_object(_assets[i])
+		}
 	}
 }
 
