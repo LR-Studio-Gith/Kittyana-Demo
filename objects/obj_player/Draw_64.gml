@@ -1,0 +1,1 @@
+draw_sprite(hpbar, hp, 100, 100)

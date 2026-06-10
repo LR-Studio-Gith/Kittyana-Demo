@@ -1,0 +1,20 @@
+{
+  "$GMAnimCurve":"",
+  "%Name":"acCurves",
+  "channels":[
+    {"$GMAnimCurveChannel":"","%Name":"curve1","colour":4290799884,"name":"curve1","points":[
+        {"th0":-0.0125,"th1":0.15625,"tv0":0.0,"tv1":0.0,"x":0.0,"y":0.0,},
+        {"th0":-0.15625,"th1":0.3125,"tv0":0.0,"tv1":0.0,"x":0.25,"y":-0.5,},
+        {"th0":-0.3125,"th1":0.15625,"tv0":0.0,"tv1":0.0,"x":0.75,"y":0.5,},
+        {"th0":-0.15625,"th1":0.0125,"tv0":0.0,"tv1":0.0,"x":1.0,"y":0.0,},
+      ],"resourceType":"GMAnimCurveChannel","resourceVersion":"2.0","visible":true,},
+  ],
+  "function":2,
+  "name":"acCurves",
+  "parent":{
+    "name":"Buttons",
+    "path":"folders/Objects/Buttons.yy",
+  },
+  "resourceType":"GMAnimCurve",
+  "resourceVersion":"2.0",
+}

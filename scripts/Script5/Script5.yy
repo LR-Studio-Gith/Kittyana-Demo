@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Script5",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Script5",
+  "parent":{
+    "name":"storyborads",
+    "path":"folders/Objects/storyborads.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,1 @@
+Current_Atk = 0;

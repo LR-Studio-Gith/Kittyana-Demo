@@ -1,0 +1,1 @@
+next_level = round(random_range(1, 2));

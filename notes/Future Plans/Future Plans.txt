@@ -1,0 +1,5 @@
+--Future Plans--
+
+- Support for curves to allow for more unique fading
+- Fix up the mess in do_flash()
+- Support fading in values higher than 1

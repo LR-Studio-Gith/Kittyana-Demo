@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"Tutorial_Type_Beat__2_",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":79.53109,
+  "exportDir":"",
+  "name":"Tutorial_Type_Beat__2_",
+  "parent":{
+    "name":"Music",
+    "path":"folders/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"Tutorial_Type_Beat__2_.mp3",
+  "volume":1.0,
+}
