@@ -73,8 +73,7 @@ function chargeAtk() {
 function summonAtk(waittime) {
 	show_debug_message("Summon")
 	
-	summon_y = 100;
-	minion1 = instance_create_depth(x,y-summon_y,depth,obj_enemy);
+	minion1 = instance_create_depth(random_range(500, 2100),room_height,depth,obj_enemy);
 	//minion2 = instance_create_depth(x,y-summon_y+20,depth,obj_enemy);
 	//minion3 = instance_create_depth(x,y-summon_y,depth,obj_enemy);
 		

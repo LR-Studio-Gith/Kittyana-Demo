@@ -1,6 +1,9 @@
-// asset_has_tags(..., "unpauseable") prevents cutscenes from being paused, 
-// Which looks weird and could break some things.
-// Add the "unpauseable" tag if you create a new cutscene.
+/* 
+	asset_has_tags(..., "unpauseable") prevents cutscenes from being paused, 
+	Which looks weird and could break some things.
+	Add the "unpauseable" tag if you create a new cutscene.
+*/
+
 if InputPressed(INPUT_VERB.PAUSE) and not asset_has_tags(room_get_name(room), "unpauseable") {
 	is_paused = !is_paused
 	
@@ -10,5 +13,3 @@ if InputPressed(INPUT_VERB.PAUSE) and not asset_has_tags(room_get_name(room), "u
 		obj_pause_manager.unpause_tag("pauseable")
 	}
 }
-
-
