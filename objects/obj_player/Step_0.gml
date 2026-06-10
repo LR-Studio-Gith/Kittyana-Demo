@@ -24,6 +24,8 @@ switch state {
 		hsp = dash_speed * wall_dir;
 		vsp = 0;
 		
+		invincible = true
+		
 		// Dash Trail
 		with instance_create_depth(x, y, depth+1, obj_dash_trail) {
 			image_speed = 0;
@@ -37,6 +39,7 @@ switch state {
 		if (dash_timer <= 0) { // Once the dash has run out, reset
 		    dash_cooldown_timer = dash_cooldown;
 		    can_dash = false;
+			invincible = false
 			state = ACTION_STATES.NONE;
 		}
 	break;
