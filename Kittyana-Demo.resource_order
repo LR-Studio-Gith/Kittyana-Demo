@@ -82,7 +82,7 @@
     {"name":"obj_button_parent","order":10,"path":"objects/obj_button_parent/obj_button_parent.yy",},
     {"name":"obj_button_play","order":1,"path":"objects/obj_button_play/obj_button_play.yy",},
     {"name":"obj_button_quit","order":3,"path":"objects/obj_button_quit/obj_button_quit.yy",},
-    {"name":"obj_button","order":9,"path":"objects/obj_button/obj_button.yy",},
+    {"name":"obj_button","order":11,"path":"objects/obj_button/obj_button.yy",},
     {"name":"obj_climbwall","order":10,"path":"objects/obj_climbwall/obj_climbwall.yy",},
     {"name":"obj_clip_floor","order":14,"path":"objects/obj_clip_floor/obj_clip_floor.yy",},
     {"name":"obj_cutsceneend","order":13,"path":"objects/obj_cutsceneend/obj_cutsceneend.yy",},

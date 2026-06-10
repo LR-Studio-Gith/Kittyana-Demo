@@ -1,1 +1,1 @@
-_color = hovering_text_color
+hovering = true

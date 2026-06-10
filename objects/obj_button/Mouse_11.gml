@@ -1,1 +1,1 @@
-_color = text_color
+hovering = false
