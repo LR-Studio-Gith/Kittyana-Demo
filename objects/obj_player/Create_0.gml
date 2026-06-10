@@ -18,13 +18,16 @@ function touching_top() {
 	} else {return 1} //Returning 1 will always make it true
 }
 
+// I-Frames
+invincible = false;
+invincibility_duration = .2;
 
 slope_max = 4
 scale = image_xscale;
 
 // Dash
 dash_speed = 30;
-dash_time = 0.15;
+dash_time = .15;
 dash_cooldown = 0.5;
 
 // Hook
