@@ -1,18 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_button_quit",
+  "%Name":"obj_pause_resume",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_button_quit",
-  "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_button_parent","path":"objects/obj_button_parent/obj_button_parent.yy",},"propertyId":{"name":"button_text","path":"objects/obj_button_parent/obj_button_parent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"Quit",},
-  ],
+  "name":"obj_pause_resume",
+  "overriddenProperties":[],
   "parent":{
-    "name":"Button Children",
-    "path":"folders/Objects/Buttons/Button Children.yy",
+    "name":"Buttons",
+    "path":"folders/Objects/Buttons.yy",
   },
   "parentObjectId":{
     "name":"obj_button_parent",
@@ -36,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_button",
-    "path":"sprites/spr_button/spr_button.yy",
+    "name":"temp_textbox",
+    "path":"sprites/temp_textbox/temp_textbox.yy",
   },
   "spriteMaskId":null,
   "visible":true,

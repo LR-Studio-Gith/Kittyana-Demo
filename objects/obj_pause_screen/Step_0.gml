@@ -5,20 +5,12 @@
 */
 
 if InputPressed(INPUT_VERB.PAUSE) and not asset_has_tags(room_get_name(room), "cutscene") {
-	is_paused = !is_paused
+	is_paused = !is_paused;
 	
 	if is_paused == true {
-		obj_pause_manager.pause_tag("pauseable")
-		for (var i = 0; i < array_length(options); ++i) {
-		    buttons[i] = create_button(window_get_width()/2, 
-			( ( window_get_height()/2 ) - 90*i )+200,
-			1, 1, options[i])
-		}
-		
+		obj_pause_manager.pause_tag("pauseable");
 	} else {
-		obj_pause_manager.unpause_tag("pauseable")
-		for (var i = 0; i <  array_length(buttons); ++i) {
-		    instance_destroy(buttons[i].id)
-		}
+		obj_pause_manager.unpause_tag("pauseable");
+		layer_set_visible("PauseLayer", false);
 	}
 }
