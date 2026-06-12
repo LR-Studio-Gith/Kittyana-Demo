@@ -24,15 +24,15 @@
   "name":"temp_button",
   "nineSlice":{
     "$GMNineSliceData":"",
-    "bottom":5,
+    "bottom":4,
     "enabled":true,
     "guideColour":[4294902015,4294902015,4294902015,4294902015,],
     "highlightColour":1728023040,
     "highlightStyle":0,
-    "left":5,
+    "left":4,
     "resourceType":"GMNineSliceData",
     "resourceVersion":"2.0",
-    "right":5,
+    "right":4,
     "tileMode":[
       0,
       0,
@@ -40,7 +40,7 @@
       0,
       0,
     ],
-    "top":5,
+    "top":4,
   },
   "origin":4,
   "parent":{

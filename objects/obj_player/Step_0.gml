@@ -140,8 +140,8 @@ switch state {
 	        if (hook_obj != noone) 
 			{
 				state = ACTION_STATES.HOOKED;
-	            hook_target_x = hook_obj.x;
-	            hook_target_y = hook_obj.y;
+	            hook_target_x = hook_obj.x + (hook_obj.sprite_width/2);
+	            hook_target_y = hook_obj.y + (hook_obj.sprite_height/2);
 	            can_dash = true;
 	        }
 	    }
