@@ -1,16 +1,8 @@
-/// @desc Settings
-//width = 64; // both in pixels
-//height = 128;
-//border_margin = 8; // also in pixels
-//line_spacing = 16; 
-
-// Set buttons
-//button = [];
+/// @desc Setup & Functions
 pos = 0;
-show_debug_message(button)
-// Get the amount of button options
-function op_length() {return array_length(button);}
+sprite_index = menu_sprite
 
+// Get the amount of button options
 // Create buttons
 for (var i = 0; i < op_length(); ++i) {
 	/*
@@ -20,10 +12,12 @@ for (var i = 0; i < op_length(); ++i) {
 	*/
 	
     var _inst = instance_create_depth(
-	x, y + line_spacing*i, // Spaces out the buttons
+	x+border_margin, (y+border_margin) + line_spacing*i, // Spaces out the buttons
 	depth-1, 
 	button[i])
 }
+
+function op_length() {return array_length(button);}
 
 // Get the longest button
 function get_longest_button_width() 
@@ -42,7 +36,7 @@ function update_button_position()
 	if (x != xprevious) return; // Early exit
 	
 	for (var i = 0; i < op_length(); ++i) {
-		button[i].x = x;
-		button[i].y = y + line_spacing*i;
+		button[i].x = self.x + border_margin
+		button[i].y = (self.y + border_margin) + line_spacing*i;
 	}
 }

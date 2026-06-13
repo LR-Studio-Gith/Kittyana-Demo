@@ -1,4 +1,5 @@
 // Inherit the parent event
 event_inherited();
 
-obj_pause_screen.unpause_game()
+audio_paused = false
+og_text = button_text

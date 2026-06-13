@@ -1,7 +1,7 @@
 /// @desc Input Detection
 
 // Get inputs
-up_key = InputPressed(INPUT_VERB.UP);
+up_key = InputPressed(INPUT_VERB.UP)
 down_key = InputPressed(INPUT_VERB.DOWN);
 accept_key = InputPressed(INPUT_VERB.JUMP);
 

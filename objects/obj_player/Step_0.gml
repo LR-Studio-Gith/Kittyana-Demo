@@ -28,10 +28,14 @@ switch state {
 		
 		// Dash Trail
 		with instance_create_depth(x, y, depth+1, obj_dash_trail) {
+			image_alpha = 1; // Sets its starting transparency
+			_color = c_aqua; // This sets the color of the trail
+			_tick_rate = 0.05 // How fast it fads
+			
 			image_speed = 0;
 			image_index = other.image_index
 			sprite_index = other.sprite_index;
-			image_blend = c_aqua; // This sets the color of the trail
+			_color = c_aqua; // This sets the color of the trail
 			image_xscale = other.image_xscale;
 			image_yscale = other.image_yscale;
 		}

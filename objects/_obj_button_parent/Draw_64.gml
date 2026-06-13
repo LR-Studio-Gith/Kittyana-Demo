@@ -1,4 +1,6 @@
-if font != noone {draw_set_font(font);}
+if font != noone {
+	draw_set_font(font);
+}
 draw_set_valign(fa_top); draw_set_halign(fa_left);
 
 

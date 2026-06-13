@@ -12,12 +12,12 @@ function create_menu(_sprite, _buttons, _width, _height, _margins, _line_spacing
 	camera_get_view_y(view_camera[0]) + camera_get_view_height(view_camera[0])/2, 
 	depth-1, 
 	obj_menu, {
-		sprite_index : _sprite,
+		menu_sprite : _sprite,
 		button : _buttons,
 		width : _width,
 		height : _height,
 		border_margin : _margins,
-		line_spacing : _line_spacing
+		line_spacing : _line_spacing,
 	});
 	
 	return _menu

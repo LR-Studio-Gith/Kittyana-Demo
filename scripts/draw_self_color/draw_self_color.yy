@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"update_flash",
+  "%Name":"draw_self_color",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"update_flash",
+  "name":"draw_self_color",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Imports/Flash Effect/Scripts.yy",
+    "name":"Easy Overlay",
+    "path":"folders/Imports/Easy Overlay.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

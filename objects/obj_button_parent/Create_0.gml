@@ -1,0 +1,1 @@
+_color = text_color;

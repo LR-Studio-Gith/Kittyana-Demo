@@ -3,7 +3,6 @@ if other.master != self and array_contains(other.attacked, self) == false and no
 	hp -= other.damage;
 	show_debug_message(hp);
 	alarm_set(2, 5)
-	//do_flash()
 	
 	// Knockback
 	vsp += other.knockback_strength_y

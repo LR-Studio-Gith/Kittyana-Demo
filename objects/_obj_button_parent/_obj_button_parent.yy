@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"_obj_menu_button_parent",
+  "%Name":"_obj_button_parent",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":10,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -9,11 +9,11 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"_obj_menu_button_parent",
+  "name":"_obj_button_parent",
   "overriddenProperties":[],
   "parent":{
-    "name":"Parent Objects",
-    "path":"folders/Objects/Parent Objects.yy",
+    "name":"Kittyana-Demo",
+    "path":"Kittyana-Demo.yyp",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -17,6 +17,3 @@ void main()
     v_vColour = in_Colour;
     v_vTexcoord = in_TextureCoord;
 }
-
-// Chief I'll be honest I got no clue what everything above does, like Ik it messes with the vertices but like
-// just no... lets just leave this bit alone... -S
