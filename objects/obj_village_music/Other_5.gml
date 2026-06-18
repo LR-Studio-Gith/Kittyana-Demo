@@ -1,1 +1,1 @@
-audio_stop_sound(Your_Average_Small_Village_)
+audio_stop_sound(snd_village_theme)

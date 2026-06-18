@@ -1,0 +1,47 @@
+{
+  "$GMObject":"",
+  "%Name":"obj_sfx_slider",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":56,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_sfx_slider",
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_slider","path":"objects/obj_slider/obj_slider.yy",},"propertyId":{"name":"amount_current","path":"objects/obj_slider/obj_slider.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"global.GAME_SETTINGS.SFX_Volume",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_slider","path":"objects/obj_slider/obj_slider.yy",},"propertyId":{"name":"slider_text","path":"objects/obj_slider/obj_slider.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"SFX Volume",},
+  ],
+  "parent":{
+    "name":"Pause Buttons",
+    "path":"folders/Objects/Buttons/Pause Buttons.yy",
+  },
+  "parentObjectId":{
+    "name":"obj_slider",
+    "path":"objects/obj_slider/obj_slider.yy",
+  },
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"spr_slider",
+    "path":"sprites/spr_slider/spr_slider.yy",
+  },
+  "spriteMaskId":null,
+  "tags":[
+    "slider",
+  ],
+  "visible":true,
+}

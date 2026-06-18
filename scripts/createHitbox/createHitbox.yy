@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"createHitbox",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Functions",
+    "path":"folders/Scripts/Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

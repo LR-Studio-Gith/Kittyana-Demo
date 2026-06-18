@@ -1,0 +1,1 @@
+if (selected) is_being_dragged = true

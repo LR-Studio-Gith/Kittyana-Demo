@@ -1,1 +1,3 @@
-audio_play_sound(snd_rainworld, 0, true)
+if not audio_group_is_loaded(audiogroup_music) {
+	audio_group_load(audiogroup_music)
+}

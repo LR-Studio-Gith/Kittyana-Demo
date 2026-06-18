@@ -1,5 +1,5 @@
 /// @desc Creates a menu.
-/// @arg {Asset.GMSprite} _sprite The nine-slice sprite to use as the background of the menu.
+/// @arg {Asset.GMSprite} _sprite The nine-slice sprite to use as the background of the menu. Setting it to noone will not render a sprite
 /// @arg {Array<Asset.GMObject>} _buttons An array of button objects to use for the menu.
 /// @arg {Real} _width The width of the menu, it's mininum size automatically adjusts to the length of the button.
 /// @arg {Real} _height The height of the menu, similar functionality to the width.

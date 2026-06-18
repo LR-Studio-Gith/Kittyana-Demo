@@ -1,18 +1,18 @@
 {
   "$GMSound":"v2",
-  "%Name":"Sound1",
+  "%Name":"snd_village_theme",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"audiogroup_music",
+    "path":"audiogroups/audiogroup_music",
   },
   "bitDepth":1,
   "channelFormat":0,
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":129.75774,
   "exportDir":"",
-  "name":"Sound1",
+  "name":"snd_village_theme",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"",
+  "soundFile":"snd_village_theme.mp3",
   "volume":1.0,
 }

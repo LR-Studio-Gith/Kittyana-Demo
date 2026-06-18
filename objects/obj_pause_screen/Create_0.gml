@@ -1,7 +1,9 @@
 is_paused = false;
 menu = noone;
 menu_height = 0;
-function pause_game() {
+
+function pause_game() 
+{
 	obj_pause_manager.pause_tag("pauseable");
 		
 	if menu == noone {
@@ -22,7 +24,9 @@ function pause_game() {
 	
 	is_paused = true
 }
-function unpause_game() {
+
+function unpause_game() 
+{
 	obj_pause_manager.unpause_tag("pauseable");
 
 	instance_destroy(menu.object_index)

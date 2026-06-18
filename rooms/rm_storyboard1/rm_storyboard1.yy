@@ -20,8 +20,8 @@
   ],
   "name":"rm_storyboard1",
   "parent":{
-    "name":"storyborads",
-    "path":"folders/Objects/storyborads.yy",
+    "name":"Storyboards",
+    "path":"folders/Objects/Storyboards.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

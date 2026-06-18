@@ -7,10 +7,13 @@ accept_key = InputPressed(INPUT_VERB.JUMP);
 
 // Move through menu
 
-pos += down_key - up_key; // Works because true and false are numbers, 1 & 0 
+if array_last(global.Active_Menus) == id {
+	//show_debug_message(global.Active_Menus)
+	
+	pos += down_key - up_key; // Works because true and false are numbers, 1 & 0 
 
-pos = (pos + op_length()) % op_length(); // Loops the position from falling out of range
-
+	pos = (pos + op_length()) % op_length(); // Loops the position from falling out of range
+}
 // Button highlighting
 for (var i = 0; i < op_length(); ++i) {
 	with button[i] {
@@ -25,7 +28,7 @@ for (var i = 0; i < op_length(); ++i) {
 	}
 }
 
-if accept_key {
+if accept_key and array_last(global.Active_Menus) == id {
 	with button[pos] {
 		event_perform(ev_mouse, ev_left_press);
 	}

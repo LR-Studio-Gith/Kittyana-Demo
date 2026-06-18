@@ -1,18 +1,18 @@
 {
   "$GMSound":"v2",
-  "%Name":"Your_Average_Small_Village_",
+  "%Name":"snd_pickle_boss",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"audiogroup_music",
+    "path":"audiogroups/audiogroup_music",
   },
   "bitDepth":1,
   "channelFormat":0,
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":129.75774,
+  "duration":90.618774,
   "exportDir":"",
-  "name":"Your_Average_Small_Village_",
+  "name":"snd_pickle_boss",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"Your_Average_Small_Village_.mp3",
+  "soundFile":"snd_pickle_boss.mp3",
   "volume":1.0,
 }

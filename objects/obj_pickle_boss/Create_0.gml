@@ -43,7 +43,7 @@ Body slam: launches itself into the air then fast falls back down
 
 */
 
-set_flash_shader_color(#FFFF00)
+
 
 function isGrounded(downward_y=50) {
 	if !object_exists(self.object_index) {/*Wait until game starts*/} 

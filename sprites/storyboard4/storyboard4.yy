@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"storyborads",
-    "path":"folders/Objects/storyborads.yy",
+    "name":"Storyboards",
+    "path":"folders/Objects/Storyboards.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

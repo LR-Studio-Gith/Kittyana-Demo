@@ -1,1 +1,3 @@
-audio_play_sound(Your_Average_Small_Village_, 0, true)
+if !audio_group_is_loaded(audiogroup_music) {
+	audio_group_load(audiogroup_music);
+}

@@ -13,3 +13,6 @@ if InputPressed(INPUT_VERB.PAUSE) and not asset_has_tags(room_get_name(room), "c
 		unpause_game()
 	}
 }
+
+// This shouldn't be done inside of here but its late
+update_settings();

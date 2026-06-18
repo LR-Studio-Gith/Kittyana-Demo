@@ -14,6 +14,6 @@ draw_set_alpha(1);
 draw_set_colour(c_white)
 draw_text(
 	window_get_width()/2,
-	( (window_get_height()/2) - menu_height ) -50, 
+	(window_get_height()/2) - 250, 
 	"GAME IS PAUSED"
 );

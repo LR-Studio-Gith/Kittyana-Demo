@@ -1,18 +1,18 @@
 {
   "$GMSound":"v2",
-  "%Name":"Tutorial_Type_Beat__2_",
+  "%Name":"snd_tutorial_1",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"audiogroup_music",
+    "path":"audiogroups/audiogroup_music",
   },
   "bitDepth":1,
   "channelFormat":0,
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":79.53109,
+  "duration":22.144377,
   "exportDir":"",
-  "name":"Tutorial_Type_Beat__2_",
+  "name":"snd_tutorial_1",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"Tutorial_Type_Beat__2_.mp3",
+  "soundFile":"snd_tutorial_1.mp3",
   "volume":1.0,
 }

@@ -1,18 +1,18 @@
 {
   "$GMSound":"v2",
-  "%Name":"Tutorial_Type_Beat",
+  "%Name":"snd_pause_sfx",
   "audioGroupId":{
-    "name":"audiogroup_default",
-    "path":"audiogroups/audiogroup_default",
+    "name":"audiogroup_sfx",
+    "path":"audiogroups/audiogroup_sfx",
   },
   "bitDepth":1,
   "channelFormat":0,
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":22.144377,
+  "duration":2.1521769,
   "exportDir":"",
-  "name":"Tutorial_Type_Beat",
+  "name":"snd_pause_sfx",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"Tutorial_Type_Beat.mp3",
+  "soundFile":"snd_pause_sfx.wav",
   "volume":1.0,
 }
