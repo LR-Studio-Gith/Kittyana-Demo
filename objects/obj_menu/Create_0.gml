@@ -3,6 +3,8 @@ pos = 0;
 sprite_index = menu_sprite
 array_push(global.Active_Menus, id)
 
+
+
 // Get the amount of button options
 // Create buttons
 for (var i = 0; i < op_length(); ++i) {

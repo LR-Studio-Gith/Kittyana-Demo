@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_pickle_boss",
+  "%Name":"snd_go_tutorial_mus",
   "audioGroupId":{
     "name":"audiogroup_music",
     "path":"audiogroups/audiogroup_music",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":90.618774,
+  "duration":156.6022,
   "exportDir":"",
-  "name":"snd_pickle_boss",
+  "name":"snd_go_tutorial_mus",
   "parent":{
     "name":"Music",
     "path":"folders/Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_pickle_boss.mp3",
+  "soundFile":"snd_go_tutorial_mus.mp3",
   "volume":1.0,
 }

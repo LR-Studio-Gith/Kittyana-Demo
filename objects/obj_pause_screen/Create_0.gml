@@ -2,6 +2,10 @@ is_paused = false;
 menu = noone;
 menu_height = 0;
 
+if not audio_group_is_loaded(audiogroup_sfx) {
+	audio_group_load(audiogroup_sfx)
+}
+
 function pause_game() 
 {
 	obj_pause_manager.pause_tag("pauseable");
@@ -23,6 +27,8 @@ function pause_game()
 	}
 	
 	is_paused = true
+	
+	audio_play_sound(snd_pause_sfx, 1, false)
 }
 
 function unpause_game() 

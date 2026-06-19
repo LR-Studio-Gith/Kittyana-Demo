@@ -4,7 +4,6 @@ global.GAME_SETTINGS = {
 	SFX_Volume		: 100,
 }
 
-
 function update_settings() {
 	#region Audio [ALWAYS REMEMBER TO DIVIDE BY 100]
 	// For ALL Audio
