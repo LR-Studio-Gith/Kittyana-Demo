@@ -40,5 +40,8 @@
     "path":"sprites/pixil_gif_drawing_3/pixil_gif_drawing_3.yy",
   },
   "spriteMaskId":null,
+  "tags":[
+    "enemy",
+  ],
   "visible":true,
 }

@@ -10,9 +10,9 @@ function pause_game()
 		menu = create_menu(
 		spr_menu, [
 			obj_pause_resume, 
+			obj_pause_restart,
 			obj_pause_options, 
 			obj_pause_quit,
-			obj_pause_mute,
 		],
 		0, 0, 40, 80
 		) 

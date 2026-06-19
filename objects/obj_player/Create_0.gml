@@ -9,6 +9,8 @@ jump_speed = -15;
 max_jumps = 2;  
 jumps_left = max_jumps
 
+max_hurt_time = 60
+
 function touching_top() {
 	if instance_exists_paused(obj_oneway) {
 		return obj_oneway.bbox_top - bbox_bottom + vsp + grv*2
@@ -18,11 +20,30 @@ function touching_top() {
 	} else {return 1} //Returning 1 will always make it true
 }
 
+
+if !instance_exists(obj_pause_manager) {
+	show_debug_message("Pause Manager absent, creating new one...")
+	instance_create_depth(x, y, depth, obj_pause_manager)
+} else {
+	show_debug_message("Pause Manager exists already!")
+}
+if !instance_exists(obj_pause_screen) {
+	show_debug_message("Pause screen overlay absent, creating new one...")
+	instance_create_depth(x, y, depth, obj_pause_screen)
+} else {
+	show_debug_message("Pause screen already exists, you're good to go!")
+}
+
+
 // I-Frames
 invincible = false;
 invincibility_duration = .2;
 
 slope_max = 4
+
+image_xscale = 0.4666667
+image_yscale = 0.4666667
+
 scale = image_xscale;
 
 // Dash
