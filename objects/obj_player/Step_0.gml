@@ -1,8 +1,6 @@
 if (hp <= 0) room_restart()
 
 if (not can_move) exit;
-
-
 var input = -InputX(INPUT_CLUSTER.NAVIGATION)
 
 // Flips the player's sprite
@@ -14,9 +12,8 @@ if (input != 0)
 
 // Decrement the dash's cooldown
 if (dash_cooldown_timer > 0) {dash_cooldown_timer -= get_delta_time_in_seconds();}
-else {can_dash = true}
+else {can_dash = true;}
 
-// If the player is in the dashing state
 switch state {
 	#region Dashing Action
 	case ACTION_STATES.DASHING:
@@ -58,7 +55,7 @@ switch state {
 	    hsp = lengthdir_x(step, angle);
 	    vsp = lengthdir_y(step, angle);
 	
-	    if (place_meeting(x + hsp, y + vsp, obj_ground) ||
+	    if (place_meeting(x + hsp, y + vsp, col_obj) ||
 	        place_meeting(x + hsp, y + vsp, obj_climbwall)) {
 	        state = ACTION_STATES.NONE;
 	        hsp = 0;
@@ -78,30 +75,29 @@ switch state {
 	    if (input == 0 && on_ground) hsp = lerp(hsp, 0, friction);
 
 	    // --- GRAVITY ---
-	    if (!on_ground && !on_wall) vsp += grv;
+		if (!on_ground && !on_wall) vsp += grv; 
 
 	    // --- WALL CHECK ---
 	    on_wall = false;
 	    wall_dir = 0;
-	    if (!on_ground) 
+	    if not on_ground
 		{
 			coyote_timer -= 1;
 	        if (place_meeting(x + 1, y, obj_climbwall)) { on_wall = true; wall_dir = 1; }
 	        else if (place_meeting(x - 1, y, obj_climbwall)) { on_wall = true; wall_dir = -1; }
-	    } 
+		}
 		else 
-		{
-			jumps_left = max_jumps
+		{ 
+			jumps_left = max_jumps;
 			coyote_timer = coyote_time_max;
 		}
 
-	    if (on_wall && InputPressed(INPUT_VERB.UP)) {
-	        vsp = -walk_speed;				// climb up
-	        jumps_left = max_jumps;			// reset double jump
-	        coyote_timer = coyote_time_max; // allow jump off wall quickly
-	    }
-    
-
+	    //if (on_wall && InputPressed(INPUT_VERB.UP)) {
+	    //    vsp = -walk_speed;				// climb up
+	    //    jumps_left = max_jumps;			// reset double jump
+	    //    coyote_timer = coyote_time_max; // allow jump off wall quickly
+	    //}
+   
 		if InputPressed(INPUT_VERB.DASH) and can_dash and dash_cooldown_timer <= 0 {
 	        state = ACTION_STATES.DASHING;
 	        dash_timer = dash_time;
@@ -111,24 +107,22 @@ switch state {
 	    // --- JUMP / DOUBLE JUMP ---
 	    if ((InputPressed(INPUT_VERB.JUMP)) and jumps_left > 0) {
 	        if (on_ground or coyote_timer > 0) {
-	            vsp = jump_speed;
-	            jumps_left = max_jumps;
+				vsp = jump_speed;
+	            //jumps_left = max_jumps;
 	            can_dash = true;
 	            coyote_timer = 0;
 				jumps_left--;
 	        }
-	        else if (on_wall) {
-	            vsp = jump_speed;
-	            hsp = -wall_dir * walk_speed * 1.5;
-	            jumps_left = max_jumps;
-	        }
+	        //else if (on_wall) {
+	        //    vsp = jump_speed;
+	        //    hsp = -wall_dir * walk_speed * 1.5;
+	        //    jumps_left = max_jumps;
+	        //}
 	        else if (jumps_left > 0) {
 	            vsp = jump_speed;
 	            jumps_left--;
 	        }
 	    }
-
-	   
 
 	    if (InputPressed(INPUT_VERB.HOOK)) {
 	        var hook_obj = noone;
@@ -160,56 +154,64 @@ switch state {
 }
 
 on_ground = false;
-
+if isGrounded() on_ground = true;
 #region Horizontal Movement
-if (place_meeting(x + hsp, y, obj_ground)) {
-    while (!place_meeting(x + sign(hsp), y, obj_ground)) x += sign(hsp);
-    hsp = 0;
-}
-x += hsp;
+//if (place_meeting(x + hsp, y, col_obj)) {
+//    while (!place_meeting(x + sign(hsp), y, col_obj))
+//	{
+//		x += sign(hsp);
+//	}
+//    hsp = 0;
+//}
+//x += hsp;
+
+_hCol = move_and_collide(hsp, 0, col_obj, abs(hsp))
 #endregion
+
+
+
 
 #region Vertical Movement
 
 // Normal Ground Collision
-if (place_meeting(x, y + vsp, obj_ground))
-{
-    while (!place_meeting(x, y + sign(vsp), obj_ground))
-    {
-        y += sign(vsp);
-    }
+//if (place_meeting(x, y + vsp, col_obj))
+//{
+//    while (!place_meeting(x, y + sign(vsp), col_obj)) {
+//		y += sign(vsp);
+//	}
 
-    if (vsp > 0) on_ground = true;
+//    vsp = 0;
 
-    vsp = 0;
+//} 
 
-// One-way Ground Collision
-} 
-else if (vsp >= 0 
-and not InputCheck(INPUT_VERB.DOWN) 
-and place_meeting(x, y + vsp, obj_oneway) and touching_top() > 0) {
-	
-	while (!place_meeting(x, y + sign(vsp), obj_oneway) and touching_top > 0) {
-		y += sign(vsp);
-	}
 
-	if (vsp > 0) on_ground = true;
-
+_vCol = move_and_collide(0, vsp, col_obj, abs(vsp))
+var downward_push = abs(hsp) + 1
+if (on_ground and place_meeting(x,y+downward_push, col_obj) and vsp >= 0) {
+	vsp += downward_push
+}
+if (array_length(_vCol) > 0) {
 	vsp = 0;
+	on_ground = true;
 }
 
-y += vsp;
+//// One-way Ground Collision
+//else if (vsp >= 0 
+//and not InputCheck(INPUT_VERB.DOWN) 
+//and place_meeting(x, y + vsp, obj_oneway) and touching_top() > 0) {
+	
+//	while (!place_meeting(x, y + sign(vsp), obj_oneway) and touching_top > 0) {
+//		y += sign(vsp);
+//	}
+
+//	if (vsp > 0) on_ground = true;
+
+//	vsp = 0;
+//}
+
+//y += vsp;
 #endregion
 
-
-//if keyboard_check(vk_escape)
-//{
-//	game_end()
-//}
-//if keyboard_check(vk_enter)
-//{
-//	room_restart()
-//}
 
 #region Violence
 #region Katana
@@ -264,7 +266,7 @@ else
 	    sprite_index = spr_climb;
 	    image_speed = 1;
 	}
-	else if (not isGrounded())
+	else if (not on_ground)
 	{
 	    sprite_index = spr_player_jump;
 	    image_speed = 0.6;

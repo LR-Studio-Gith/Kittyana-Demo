@@ -9,6 +9,9 @@ enum STATE
 current_state = STATE.IDLE;
 max_hurt_time = 60
 
+col_obj = layer_tilemap_get_id("Collision")
+
+
 // Movement
 dir = 0;
 hspd = 0;

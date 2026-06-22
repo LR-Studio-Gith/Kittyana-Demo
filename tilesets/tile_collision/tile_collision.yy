@@ -1,17 +1,13 @@
 {
   "$GMTileSet":"v1",
-  "%Name":"Ground",
+  "%Name":"tile_collision",
   "autoTileSets":[],
   "macroPageTiles":{
-    "SerialiseHeight":15,
-    "SerialiseWidth":7,
-    "TileCompressedData":[
-      -22,0,-6,3,1,0,-6,3,1,0,-6,3,1,0,-6,3,1,0,-6,3,1,0,-6,3,1,0,-6,3,1,0,-6,3,1,0,-6,3,1,0,-6,3,1,0,-6,3,
-      1,0,-6,3,
-    ],
-    "TileDataFormat":1,
+    "SerialiseHeight":0,
+    "SerialiseWidth":0,
+    "TileSerialiseData":[],
   },
-  "name":"Ground",
+  "name":"tile_collision",
   "out_columns":3,
   "out_tilehborder":2,
   "out_tilevborder":2,
@@ -22,8 +18,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"grasstilesv2",
-    "path":"sprites/grasstilesv2/grasstilesv2.yy",
+    "name":"spr_tile_collision",
+    "path":"sprites/spr_tile_collision/spr_tile_collision.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{

@@ -466,6 +466,7 @@
     {"name":"spr_slanted","order":9,"path":"sprites/spr_slanted/spr_slanted.yy",},
     {"name":"spr_slider","order":3,"path":"sprites/spr_slider/spr_slider.yy",},
     {"name":"spr_textbox","order":1,"path":"sprites/spr_textbox/spr_textbox.yy",},
+    {"name":"spr_tile_collision","order":19,"path":"sprites/spr_tile_collision/spr_tile_collision.yy",},
     {"name":"spr_uncle_c_sketch","order":1,"path":"sprites/spr_uncle_c_sketch/spr_uncle_c_sketch.yy",},
     {"name":"spr_uncle_calm","order":3,"path":"sprites/spr_uncle_calm/spr_uncle_calm.yy",},
     {"name":"spr_water","order":10,"path":"sprites/spr_water/spr_water.yy",},
@@ -479,6 +480,7 @@
     {"name":"Untitled24_20260526234521","order":8,"path":"sprites/Untitled24_20260526234521/Untitled24_20260526234521.yy",},
     {"name":"Untitled27","order":5,"path":"sprites/Untitled27/Untitled27.yy",},
     {"name":"Untitled740_20250829174329__3_","order":4,"path":"sprites/Untitled740_20250829174329__3_/Untitled740_20250829174329__3_.yy",},
+    {"name":"tile_collision","order":2,"path":"tilesets/tile_collision/tile_collision.yy",},
     {"name":"TileSet1","order":18,"path":"tilesets/TileSet1/TileSet1.yy",},
   ],
 }
