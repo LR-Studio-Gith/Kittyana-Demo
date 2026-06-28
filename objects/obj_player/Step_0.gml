@@ -75,7 +75,7 @@ switch state {
 	    if (input == 0 && on_ground) hsp = lerp(hsp, 0, friction);
 
 	    // --- GRAVITY ---
-		if (!on_ground && !on_wall) vsp += grv; 
+		if (!on_ground && !on_wall) vsp += grv;
 
 	    // --- WALL CHECK ---
 	    on_wall = false;
@@ -154,46 +154,27 @@ switch state {
 }
 
 on_ground = false;
-if isGrounded() on_ground = true;
-#region Horizontal Movement
-//if (place_meeting(x + hsp, y, col_obj)) {
-//    while (!place_meeting(x + sign(hsp), y, col_obj))
-//	{
-//		x += sign(hsp);
-//	}
-//    hsp = 0;
-//}
-//x += hsp;
+if isGrounded() on_ground = true; // why...
 
-_hCol = move_and_collide(hsp, 0, col_obj, abs(hsp))
-#endregion
-
-
-
-
-#region Vertical Movement
-
-// Normal Ground Collision
-//if (place_meeting(x, y + vsp, col_obj))
+_hCol = move_and_collide(hsp, 0, col_obj, ceil(abs(hsp)))
+_vCol = move_and_collide(0, vsp, col_obj, ceil(abs(vsp)))
+//if 
+//	!place_meeting(x+hsp,y+2, col_obj)
+//and place_meeting(x+hsp,y+10, col_obj)
 //{
-//    while (!place_meeting(x, y + sign(vsp), col_obj)) {
-//		y += sign(vsp);
-//	}
+//	vsp = abs(hsp)
+//	hsp = 0
+//}
 
-//    vsp = 0;
-
-//} 
-
-
-_vCol = move_and_collide(0, vsp, col_obj, abs(vsp))
-var downward_push = abs(hsp) + 1
-if (on_ground and place_meeting(x,y+downward_push, col_obj) and vsp >= 0) {
-	vsp += downward_push
-}
-if (array_length(_vCol) > 0) {
+// Walk up slopes
+if col_ray_left() != noone or col_ray_right() != noone { // that means one of them have hit something
 	vsp = 0;
 	on_ground = true;
 }
+
+// Walk down slopes
+
+
 
 //// One-way Ground Collision
 //else if (vsp >= 0 

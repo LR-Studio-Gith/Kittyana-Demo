@@ -13,6 +13,31 @@ max_hurt_time = 60
 
 col_obj = layer_tilemap_get_id("Collision")
 
+//bbox_width = function() {return bbox_right-bbox_left} 
+// here so if you wanna, you can make it directional
+function col_ray_left() {
+	var ray = collision_line(
+		bbox_left, y,
+		bbox_left, bbox_bottom, //y + (sprite_height/2),
+		col_obj,
+		true,
+		true
+	)
+
+	return ray
+}
+function col_ray_right() {
+	var ray = collision_line(
+		bbox_right, y,
+		bbox_right, bbox_bottom, //y + (sprite_height/2),
+		col_obj,
+		true,
+		true
+	)
+
+	return ray
+}
+
 function touching_top() {
 	if instance_exists_paused(obj_oneway) {
 		return obj_oneway.bbox_top - bbox_bottom + vsp + grv*2
@@ -21,6 +46,8 @@ function touching_top() {
 		*/
 	} else {return 1} //Returning 1 will always make it true
 }
+
+
 
 #region Creation of Pause Menu
 if !instance_exists(obj_pause_manager) {
@@ -92,7 +119,7 @@ function isGrounded(downward_y=50) {
 			var raycast = collision_line(
 				x, y,
 				x, y+downward_y,
-				[col_obj],
+				col_obj,
 				true,
 				true
 			);
