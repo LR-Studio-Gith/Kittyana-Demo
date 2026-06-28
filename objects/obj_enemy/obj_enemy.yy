@@ -40,5 +40,8 @@
     "path":"sprites/spt_smallpickleidle/spt_smallpickleidle.yy",
   },
   "spriteMaskId":null,
+  "tags":[
+    "enemy",
+  ],
   "visible":true,
 }

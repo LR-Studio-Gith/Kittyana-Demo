@@ -1,18 +1,12 @@
-if other.master != self and array_contains(other.attacked, self) == false
-{
-	
-	if (other.master != obj_EnemyParent) {
-		array_push(other.attacked, self)
-		hp -= other.damage;
-		show_debug_message(hp);
-	}
-}
-if variable_instance_exists(id, "hp")
-{
-    hp -= other.damage;
+var attacker = other.master.object_index
 
-    if (hp < 1)
-    {
-        instance_destroy();
-    }
-}	
+if attacker != self 
+and not array_contains(other.attacked, self)
+and not (asset_has_tags(attacker, "enemy") or asset_has_tags(attacker, "boss"))
+{
+	array_push(other.attacked, self)
+	_health -= other.damage;
+	alarm_set(3, max_hurt_time)
+	
+	//show_debug_message(asset_get_tags(attacker) )
+}

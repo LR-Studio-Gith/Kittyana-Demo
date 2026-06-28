@@ -28,11 +28,14 @@ function faceplayer() {
 
 alarm[0] = 120
 timeUp = (alarm_get(0) <= 0)
+max_hurt_time = 60
 
 didCharge = false;
 didSlam = false;
 charging = false;
 canSummon = true;
+
+col_obj = layer_tilemap_get_id("Collision")
 
 /*
 
@@ -43,7 +46,7 @@ Body slam: launches itself into the air then fast falls back down
 
 */
 
-set_flash_shader_color(#FFFF00)
+
 
 function isGrounded(downward_y=50) {
 	if !object_exists(self.object_index) {/*Wait until game starts*/} 
@@ -51,7 +54,7 @@ function isGrounded(downward_y=50) {
 			var raycast = collision_line(
 				x, y,
 				x, y+downward_y,
-				obj_Solid,
+				col_obj,
 				true,
 				true
 			);
@@ -73,7 +76,7 @@ function chargeAtk() {
 function summonAtk(waittime) {
 	show_debug_message("Summon")
 	
-	minion1 = instance_create_depth(random_range(500, 2100),room_height,depth,obj_enemy);
+	minion1 = instance_create_depth(random_range(600, 2000),250,depth,obj_enemy);
 	//minion2 = instance_create_depth(x,y-summon_y+20,depth,obj_enemy);
 	//minion3 = instance_create_depth(x,y-summon_y,depth,obj_enemy);
 		

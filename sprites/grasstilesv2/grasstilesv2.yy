@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Level Sprites",
-    "path":"folders/Sprites/Level Sprites.yy",
+    "name":"Tile Sprites",
+    "path":"folders/Sprites/Tile Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

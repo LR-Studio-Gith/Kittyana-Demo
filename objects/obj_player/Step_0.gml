@@ -1,8 +1,6 @@
 if (hp <= 0) room_restart()
 
 if (not can_move) exit;
-
-
 var input = -InputX(INPUT_CLUSTER.NAVIGATION)
 
 // Flips the player's sprite
@@ -14,9 +12,8 @@ if (input != 0)
 
 // Decrement the dash's cooldown
 if (dash_cooldown_timer > 0) {dash_cooldown_timer -= get_delta_time_in_seconds();}
-else {can_dash = true}
+else {can_dash = true;}
 
-// If the player is in the dashing state
 switch state {
 	#region Dashing Action
 	case ACTION_STATES.DASHING:
@@ -28,10 +25,14 @@ switch state {
 		
 		// Dash Trail
 		with instance_create_depth(x, y, depth+1, obj_dash_trail) {
+			image_alpha = 1; // Sets its starting transparency
+			_color = c_aqua; // This sets the color of the trail
+			_tick_rate = 0.05 // How fast it fads
+			
 			image_speed = 0;
 			image_index = other.image_index
 			sprite_index = other.sprite_index;
-			image_blend = c_aqua; // This sets the color of the trail
+			_color = c_aqua; // This sets the color of the trail
 			image_xscale = other.image_xscale;
 			image_yscale = other.image_yscale;
 		}
@@ -45,6 +46,7 @@ switch state {
 	break;
 	#endregion
 
+
 	#region Hooking Action
 	case ACTION_STATES.HOOKED:		
 	    var angle = point_direction(x, y, hook_target_x, hook_target_y);
@@ -54,7 +56,7 @@ switch state {
 	    hsp = lengthdir_x(step, angle);
 	    vsp = lengthdir_y(step, angle);
 	
-	    if (place_meeting(x + hsp, y + vsp, obj_ground) ||
+	    if (place_meeting(x + hsp, y + vsp, col_obj) ||
 	        place_meeting(x + hsp, y + vsp, obj_climbwall)) {
 	        state = ACTION_STATES.NONE;
 	        hsp = 0;
@@ -65,39 +67,40 @@ switch state {
 	break;
 	#endregion
 
+
 	#region Normal/No Action State
 	case ACTION_STATES.NONE: 
-	    var target_speed = input * walk_speed;
+	    target_speed = input * walk_speed;
 	    if (on_ground) {hsp = lerp(hsp, target_speed, accel);}
 	    else {hsp = lerp(hsp, target_speed, 0.1);}
 
 	    if (input == 0 && on_ground) hsp = lerp(hsp, 0, friction);
 
 	    // --- GRAVITY ---
-	    if (!on_ground && !on_wall) vsp += grv;
+		if (!on_ground && !on_wall) vsp += grv;
 
 	    // --- WALL CHECK ---
 	    on_wall = false;
 	    wall_dir = 0;
-	    if (!on_ground) 
+	    if not on_ground
 		{
 			coyote_timer -= 1;
 	        if (place_meeting(x + 1, y, obj_climbwall)) { on_wall = true; wall_dir = 1; }
 	        else if (place_meeting(x - 1, y, obj_climbwall)) { on_wall = true; wall_dir = -1; }
-	    } 
+		}
 		else 
-		{
-			jumps_left = max_jumps
+		{ 
+			jumps_left = max_jumps;
 			coyote_timer = coyote_time_max;
 		}
 
-	    if (on_wall && InputPressed(INPUT_VERB.UP)) {
-	        vsp = -walk_speed;				// climb up
-	        jumps_left = max_jumps;			// reset double jump
-	        coyote_timer = coyote_time_max; // allow jump off wall quickly
-	    }
-    
-
+	    //if (on_wall && InputPressed(INPUT_VERB.UP)) {
+	    //    vsp = -walk_speed;				// climb up
+	    //    jumps_left = max_jumps;			// reset double jump
+	    //    coyote_timer = coyote_time_max; // allow jump off wall quickly
+	    //}
+		
+   
 		if InputPressed(INPUT_VERB.DASH) and can_dash and dash_cooldown_timer <= 0 {
 	        state = ACTION_STATES.DASHING;
 	        dash_timer = dash_time;
@@ -107,24 +110,22 @@ switch state {
 	    // --- JUMP / DOUBLE JUMP ---
 	    if ((InputPressed(INPUT_VERB.JUMP)) and jumps_left > 0) {
 	        if (on_ground or coyote_timer > 0) {
-	            vsp = jump_speed;
-	            jumps_left = max_jumps;
+				vsp = jump_speed;
+	            //jumps_left = max_jumps;
 	            can_dash = true;
 	            coyote_timer = 0;
 				jumps_left--;
 	        }
-	        else if (on_wall) {
-	            vsp = jump_speed;
-	            hsp = -wall_dir * walk_speed * 1.5;
-	            jumps_left = max_jumps;
-	        }
+	        //else if (on_wall) {
+	        //    vsp = jump_speed;
+	        //    hsp = -wall_dir * walk_speed * 1.5;
+	        //    jumps_left = max_jumps;
+	        //}
 	        else if (jumps_left > 0) {
 	            vsp = jump_speed;
 	            jumps_left--;
 	        }
 	    }
-
-	   
 
 	    if (InputPressed(INPUT_VERB.HOOK)) {
 	        var hook_obj = noone;
@@ -140,72 +141,66 @@ switch state {
 	        if (hook_obj != noone) 
 			{
 				state = ACTION_STATES.HOOKED;
-	            hook_target_x = hook_obj.x;
-	            hook_target_y = hook_obj.y;
+	            hook_target_x = hook_obj.x + (hook_obj.sprite_width/2);
+	            hook_target_y = hook_obj.y + (hook_obj.sprite_height/2);
 	            can_dash = true;
 	        }
 	    }
 	break;
 	#endregion
 	
+	
+	#region Frozen "Action"
 	case ACTION_STATES.FROZEN:
 		hsp = 0;
 		vsp = 0;
 	break;
+	#endregion
+
 
 }
 
 on_ground = false;
+if isGrounded() on_ground = true; // why... 
 
-#region Horizontal Movement
-if (place_meeting(x + hsp, y, obj_ground)) {
-    while (!place_meeting(x + sign(hsp), y, obj_ground)) x += sign(hsp);
-    hsp = 0;
-}
-x += hsp;
-#endregion
+#region Movement
+_hCol = move_and_collide(hsp, 0, col_obj, ceil(abs(hsp)))
+_vCol = move_and_collide(0, vsp, col_obj, ceil(abs(vsp)))
 
-#region Vertical Movement
-
-// Normal Ground Collision
-if (place_meeting(x, y + vsp, obj_ground))
-{
-    while (!place_meeting(x, y + sign(vsp), obj_ground))
-    {
-        y += sign(vsp);
-    }
-
-    if (vsp > 0) on_ground = true;
-
-    vsp = 0;
-
-// One-way Ground Collision
-} 
-else if (vsp >= 0 
-and not InputCheck(INPUT_VERB.DOWN) 
-and place_meeting(x, y + vsp, obj_oneway) and touching_top() > 0) {
-	
-	while (!place_meeting(x, y + sign(vsp), obj_oneway) and touching_top > 0) {
-		y += sign(vsp);
-	}
-
-	if (vsp > 0) on_ground = true;
-
+// Walk up slopes
+if col_ray_front() != noone { // Front ray has hit something
+	/* 
+		Both are just collision lines that are placed on the
+		left and right side of the bounding box and end at the bottom of it as well + a few pixels
+		If one of them hits something then that means we've collided with the ground probably
+	*/
 	vsp = 0;
+	on_ground = true;
 }
 
-y += vsp;
+// Walking down slopes
+else if col_ray_behind() != noone { // Back ray has hit something
+	on_ground = true
+	vsp = abs(hsp)
+}
+
+//// One-way Ground Collision
+//else if (vsp >= 0 
+//and not InputCheck(INPUT_VERB.DOWN) 
+//and place_meeting(x, y + vsp, obj_oneway) and touching_top() > 0) {
+	
+//	while (!place_meeting(x, y + sign(vsp), obj_oneway) and touching_top > 0) {
+//		y += sign(vsp);
+//	}
+
+//	if (vsp > 0) on_ground = true;
+
+//	vsp = 0;
+//}
+
+//y += vsp;
 #endregion
 
-
-//if keyboard_check(vk_escape)
-//{
-//	game_end()
-//}
-//if keyboard_check(vk_enter)
-//{
-//	room_restart()
-//}
 
 #region Violence
 #region Katana
@@ -260,7 +255,7 @@ else
 	    sprite_index = spr_climb;
 	    image_speed = 1;
 	}
-	else if (not isGrounded())
+	else if (not on_ground)
 	{
 	    sprite_index = spr_player_jump;
 	    image_speed = 0.6;

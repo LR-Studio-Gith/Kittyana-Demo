@@ -1,1 +1,1 @@
-draw_self()
+draw_self_color(_color, 1)

@@ -6,8 +6,35 @@ walk_speed = 10;
 accel = 0.25;
 jump_speed = -15;
 
-max_jumps = 2;  
+max_jumps = 1;  
 jumps_left = max_jumps
+
+max_hurt_time = 60
+
+col_obj = layer_tilemap_get_id("Collision")
+
+function col_ray_behind() {
+	var ray = collision_line(
+		bbox_local_left(), y,
+		bbox_local_left(), bbox_bottom+1,
+		col_obj,
+		true,
+		true
+	)
+
+	return ray
+}
+function col_ray_front() {
+	var ray = collision_line(
+		bbox_local_right(), y,
+		bbox_local_right(), bbox_bottom+1,
+		col_obj,
+		true,
+		true
+	)
+
+	return ray
+}
 
 function touching_top() {
 	if instance_exists_paused(obj_oneway) {
@@ -18,11 +45,32 @@ function touching_top() {
 	} else {return 1} //Returning 1 will always make it true
 }
 
+
+
+#region Creation of Pause Menu
+if !instance_exists(obj_pause_manager) {
+	show_debug_message("Pause Manager absent, creating new one...")
+	instance_create_depth(x, y, depth, obj_pause_manager)
+} else {
+	show_debug_message("Pause Manager exists already!")
+}
+if !instance_exists(obj_pause_screen) {
+	show_debug_message("Pause screen overlay absent, creating new one...")
+	instance_create_depth(x, y, depth, obj_pause_screen)
+} else {
+	show_debug_message("Pause screen already exists, you're good to go!")
+}
+#endregion
+
 // I-Frames
 invincible = false;
 invincibility_duration = .2;
 
 slope_max = 4
+
+image_xscale = 0.4666667
+image_yscale = 0.4666667
+
 scale = image_xscale;
 
 // Dash
@@ -69,7 +117,7 @@ function isGrounded(downward_y=50) {
 			var raycast = collision_line(
 				x, y,
 				x, y+downward_y,
-				[obj_Solid, obj_oneway], // Oneway as been added since it also needs to be checked
+				col_obj,
 				true,
 				true
 			);

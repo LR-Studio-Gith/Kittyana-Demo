@@ -8,9 +8,11 @@ if InputPressed(INPUT_VERB.PAUSE) and not asset_has_tags(room_get_name(room), "c
 	is_paused = !is_paused;
 	
 	if is_paused == true {
-		obj_pause_manager.pause_tag("pauseable");
+		pause_game()
 	} else {
-		obj_pause_manager.unpause_tag("pauseable");
-		layer_set_visible("PauseLayer", false);
+		unpause_game()
 	}
 }
+
+// This shouldn't be done inside of here but its late
+update_settings();

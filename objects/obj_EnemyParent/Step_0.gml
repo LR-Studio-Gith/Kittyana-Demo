@@ -17,12 +17,12 @@ switch current_state
 	} break;
 	
 	case STATE.ATTACK: {
-		call_later(cooldown, time_source_units_seconds, function() {
+		starting_attack = call_later(cooldown, time_source_units_seconds, function() {
 			hspd = 0;
 			if attacking = false {
-				createHitbox(time, self, 50*dir, 0, 2,3, 1.75, 40, 70);
+				createHitbox(time, self, 50*dir, 0, damage, 3, 1.75, 40, 70);
 				attacking = true;
-				call_later(3, time_source_units_seconds, function() {
+				attack = call_later(attack_speed, time_source_units_seconds, function() {
 					attacking = false;
 				});
 			}
