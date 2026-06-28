@@ -46,6 +46,7 @@ switch state {
 	break;
 	#endregion
 
+
 	#region Hooking Action
 	case ACTION_STATES.HOOKED:		
 	    var angle = point_direction(x, y, hook_target_x, hook_target_y);
@@ -66,9 +67,10 @@ switch state {
 	break;
 	#endregion
 
+
 	#region Normal/No Action State
 	case ACTION_STATES.NONE: 
-	    var target_speed = input * walk_speed;
+	    target_speed = input * walk_speed;
 	    if (on_ground) {hsp = lerp(hsp, target_speed, accel);}
 	    else {hsp = lerp(hsp, target_speed, 0.1);}
 
@@ -97,6 +99,7 @@ switch state {
 	    //    jumps_left = max_jumps;			// reset double jump
 	    //    coyote_timer = coyote_time_max; // allow jump off wall quickly
 	    //}
+		
    
 		if InputPressed(INPUT_VERB.DASH) and can_dash and dash_cooldown_timer <= 0 {
 	        state = ACTION_STATES.DASHING;
@@ -146,35 +149,40 @@ switch state {
 	break;
 	#endregion
 	
+	
+	#region Frozen "Action"
 	case ACTION_STATES.FROZEN:
 		hsp = 0;
 		vsp = 0;
 	break;
+	#endregion
+
 
 }
 
 on_ground = false;
-if isGrounded() on_ground = true; // why...
+if isGrounded() on_ground = true; // why... 
 
+#region Movement
 _hCol = move_and_collide(hsp, 0, col_obj, ceil(abs(hsp)))
 _vCol = move_and_collide(0, vsp, col_obj, ceil(abs(vsp)))
-//if 
-//	!place_meeting(x+hsp,y+2, col_obj)
-//and place_meeting(x+hsp,y+10, col_obj)
-//{
-//	vsp = abs(hsp)
-//	hsp = 0
-//}
 
 // Walk up slopes
-if col_ray_left() != noone or col_ray_right() != noone { // that means one of them have hit something
+if col_ray_front() != noone { // Front ray has hit something
+	/* 
+		Both are just collision lines that are placed on the
+		left and right side of the bounding box and end at the bottom of it as well + a few pixels
+		If one of them hits something then that means we've collided with the ground probably
+	*/
 	vsp = 0;
 	on_ground = true;
 }
 
-// Walk down slopes
-
-
+// Walking down slopes
+else if col_ray_behind() != noone { // Back ray has hit something
+	on_ground = true
+	vsp = abs(hsp)
+}
 
 //// One-way Ground Collision
 //else if (vsp >= 0 

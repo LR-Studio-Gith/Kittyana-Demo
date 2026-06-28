@@ -13,12 +13,10 @@ max_hurt_time = 60
 
 col_obj = layer_tilemap_get_id("Collision")
 
-//bbox_width = function() {return bbox_right-bbox_left} 
-// here so if you wanna, you can make it directional
-function col_ray_left() {
+function col_ray_behind() {
 	var ray = collision_line(
-		bbox_left, y,
-		bbox_left, bbox_bottom, //y + (sprite_height/2),
+		bbox_local_left(), y,
+		bbox_local_left(), bbox_bottom+1,
 		col_obj,
 		true,
 		true
@@ -26,10 +24,10 @@ function col_ray_left() {
 
 	return ray
 }
-function col_ray_right() {
+function col_ray_front() {
 	var ray = collision_line(
-		bbox_right, y,
-		bbox_right, bbox_bottom, //y + (sprite_height/2),
+		bbox_local_right(), y,
+		bbox_local_right(), bbox_bottom+1,
 		col_obj,
 		true,
 		true

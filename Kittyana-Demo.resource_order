@@ -216,6 +216,7 @@
     {"name":"__InputVibrateConfig","order":4,"path":"scripts/__InputVibrateConfig/__InputVibrateConfig.yy",},
     {"name":"__InputVibrateSystem","order":6,"path":"scripts/__InputVibrateSystem/__InputVibrateSystem.yy",},
     {"name":"_EV_color_overlay_set_color","order":1,"path":"scripts/_EV_color_overlay_set_color/_EV_color_overlay_set_color.yy",},
+    {"name":"Bbox_Functions","order":5,"path":"scripts/Bbox_Functions/Bbox_Functions.yy",},
     {"name":"create_menu","order":1,"path":"scripts/create_menu/create_menu.yy",},
     {"name":"createHitbox","order":2,"path":"scripts/createHitbox/createHitbox.yy",},
     {"name":"draw_self_color","order":2,"path":"scripts/draw_self_color/draw_self_color.yy",},
