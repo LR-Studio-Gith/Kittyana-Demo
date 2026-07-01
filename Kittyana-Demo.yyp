@@ -105,6 +105,7 @@
   "name":"Kittyana-Demo",
   "resources":[
     {"id":{"name":"acCurves","path":"animcurves/acCurves/acCurves.yy",},},
+    {"id":{"name":"AnimationCurve2","path":"animcurves/AnimationCurve2/AnimationCurve2.yy",},},
     {"id":{"name":"fnt_menu","path":"fonts/fnt_menu/fnt_menu.yy",},},
     {"id":{"name":"__InputUpdateController","path":"objects/__InputUpdateController/__InputUpdateController.yy",},},
     {"id":{"name":"obj_back","path":"objects/obj_back/obj_back.yy",},},
@@ -273,6 +274,7 @@
     {"id":{"name":"_EV_color_overlay_init","path":"scripts/_EV_color_overlay_init/_EV_color_overlay_init.yy",},},
     {"id":{"name":"_EV_color_overlay_set_color","path":"scripts/_EV_color_overlay_set_color/_EV_color_overlay_set_color.yy",},},
     {"id":{"name":"Bbox_Functions","path":"scripts/Bbox_Functions/Bbox_Functions.yy",},},
+    {"id":{"name":"collision_line_point","path":"scripts/collision_line_point/collision_line_point.yy",},},
     {"id":{"name":"create_button","path":"scripts/create_button/create_button.yy",},},
     {"id":{"name":"create_menu","path":"scripts/create_menu/create_menu.yy",},},
     {"id":{"name":"createHitbox","path":"scripts/createHitbox/createHitbox.yy",},},
@@ -558,6 +560,7 @@
     {"id":{"name":"spr_uncle_calm","path":"sprites/spr_uncle_calm/spr_uncle_calm.yy",},},
     {"id":{"name":"spr_water","path":"sprites/spr_water/spr_water.yy",},},
     {"id":{"name":"sPrevroom","path":"sprites/sPrevroom/sPrevroom.yy",},},
+    {"id":{"name":"Sprite73","path":"sprites/Sprite73/Sprite73.yy",},},
     {"id":{"name":"Sprite9","path":"sprites/Sprite9/Sprite9.yy",},},
     {"id":{"name":"spt_smallpickleattack","path":"sprites/spt_smallpickleattack/spt_smallpickleattack.yy",},},
     {"id":{"name":"spt_smallpickleidle","path":"sprites/spt_smallpickleidle/spt_smallpickleidle.yy",},},

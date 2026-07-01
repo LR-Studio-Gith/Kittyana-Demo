@@ -1,5 +1,7 @@
 draw_self()
 
+
+
 if state == ACTION_STATES.HOOKED
 {
 	var color = #633200
@@ -11,16 +13,30 @@ if alarm_get(3) != -1
 	draw_self_color(c_red, alarm_get(3)/max_hurt_time);
 }
 
-//draw_set_colour(c_pink)
-//draw_line(
-//bbox_local_right(), y,
-//bbox_local_right(), bbox_bottom+1
+// Floor raycasts visuals
+draw_set_colour(c_fuchsia)
+draw_line(
+bbox_local_right() - sign(image_xscale), y,
+bbox_local_right() - sign(image_xscale), bbox_bottom+1
+)
+
+draw_set_colour(c_yellow)
+draw_line(
+bbox_local_left() + sign(image_xscale), y,
+bbox_local_left() + sign(image_xscale), bbox_bottom+1
+)	 
+
+// Center of bounding box, kinda, doesn't matter really
+draw_circle_colour(bbox_center_x(), y, 5, c_white, c_white,false)
+
+// Side raycasts
+draw_set_colour(c_lime)
+//draw_rectangle(
+//	bbox_local_right() - (-1*sign(image_xscale)), y,
+//	bbox_local_left() +	(-1*sign(image_xscale)), bottom(),
+//	true
 //)
-
-//draw_set_colour(c_green)
-//draw_line(
-//bbox_local_left(), y,
-//bbox_local_left(), bbox_bottom+1
-//)	 
-
-//draw_circle_colour(bbox_center_x(), y, 5, c_white, c_white,false)
+draw_line(
+	bbox_center_x(), y,
+	bbox_local_right() + sign(image_xscale), y
+)

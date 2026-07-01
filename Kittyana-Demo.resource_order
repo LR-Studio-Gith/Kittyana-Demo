@@ -75,6 +75,7 @@
     {"name":"Tiles","order":14,"path":"folders/Tiles.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"AnimationCurve2","order":9,"path":"animcurves/AnimationCurve2/AnimationCurve2.yy",},
     {"name":"__InputUpdateController","order":21,"path":"objects/__InputUpdateController/__InputUpdateController.yy",},
     {"name":"obj_back","order":6,"path":"objects/obj_back/obj_back.yy",},
     {"name":"obj_button_continue2","order":1,"path":"objects/obj_button_continue2/obj_button_continue2.yy",},
@@ -217,6 +218,7 @@
     {"name":"__InputVibrateSystem","order":6,"path":"scripts/__InputVibrateSystem/__InputVibrateSystem.yy",},
     {"name":"_EV_color_overlay_set_color","order":1,"path":"scripts/_EV_color_overlay_set_color/_EV_color_overlay_set_color.yy",},
     {"name":"Bbox_Functions","order":5,"path":"scripts/Bbox_Functions/Bbox_Functions.yy",},
+    {"name":"collision_line_point","order":6,"path":"scripts/collision_line_point/collision_line_point.yy",},
     {"name":"create_menu","order":1,"path":"scripts/create_menu/create_menu.yy",},
     {"name":"createHitbox","order":2,"path":"scripts/createHitbox/createHitbox.yy",},
     {"name":"draw_self_color","order":2,"path":"scripts/draw_self_color/draw_self_color.yy",},
@@ -473,6 +475,7 @@
     {"name":"spr_uncle_calm","order":3,"path":"sprites/spr_uncle_calm/spr_uncle_calm.yy",},
     {"name":"spr_water","order":10,"path":"sprites/spr_water/spr_water.yy",},
     {"name":"sPrevroom","order":1,"path":"sprites/sPrevroom/sPrevroom.yy",},
+    {"name":"Sprite73","order":8,"path":"sprites/Sprite73/Sprite73.yy",},
     {"name":"spt_smallpickleattack","order":1,"path":"sprites/spt_smallpickleattack/spt_smallpickleattack.yy",},
     {"name":"spt_smallpickleidle","order":2,"path":"sprites/spt_smallpickleidle/spt_smallpickleidle.yy",},
     {"name":"storyboard2","order":5,"path":"sprites/storyboard2/storyboard2.yy",},

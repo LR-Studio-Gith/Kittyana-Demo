@@ -13,6 +13,7 @@ function __InputConfigVerbs()
 		HOOK,
 		DASH,
 		JUMP,
+		SLIDE,
 		
 		// Menu Action
 		PAUSE,
@@ -37,6 +38,7 @@ function __InputConfigVerbs()
 	InputDefineVerb(INPUT_VERB.HOOK, "hook", "F", gp_face4);
 	InputDefineVerb(INPUT_VERB.DASH, "dash", vk_shift, gp_face3);
 	InputDefineVerb(INPUT_VERB.JUMP, "jump", vk_space, gp_face1); 
+	InputDefineVerb(INPUT_VERB.SLIDE, "slide", [vk_down, "S"], gp_padd); 
     #endregion
 	
 	#region Menu Action

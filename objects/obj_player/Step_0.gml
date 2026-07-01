@@ -4,7 +4,7 @@ if (not can_move) exit;
 var input = -InputX(INPUT_CLUSTER.NAVIGATION)
 
 // Flips the player's sprite
-if (input != 0)
+if (input != 0) and state != ACTION_STATES.SLIDING
 {
     image_xscale = sign(input) * scale;
 	facing = sign(image_xscale)
@@ -14,11 +14,12 @@ if (input != 0)
 if (dash_cooldown_timer > 0) {dash_cooldown_timer -= get_delta_time_in_seconds();}
 else {can_dash = true;}
 
+//ray = collision_line_point(x, y, mouse_x, mouse_y, col_obj, true, true)
 switch state {
 	#region Dashing Action
 	case ACTION_STATES.DASHING:
 		dash_timer -= get_delta_time_in_seconds();
-		hsp = dash_speed * wall_dir;
+		hsp = dash_speed * sign(image_xscale);
 		vsp = 0;
 		
 		invincible = true
@@ -43,27 +44,53 @@ switch state {
 			invincible = false
 			state = ACTION_STATES.NONE;
 		}
+		
 	break;
 	#endregion
 
 
 	#region Hooking Action
-	case ACTION_STATES.HOOKED:		
-	    var angle = point_direction(x, y, hook_target_x, hook_target_y);
-	    var dist = point_distance(x, y, hook_target_x, hook_target_y);
-
-	    var step = min(hook_speed, dist);
-	    hsp = lengthdir_x(step, angle);
-	    vsp = lengthdir_y(step, angle);
+	case ACTION_STATES.HOOKED:
+	// for some reason this only works when it not done w/ the inputreleased, idk why
+	if hook_length > hook_max_dist {
+		state = ACTION_STATES.NONE
+	}
 	
-	    if (place_meeting(x + hsp, y + vsp, col_obj) ||
-	        place_meeting(x + hsp, y + vsp, obj_climbwall)) {
-	        state = ACTION_STATES.NONE;
-	        hsp = 0;
-	        vsp = 0;
-	    }
-	  // Stop if reached target
-	    if (dist < 4) state = ACTION_STATES.NONE;
+	if InputCheck(INPUT_VERB.HOOK) {
+		var _hookAngAccel = -hook_accel_rate * dcos(hook_angle);
+		/*
+		hookAngAccel is how quickly we are moving along a circle
+		dcos() is cos in degrees and slows us down and speeds us up like a pendulum
+		-hook_accel_rate decides how fast all this plays out fr
+		
+		Basically this combines the angle w/ acceleration
+		*/
+		
+		// interactivettttyyyyyy
+		_hookAngAccel += input * accel/10 // this here lets us accelerate and decel a bit when we're trying to move while grappling
+		hook_length += InputY(INPUT_CLUSTER.NAVIGATION)*2 // lets us move up and down
+		hook_length = max(hook_length, 60)
+		
+		angle_vel +=  _hookAngAccel;
+		hook_angle += angle_vel;
+		angle_vel *= damping_rate;
+	
+		hook_start_x = hook_target_x+lengthdir_x(hook_length, hook_angle);
+		hook_start_y = hook_target_y+lengthdir_y(hook_length, hook_angle);
+		
+		hsp = hook_start_x - x
+		vsp = hook_start_y - y
+	}
+	
+	else if InputReleased(INPUT_VERB.HOOK){
+		state = ACTION_STATES.NONE
+	}
+	
+	if array_length(_hCol) > 0 {
+		hook_angle = point_direction(hook_target_x, hook_target_y, x, y);
+		angle_vel = 0
+	}
+		
 	break;
 	#endregion
 
@@ -74,78 +101,121 @@ switch state {
 	    if (on_ground) {hsp = lerp(hsp, target_speed, accel);}
 	    else {hsp = lerp(hsp, target_speed, 0.1);}
 
-	    if (input == 0 && on_ground) hsp = lerp(hsp, 0, friction);
+	    if (input == 0 && on_ground) hsp = lerp(hsp, 0, ground_friction);
+		else if (input == 0 && !on_ground) hsp = lerp(hsp, 0, air_friction);
 
 	    // --- GRAVITY ---
-		if (!on_ground && !on_wall) vsp += grv;
+		if (!on_ground) vsp += grv;
 
-	    // --- WALL CHECK ---
-	    on_wall = false;
-	    wall_dir = 0;
-	    if not on_ground
-		{
+	    // --- WALL CLIMBING ---
+	    if not on_ground {
 			coyote_timer -= 1;
-	        if (place_meeting(x + 1, y, obj_climbwall)) { on_wall = true; wall_dir = 1; }
-	        else if (place_meeting(x - 1, y, obj_climbwall)) { on_wall = true; wall_dir = -1; }
+	       
+			if wall_ray_front() != noone and InputPressed(INPUT_VERB.JUMP) {
+				state = ACTION_STATES.CLIMBING
+				vsp = -walk_speed;				// climb up
+		        jumps_left = max_jumps;			// reset double jump
+		        coyote_timer = coyote_time_max;	// allow jump off wall quickly
+			}
 		}
-		else 
-		{ 
+		else { 
 			jumps_left = max_jumps;
 			coyote_timer = coyote_time_max;
 		}
 
-	    //if (on_wall && InputPressed(INPUT_VERB.UP)) {
-	    //    vsp = -walk_speed;				// climb up
-	    //    jumps_left = max_jumps;			// reset double jump
-	    //    coyote_timer = coyote_time_max; // allow jump off wall quickly
-	    //}
-		
-   
+		// --- DASH --- 
 		if InputPressed(INPUT_VERB.DASH) and can_dash and dash_cooldown_timer <= 0 {
 	        state = ACTION_STATES.DASHING;
 	        dash_timer = dash_time;
-	        wall_dir = (hsp != 0) ? sign(hsp) : 1;
 	    }
 		
 	    // --- JUMP / DOUBLE JUMP ---
 	    if ((InputPressed(INPUT_VERB.JUMP)) and jumps_left > 0) {
-	        if (on_ground or coyote_timer > 0) {
+			if (on_ground or coyote_timer > 0) {
 				vsp = jump_speed;
-	            //jumps_left = max_jumps;
 	            can_dash = true;
 	            coyote_timer = 0;
 				jumps_left--;
 	        }
-	        //else if (on_wall) {
-	        //    vsp = jump_speed;
-	        //    hsp = -wall_dir * walk_speed * 1.5;
-	        //    jumps_left = max_jumps;
-	        //}
 	        else if (jumps_left > 0) {
 	            vsp = jump_speed;
 	            jumps_left--;
 	        }
 	    }
 
+		// --- HOOK ---
 	    if (InputPressed(INPUT_VERB.HOOK)) {
-	        var hook_obj = noone;
-	        var dist_min = 300;
-	        with (obj_hookwall) 
-			{
-	            var d = point_distance(other.x, other.y, x, y);
-	            if (d < dist_min) {
-	                dist_min = d;
-	                hook_obj = id;
-	            }
-	        }
+			hook_obj = collision_circle(x, y, hook_max_dist, obj_hookwall, false, true)
 	        if (hook_obj != noone) 
 			{
 				state = ACTION_STATES.HOOKED;
+				
 	            hook_target_x = hook_obj.x + (hook_obj.sprite_width/2);
 	            hook_target_y = hook_obj.y + (hook_obj.sprite_height/2);
+				
+				angle_vel = hsp/2; // how much of your init momentum that gets carried over
+				
+				hook_angle = point_direction(hook_target_x, hook_target_y, x, y);
+				hook_length = point_distance(hook_target_x, hook_target_y, x, y);
+				hook_start_x = x; hook_start_y = y
 	            can_dash = true;
 	        }
 	    }
+		
+		// --- SLIDE ---
+		if (InputPressed(INPUT_VERB.SLIDE)) {
+			state = ACTION_STATES.SLIDING
+			hsp += 0.01 * sign(image_xscale)
+		}
+		
+	break;
+	#endregion
+	
+	
+	#region Climbing Action
+	case ACTION_STATES.CLIMBING:
+		if wall_ray_front() == noone or on_ground {state = ACTION_STATES.NONE} 
+		else {
+			vsp = InputY(INPUT_CLUSTER.NAVIGATION) * walk_speed	// climb up
+		    jumps_left = max_jumps;								// reset double jump
+		    coyote_timer = coyote_time_max;						// allow jump off wall quickly
+			
+			// Wall jump
+			if InputPressed(INPUT_VERB.JUMP) {
+				vsp = jump_speed;
+				hsp = (jump_speed/1.5)*sign(image_xscale)
+	            can_dash = true;
+	            coyote_timer = 0;
+				jumps_left--;
+			}
+		}
+	break;
+	#endregion
+	
+	#region Sliding Action
+	case ACTION_STATES.SLIDING:
+		if InputReleased(INPUT_VERB.SLIDE) {//or (hsp == 0 and slideEnding) {
+			state = ACTION_STATES.NONE
+			slideEnding = false
+		}
+	
+		var slideDir = (walk_speed * sign(image_xscale))
+
+		 // --- GRAVITY ---
+		if (!on_ground) vsp += grv*2;
+		
+		if hsp == slideDir*slideSpeed and not slideEnding {
+			slideEnding = true
+		}
+		
+		if not slideEnding {
+			hsp = lerp(hsp, slideDir*slideSpeed, accel)
+		}
+		else {
+			hsp = lerp(hsp, 0, ground_friction*2)
+		}
+		
+		
 	break;
 	#endregion
 	
@@ -160,28 +230,32 @@ switch state {
 
 }
 
-on_ground = false;
-if isGrounded() on_ground = true; // why... 
-
 #region Movement
 _hCol = move_and_collide(hsp, 0, col_obj, ceil(abs(hsp)))
 _vCol = move_and_collide(0, vsp, col_obj, ceil(abs(vsp)))
 
+/* 
+	Both are just collision lines that are placed on the
+	left and right side of the bounding box and end at the bottom of it as well + a few pixels
+	If one of them hits something then that means we've collided with the ground probably
+*/
+
 // Walk up slopes
 if col_ray_front() != noone { // Front ray has hit something
-	/* 
-		Both are just collision lines that are placed on the
-		left and right side of the bounding box and end at the bottom of it as well + a few pixels
-		If one of them hits something then that means we've collided with the ground probably
-	*/
 	vsp = 0;
 	on_ground = true;
+		
 }
 
-// Walking down slopes
+// Walk down slopes
 else if col_ray_behind() != noone { // Back ray has hit something
-	on_ground = true
 	vsp = abs(hsp)
+	on_ground = true
+} 
+	
+// Airborne
+else {
+	on_ground = false
 }
 
 //// One-way Ground Collision
@@ -250,10 +324,12 @@ if alarm_get(1) > 0
 }
 else
 {
-	if (on_wall && (InputCheck(INPUT_VERB.UP) or InputCheck(INPUT_VERB.JUMP)))
+	if (state = ACTION_STATES.CLIMBING)
 	{
 	    sprite_index = spr_climb;
-	    image_speed = 1;
+		image_speed = sign(vsp)*4;
+		
+	    
 	}
 	else if (not on_ground)
 	{
