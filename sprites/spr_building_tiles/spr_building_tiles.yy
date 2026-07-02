@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_building_tiles",
   "bboxMode":0,
-  "bbox_bottom":63,
+  "bbox_bottom":65,
   "bbox_left":0,
   "bbox_right":63,
   "bbox_top":0,
@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"1722e205-1703-4b14-8029-7b36932469f8","name":"1722e205-1703-4b14-8029-7b36932469f8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"591c66b0-7092-48d6-83ae-e6a23dc46062","name":"591c66b0-7092-48d6-83ae-e6a23dc46062","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":64,
+  "height":66,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"d1c0c672-80dd-421b-bad6-785c617e3b95","blendMode":0,"displayName":"default","isLocked":false,"name":"d1c0c672-80dd-421b-bad6-785c617e3b95","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"62707993-b9fd-45d3-8eb1-3d94038ab191","blendMode":0,"displayName":"default","isLocked":false,"name":"62707993-b9fd-45d3-8eb1-3d94038ab191","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_building_tiles",
   "nineSlice":null,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1722e205-1703-4b14-8029-7b36932469f8","path":"sprites/spr_building_tiles/spr_building_tiles.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"6da10602-2ae3-484f-835c-ca4bd91de72c","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"591c66b0-7092-48d6-83ae-e6a23dc46062","path":"sprites/spr_building_tiles/spr_building_tiles.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"1cee6f14-7726-400c-99cc-16f1027f91b4","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
