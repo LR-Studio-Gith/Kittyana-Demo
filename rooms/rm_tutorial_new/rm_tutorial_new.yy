@@ -27,11 +27,7 @@
     {"$GMRInstanceLayer":"","%Name":"Manager","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_561D5AA2_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_561D5AA2_1","objectId":{"name":"obj_tutorial_mus","path":"objects/obj_tutorial_mus/obj_tutorial_mus.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":20608.0,"y":6144.0,},
       ],"layers":[],"name":"Manager","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
-    {"$GMRTileLayer":"","%Name":"Level_Tilemap","depth":100,"effectEnabled":true,"effectType":"_filter_outline","gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Level_Tilemap","properties":[
-        {"name":"g_OutlineColour","type":1,"value":"#FF000000",},
-        {"name":"g_OutlineRadius","type":0,"value":"2",},
-        {"name":"g_OutlinePixelScale","type":0,"value":"1",},
-      ],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":282,"SerialiseWidth":719,"TileCompressedData":[
+    {"$GMRTileLayer":"","%Name":"Level_Tilemap","depth":100,"effectEnabled":true,"effectType":"none","gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Level_Tilemap","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":282,"SerialiseWidth":719,"TileCompressedData":[
           -23008,-2147483648,-65488,0,-133,3,-586,0,-133,3,-586,0,-133,3,-586,0,-133,3,-586,0,-68,3,-62,0,-3,3,
           -586,0,-68,3,-62,0,-3,3,-586,0,-68,3,-62,0,-3,3,-586,0,-68,3,-62,0,-3,3,-586,0,-68,3,-62,0,-3,3,-586,
           0,-68,3,-62,0,-3,3,-586,0,-68,3,-62,0,-3,3,-586,0,-68,3,-62,0,-3,3,-586,0,-68,3,-62,0,-3,3,-586,0,-68,
