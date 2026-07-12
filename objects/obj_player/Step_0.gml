@@ -1,3 +1,5 @@
+xstart = x; ystart = y
+
 if (hp <= 0) room_restart()
 
 if (not can_move) exit;
@@ -226,8 +228,6 @@ switch state {
 		vsp = 0;
 	break;
 	#endregion
-
-
 }
 
 #region Movement
@@ -241,18 +241,16 @@ _vCol = move_and_collide(0, vsp, col_obj, ceil(abs(vsp)))
 */
 
 // Walk up slopes
-if col_ray_front() != noone { // Front ray has hit something
+if col_ray_front(col_obj) != noone { // Front ray has hit something
 	vsp = 0;
 	on_ground = true;
 		
 }
-
 // Walk down slopes
-else if col_ray_behind() != noone { // Back ray has hit something
+else if col_ray_behind(col_obj) != noone { // Back ray has hit something
 	vsp = abs(hsp)
 	on_ground = true
-} 
-	
+} 	
 // Airborne
 else {
 	on_ground = false

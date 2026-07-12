@@ -34,7 +34,7 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":true,
+  "solid":false,
   "spriteId":{
     "name":"spt_smallpickleidle",
     "path":"sprites/spt_smallpickleidle/spt_smallpickleidle.yy",

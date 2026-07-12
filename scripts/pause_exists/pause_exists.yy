@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"pause_exists",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"pause_exists",
+  "parent":{
+    "name":"Functions",
+    "path":"folders/Scripts/Functions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

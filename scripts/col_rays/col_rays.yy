@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"col_rays",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"col_rays",
+  "parent":{
+    "name":"Functions",
+    "path":"folders/Scripts/Functions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
