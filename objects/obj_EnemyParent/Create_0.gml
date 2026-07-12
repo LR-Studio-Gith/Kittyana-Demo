@@ -17,6 +17,7 @@ dir = 0;
 hspd = 0;
 vspd = 0;
 player = obj_player;
+on_ground = false
 attacking = false
 
 starting_attack = undefined

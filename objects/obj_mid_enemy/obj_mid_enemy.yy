@@ -34,7 +34,7 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":true,
+  "solid":false,
   "spriteId":{
     "name":"pixil_gif_drawing_3",
     "path":"sprites/pixil_gif_drawing_3/pixil_gif_drawing_3.yy",
