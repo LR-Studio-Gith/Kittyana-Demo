@@ -1,7 +1,11 @@
 global.GAME_SETTINGS = {
+	// Audio
 	Master_Volume	: 100,
 	Music_Volume	: 100,
 	SFX_Volume		: 100,
+	
+	FREE_AIM		: false,
+	
 }
 
 function update_settings() {

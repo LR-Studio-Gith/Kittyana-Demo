@@ -5,7 +5,7 @@ hit_friend = false,
 hit_enemy = false,
 hit_object = false,
 projectile = false,){
-	var _hitbox = instance_create_depth(x, y, depth, obj_hitbox, 
+	var _hitbox = instance_create_depth(owner.x + _x, owner.y + _y, depth, obj_hitbox, 
 		{
 			lifetime				: seconds,
 			master					: owner,

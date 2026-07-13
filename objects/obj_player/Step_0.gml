@@ -3,7 +3,7 @@ xstart = x; ystart = y
 if (hp <= 0) room_restart()
 
 if (not can_move) exit;
-var input = -InputX(INPUT_CLUSTER.NAVIGATION)
+var input = InputX(INPUT_CLUSTER.NAVIGATION)
 
 // Flips the player's sprite
 if (input != 0) and state != ACTION_STATES.SLIDING
@@ -16,7 +16,6 @@ if (input != 0) and state != ACTION_STATES.SLIDING
 if (dash_cooldown_timer > 0) {dash_cooldown_timer -= get_delta_time_in_seconds();}
 else {can_dash = true;}
 
-//ray = collision_line_point(x, y, mouse_x, mouse_y, col_obj, true, true)
 switch state {
 	#region Dashing Action
 	case ACTION_STATES.DASHING:
@@ -108,12 +107,14 @@ switch state {
 
 	    // --- GRAVITY ---
 		if (!on_ground) vsp += grv;
-
+		
 	    // --- WALL CLIMBING ---
+		
+		
 	    if not on_ground {
-			coyote_timer -= 1;
+			coyote_timer -= 1; // should update to be deltatime? this is a question
 	       
-			if wall_ray_front() != noone and InputPressed(INPUT_VERB.JUMP) {
+			if wall_ray_front() != noone and InputPressed(INPUT_VERB.JUMP) and tile_is_climbable() {
 				state = ACTION_STATES.CLIMBING
 				vsp = -walk_speed;				// climb up
 		        jumps_left = max_jumps;			// reset double jump
@@ -176,20 +177,22 @@ switch state {
 	
 	#region Climbing Action
 	case ACTION_STATES.CLIMBING:
-		if wall_ray_front() == noone or on_ground {state = ACTION_STATES.NONE} 
+		
+		if wall_ray_front() == noone or on_ground or !tile_is_climbable()
+		{state = ACTION_STATES.NONE} 
 		else {
 			vsp = InputY(INPUT_CLUSTER.NAVIGATION) * walk_speed	// climb up
-		    jumps_left = max_jumps;								// reset double jump
-		    coyote_timer = coyote_time_max;						// allow jump off wall quickly
+			jumps_left = max_jumps;								// reset double jump
+			coyote_timer = coyote_time_max;						// allow jump off wall quickly
 			
 			// Wall jump
 			if InputPressed(INPUT_VERB.JUMP) {
 				vsp = jump_speed;
 				hsp = (jump_speed/1.5)*sign(image_xscale)
-	            can_dash = true;
-	            coyote_timer = 0;
+			    can_dash = true;
+			    coyote_timer = 0;
 				jumps_left--;
-			}
+			}	
 		}
 	break;
 	#endregion
@@ -278,24 +281,49 @@ else {
 #region Katana
 	if WeaponType == "Katana"
 	{
-		// Katana attack 1
-		if InputPressed(INPUT_VERB.ATTACK) and Current_Atk = 0 and Attack_Delay = false
+		if global.GAME_SETTINGS.FREE_AIM == false
 		{
-			createHitbox(10, self, 100*facing, 0, 5, 2.5,4)
-			alarm_set(1, 10);
-			alarm_set(0, 20);
-			Attack_Delay = true;
-			Current_Atk += 1;
-		}
-		// Katana attack 2
-		if InputPressed(INPUT_VERB.ATTACK) and Current_Atk = 1 and Attack_Delay = false
-		{
-			createHitbox(20, self, 100*facing,0,5,4,2)
+			// Katana attack 1
+			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false
+			{
+				createHitbox(10, self, 100*facing, 0, 5, 2.5,4)
+				alarm_set(1, 10);
+				alarm_set(0, 20);
+				Attack_Delay = true;
+				Current_Atk += 1;
+			}
+			// Katana attack 2
+			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 1 and Attack_Delay = false
+			{
+				createHitbox(20, self, 100*facing,0,5,4,2)
 			
-			alarm_set(1, 25);
-			alarm_set(0, 40);
-			Attack_Delay = true;
-			Current_Atk += 1;
+				alarm_set(1, 25);
+				alarm_set(0, 40);
+				Attack_Delay = true;
+				Current_Atk += 1;
+			}
+		} else {
+			var aim_dir = free_aim().x
+			
+			// Katana attack 1
+			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false
+			{
+				createHitbox(10, self, 100*aim_dir, 0, 5, 2.5,4)
+				alarm_set(1, 10);
+				alarm_set(0, 20);
+				Attack_Delay = true;
+				Current_Atk += 1;
+			}
+			// Katana attack 2
+			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 1 and Attack_Delay = false
+			{
+				createHitbox(20, self, 100*aim_dir,0,5,4,2)
+			
+				alarm_set(1, 25);
+				alarm_set(0, 40);
+				Attack_Delay = true;
+				Current_Atk += 1;
+			}
 		}
 	}
 #endregion Katana

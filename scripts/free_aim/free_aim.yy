@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"free_aim",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"free_aim",
+  "parent":{
+    "name":"Functions",
+    "path":"folders/Scripts/Functions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

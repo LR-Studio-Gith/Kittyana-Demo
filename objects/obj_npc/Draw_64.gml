@@ -1,6 +1,6 @@
 if talking == true
 {
-	if InputPressed(INPUT_VERB.ATTACK) {
+	if InputPressed(INPUT_VERB.ATTACK_1) {
 		if skip_buffer == true {current_text += 1;}
 		skip_buffer = false;
 	}

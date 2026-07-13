@@ -30,6 +30,17 @@ function touching_top() {
 
 pause_exists();
 
+function tile_is_climbable() {
+	var _tile = tilemap_get_at_pixel(col_obj, bbox_local_right() + sign(image_xscale), y)
+	
+	// One = The normal collision tile on the tilemap, the full one w/ out anything on it really
+	if _tile == 1 {return true}
+	else {return false}
+}
+
+
+
+
 // I-Frames
 invincible = false;
 invincibility_duration = .2;
