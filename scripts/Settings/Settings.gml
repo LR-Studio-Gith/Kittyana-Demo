@@ -4,7 +4,7 @@ global.GAME_SETTINGS = {
 	Music_Volume	: 100,
 	SFX_Volume		: 100,
 	
-	FREE_AIM		: false,
+	FREE_AIM		: true,
 	
 }
 

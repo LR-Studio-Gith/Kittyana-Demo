@@ -3,7 +3,7 @@ xstart = x; ystart = y
 if (hp <= 0) room_restart()
 
 if (not can_move) exit;
-var input = InputX(INPUT_CLUSTER.NAVIGATION)
+var input = -InputX(INPUT_CLUSTER.NAVIGATION)
 
 // Flips the player's sprite
 if (input != 0) and state != ACTION_STATES.SLIDING
@@ -308,6 +308,7 @@ else {
 			// Katana attack 1
 			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false
 			{
+				vsp = -grv
 				createHitbox(10, self, 100*aim_dir, 0, 5, 2.5,4)
 				alarm_set(1, 10);
 				alarm_set(0, 20);
@@ -317,6 +318,7 @@ else {
 			// Katana attack 2
 			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 1 and Attack_Delay = false
 			{
+				vsp = -grv
 				createHitbox(20, self, 100*aim_dir,0,5,4,2)
 			
 				alarm_set(1, 25);

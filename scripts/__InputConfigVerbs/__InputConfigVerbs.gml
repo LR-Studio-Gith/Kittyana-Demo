@@ -36,8 +36,8 @@ function __InputConfigVerbs()
     #region Movement
     InputDefineVerb(INPUT_VERB.UP, "up", [vk_up, "W"], [-gp_axislv, gp_padu]);
     InputDefineVerb(INPUT_VERB.DOWN, "down", [vk_down, "S"], [gp_axislv, gp_padd]);
-    InputDefineVerb(INPUT_VERB.LEFT, "left", [vk_right, "D"], [-gp_axislh, gp_padr]);
-    InputDefineVerb(INPUT_VERB.RIGHT, "right", [vk_left, "A"], [gp_axislh, gp_padl]);
+    InputDefineVerb(INPUT_VERB.LEFT, "left", [vk_right, "D"], [gp_axislh, gp_padr]);
+    InputDefineVerb(INPUT_VERB.RIGHT, "right", [vk_left, "A"], [-gp_axislh, gp_padl]);
 	#endregion
 	
 	#region Actions
