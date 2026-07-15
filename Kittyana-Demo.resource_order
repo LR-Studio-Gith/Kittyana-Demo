@@ -451,7 +451,6 @@
     {"name":"sNextroom","order":1,"path":"sprites/sNextroom/sNextroom.yy",},
     {"name":"spr_boss","order":4,"path":"sprites/spr_boss/spr_boss.yy",},
     {"name":"spr_Brick","order":7,"path":"sprites/spr_Brick/spr_Brick.yy",},
-    {"name":"spr_building_tiles","order":2,"path":"sprites/spr_building_tiles/spr_building_tiles.yy",},
     {"name":"spr_climb","order":5,"path":"sprites/spr_climb/spr_climb.yy",},
     {"name":"spr_climbwall","order":4,"path":"sprites/spr_climbwall/spr_climbwall.yy",},
     {"name":"spr_clip_floor","order":6,"path":"sprites/spr_clip_floor/spr_clip_floor.yy",},
@@ -493,6 +492,5 @@
     {"name":"tile_building","order":3,"path":"tilesets/tile_building/tile_building.yy",},
     {"name":"tile_collision","order":2,"path":"tilesets/tile_collision/tile_collision.yy",},
     {"name":"TileSet1","order":18,"path":"tilesets/TileSet1/TileSet1.yy",},
-    {"name":"TileSet5","order":4,"path":"tilesets/TileSet5/TileSet5.yy",},
   ],
 }

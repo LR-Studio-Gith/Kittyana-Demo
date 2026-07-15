@@ -8,7 +8,7 @@ faceplayer();
 
 // Slope clipping
 if place_meeting(x, y, col_obj) {
-	var push_f = ceil( abs(hspd) )// + _movespeed*5
+	var push_f = ceil( abs(hspd) ) + _movespeed
 	switch (sign(image_xscale)) {
 	    case 1: // Right
 	        move_contact_all(180, push_f)
