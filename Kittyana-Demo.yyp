@@ -506,6 +506,7 @@
     {"id":{"name":"snd_village_theme","path":"sounds/snd_village_theme/snd_village_theme.yy",},},
     {"id":{"name":"beige_e","path":"sprites/beige_e/beige_e.yy",},},
     {"id":{"name":"blue_e","path":"sprites/blue_e/blue_e.yy",},},
+    {"id":{"name":"building_tilemap","path":"sprites/building_tilemap/building_tilemap.yy",},},
     {"id":{"name":"darkergrasstiles","path":"sprites/darkergrasstiles/darkergrasstiles.yy",},},
     {"id":{"name":"eue","path":"sprites/eue/eue.yy",},},
     {"id":{"name":"grasstilesv2","path":"sprites/grasstilesv2/grasstilesv2.yy",},},

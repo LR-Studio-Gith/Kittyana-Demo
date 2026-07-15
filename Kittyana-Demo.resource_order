@@ -428,6 +428,7 @@
     {"name":"snd_village_theme","order":5,"path":"sounds/snd_village_theme/snd_village_theme.yy",},
     {"name":"beige_e","order":9,"path":"sprites/beige_e/beige_e.yy",},
     {"name":"blue_e","order":7,"path":"sprites/blue_e/blue_e.yy",},
+    {"name":"building_tilemap","order":2,"path":"sprites/building_tilemap/building_tilemap.yy",},
     {"name":"darkergrasstiles","order":15,"path":"sprites/darkergrasstiles/darkergrasstiles.yy",},
     {"name":"eue","order":12,"path":"sprites/eue/eue.yy",},
     {"name":"grasstilesv2","order":1,"path":"sprites/grasstilesv2/grasstilesv2.yy",},
