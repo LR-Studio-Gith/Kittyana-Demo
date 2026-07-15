@@ -1,9 +1,11 @@
+/// future me hey dumbass spacing is only making shit taller not wider dumbass - sean
 
 
-function col_ray_front(col = layer_tilemap_get_id("Collision"), spacing = 1) {
+#region Floor
+function col_ray_front(col = layer_tilemap_get_id("Collision"), _depth = 0) {
 	var ray = collision_line(
 		bbox_local_right() - sign(image_xscale), y,
-		bbox_local_right() - sign(image_xscale), bbox_bottom+spacing,
+		bbox_local_right() - sign(image_xscale), bbox_bottom + (1 + _depth),
 		col,
 		true,
 		true
@@ -11,10 +13,10 @@ function col_ray_front(col = layer_tilemap_get_id("Collision"), spacing = 1) {
 
 	return ray
 }
-function col_ray_behind(col = layer_tilemap_get_id("Collision"), spacing = 1) {
+function col_ray_behind(col = layer_tilemap_get_id("Collision"), _depth = 0) {
 	var ray = collision_line(
 		bbox_local_left() + sign(image_xscale), y,
-		bbox_local_left() + sign(image_xscale), bbox_bottom+spacing,
+		bbox_local_left() + sign(image_xscale), bbox_bottom + (1 + _depth),
 		col,
 		true,
 		true
@@ -22,11 +24,13 @@ function col_ray_behind(col = layer_tilemap_get_id("Collision"), spacing = 1) {
 
 	return ray
 }
+#endregion
 
-function wall_ray_front(col = layer_tilemap_get_id("Collision"), spacing = 0) {
+#region Wall
+function wall_ray_front(col = layer_tilemap_get_id("Collision")) {
 	var ray = collision_line(
 		bbox_center_x(), y,
-		bbox_local_right() + sign(image_xscale), y+spacing,
+		bbox_local_right() + sign(image_xscale), y,
 		col,
 		true,
 		true
@@ -34,3 +38,29 @@ function wall_ray_front(col = layer_tilemap_get_id("Collision"), spacing = 0) {
 
 	return ray
 }
+#endregion
+
+#region Ceiling
+function ceilray_f(col = layer_tilemap_get_id("Collision")) {
+	var ray = collision_line(
+		bbox_local_right() - sign(image_xscale), y,
+		bbox_local_right() - sign(image_xscale), bbox_top - 1,
+		col,
+		true,
+		true
+	)
+
+	return ray
+}
+function ceilray_b(col = layer_tilemap_get_id("Collision")) {
+	var ray = collision_line(
+		bbox_local_left() + sign(image_xscale), y,
+		bbox_local_left() + sign(image_xscale), bbox_top - 1,
+		col,
+		true,
+		true
+	)
+
+	return ray
+}
+#endregion

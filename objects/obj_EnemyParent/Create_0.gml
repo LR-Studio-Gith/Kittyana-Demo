@@ -19,6 +19,7 @@ vspd = 0;
 player = obj_player;
 on_ground = false
 attacking = false
+ray_spacing = 2
 
 starting_attack = undefined
 attack = undefined

@@ -99,7 +99,7 @@
     {"name":"obj_music_slider","order":4,"path":"objects/obj_music_slider/obj_music_slider.yy",},
     {"name":"obj_Nextroom","order":12,"path":"objects/obj_Nextroom/obj_Nextroom.yy",},
     {"name":"obj_oneway","order":15,"path":"objects/obj_oneway/obj_oneway.yy",},
-    {"name":"obj_pause_mute","order":3,"path":"objects/obj_pause_mute/obj_pause_mute.yy",},
+    {"name":"obj_pause_freeaim","order":9,"path":"objects/obj_pause_freeaim/obj_pause_freeaim.yy",},
     {"name":"obj_pause_quit","order":1,"path":"objects/obj_pause_quit/obj_pause_quit.yy",},
     {"name":"obj_pause_restart","order":8,"path":"objects/obj_pause_restart/obj_pause_restart.yy",},
     {"name":"obj_pause_resume","order":2,"path":"objects/obj_pause_resume/obj_pause_resume.yy",},

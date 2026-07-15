@@ -274,6 +274,14 @@ else {
 //}
 
 //y += vsp;
+
+#region Ceiling Bump
+if ceilray_f(col_obj) != noone or ceilray_b(col_obj) != noone {
+	show_debug_message("Bumped your head")
+	vsp = 0
+}
+#endregion
+
 #endregion
 
 
