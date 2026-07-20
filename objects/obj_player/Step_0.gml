@@ -283,12 +283,19 @@ if ceilray_f(col_obj) != noone or ceilray_b(col_obj) != noone {vsp = 0}
 
 
 #region Violence
-if InputPressed(INPUT_VERB.HOOK) or InputLong(INPUT_VERB.HOOK) {
-	if hook_enemy_circlecast() != noone and hook_enemy_seeable(){ 
-		with hook_enemy_circlecast() {
+show_debug_message(hookgrab_circlecast())
+if InputLong(INPUT_VERB.HOOK) {
+	var _enemy = hookgrab_circlecast()
+	temp = _enemy
+	if _enemy != noone 
+	and abs(point_distance(x, y, _enemy.x, _enemy.y)) > grab_rad_min
+	and collision_line(x,y, _enemy.x, _enemy.y, col_obj, false, true) != col_obj
+	{ 
+		with _enemy { // Pushes the enemy towards the player
 			var _dir = point_direction(other.x, other.y, x, y)
 			var _x = dcos(_dir)
 			var _y = -dsin(_dir) // In GML, the Y Axis is inverted, so it has to be inverted here
+			
 			
 			hspd = _x * -other.pull_force
 			vspd = _y * -other.pull_force

@@ -9,5 +9,18 @@ if alarm_get(3) != -1 { // -1 = alarm has stopped
 	draw_self_color(c_red, alarm_get(3)/max_hurt_time);
 }
 
+draw_set_colour(c_white)
+draw_circle(
+	x, y,
+	grab_rad_max,
 
-draw_circle(x, y, grab_radius, true)
+	true
+)
+
+draw_set_colour(c_blue)
+draw_circle(
+	x, y,
+	grab_rad_min,
+
+	true
+)

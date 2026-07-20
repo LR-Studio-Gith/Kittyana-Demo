@@ -19,14 +19,29 @@ slideEnding = false
 
 col_obj = layer_tilemap_get_id("Collision")
 
-grab_radius = 300;
+grab_rad_max = 300
+grab_rad_min = 50
+
+temp = self
+
 pull_force = 100;
-function hook_enemy_circlecast() {
-	return collision_circle(x, y, grab_radius, obj_EnemyParent, false, true);
-}
-function hook_enemy_seeable() {
-	var _obj = hook_enemy_circlecast()
-	return collision_line(x, y, _obj.x, _obj.y, _obj, false, true)
+
+function hookgrab_circlecast(_obj = obj_EnemyParent) {
+	var _cols_list = ds_list_create() // data list to store all enemies in range
+	var _cols_nums = collision_circle_list(
+		x, y, grab_rad_max, 
+		_obj, 
+		false, true, _cols_list, true
+	); 
+	// returns the num of enemies in range & puts that into the list
+	// automatically orders it by closest target
+	
+	var _closest_hit = ds_list_find_value(_cols_list, 0)
+	if _cols_nums > 0 { // if we got a hit
+		return _closest_hit
+	} else {
+		return noone
+	}
 }
 
 
