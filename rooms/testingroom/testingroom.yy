@@ -13,9 +13,9 @@
   "layers":[
     {"$GMRTileLayer":"","%Name":"Collision","depth":0,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Collision","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":24,"SerialiseWidth":74,"TileCompressedData":[
           1,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,
-          1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-25,0,1,5,-26,1,1,7,-19,
-          0,-2,1,-24,0,1,5,-28,1,1,7,-18,0,-2,1,-23,0,1,5,-30,1,1,7,-17,0,-2,1,-22,0,1,5,-32,1,1,7,-16,0,-2,1,
-          -21,0,1,5,-34,1,1,7,-15,0,-2,1,-20,0,1,5,-36,1,1,7,-14,0,-2,1,-19,0,1,5,-38,1,1,7,-13,0,-75,1,
+          1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,-72,0,-2,1,
+          -72,0,-2,1,-55,0,-3,1,-14,0,-2,1,-55,0,-3,1,-14,0,-2,1,-19,0,1,5,-13,1,1,7,-21,0,-3,1,-14,0,-2,1,-18,
+          0,1,5,-15,1,1,7,-20,0,-3,1,-14,0,-75,1,
         ],"TileDataFormat":1,},"tilesetId":{"name":"tile_collision","path":"tilesets/tile_collision/tile_collision.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_A675C6E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_A675C6E","objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":0.466,"scaleY":0.466,"x":1216.0,"y":256.0,},

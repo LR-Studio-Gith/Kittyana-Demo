@@ -19,6 +19,17 @@ slideEnding = false
 
 col_obj = layer_tilemap_get_id("Collision")
 
+grab_radius = 300;
+pull_force = 100;
+function hook_enemy_circlecast() {
+	return collision_circle(x, y, grab_radius, obj_EnemyParent, false, true);
+}
+function hook_enemy_seeable() {
+	var _obj = hook_enemy_circlecast()
+	return collision_line(x, y, _obj.x, _obj.y, _obj, false, true)
+}
+
+
 function touching_top() {
 	if instance_exists_paused(obj_oneway) {
 		return obj_oneway.bbox_top - bbox_bottom + vsp + grv*2

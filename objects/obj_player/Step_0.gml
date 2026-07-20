@@ -283,6 +283,18 @@ if ceilray_f(col_obj) != noone or ceilray_b(col_obj) != noone {vsp = 0}
 
 
 #region Violence
+if InputPressed(INPUT_VERB.HOOK) or InputLong(INPUT_VERB.HOOK) {
+	if hook_enemy_circlecast() != noone and hook_enemy_seeable(){ 
+		with hook_enemy_circlecast() {
+			var _dir = point_direction(other.x, other.y, x, y)
+			var _x = dcos(_dir)
+			var _y = -dsin(_dir) // In GML, the Y Axis is inverted, so it has to be inverted here
+			
+			hspd = _x * -other.pull_force
+			vspd = _y * -other.pull_force
+		}
+	}
+}
 #region Katana
 	if WeaponType == "Katana"
 	{

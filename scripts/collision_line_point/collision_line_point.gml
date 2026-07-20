@@ -21,7 +21,7 @@ function collision_line_point(x1, y1, x2, y2, obj, prec, notme) {
         }
     }
     return {
-		instance_id : rr, 
+		id : rr, 
 		x			: rx, 
 		y			: ry, 
 		magnitude	: point_distance(x1, y1, rx, ry),
