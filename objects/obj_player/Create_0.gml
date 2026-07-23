@@ -19,12 +19,12 @@ slideEnding = false
 
 col_obj = layer_tilemap_get_id("Collision")
 
-grab_rad_max = 300
+grab_rad_max = 250
 grab_rad_min = 50
 
-temp = self
+_pulled_target = noone
 
-pull_force = 100;
+pull_force = 50;
 
 function hookgrab_circlecast(_obj = obj_EnemyParent) {
 	var _cols_list = ds_list_create() // data list to store all enemies in range

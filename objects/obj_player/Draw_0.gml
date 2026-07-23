@@ -24,3 +24,13 @@ draw_circle(
 
 	true
 )
+
+if _pulled_target != noone {
+	var color = #633200
+	draw_line_width_colour(
+	x, y, 
+	_pulled_target.x+_pulled_target.sprite_width/2, 
+	_pulled_target.y+_pulled_target.sprite_height/2, 
+	2, 
+	color, color)
+}

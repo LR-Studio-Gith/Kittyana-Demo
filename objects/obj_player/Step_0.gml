@@ -283,24 +283,27 @@ if ceilray_f(col_obj) != noone or ceilray_b(col_obj) != noone {vsp = 0}
 
 
 #region Violence
-show_debug_message(hookgrab_circlecast())
+
 if InputLong(INPUT_VERB.HOOK) {
 	var _enemy = hookgrab_circlecast()
-	temp = _enemy
+	_pulled_target = _enemy // Ref for drawing the rope
+	
 	if _enemy != noone 
 	and abs(point_distance(x, y, _enemy.x, _enemy.y)) > grab_rad_min
 	and collision_line(x,y, _enemy.x, _enemy.y, col_obj, false, true) != col_obj
-	{ 
+	{ // If someone is in range, and not too close or to far, GRAB THEM
 		with _enemy { // Pushes the enemy towards the player
 			var _dir = point_direction(other.x, other.y, x, y)
-			var _x = dcos(_dir)
-			var _y = -dsin(_dir) // In GML, the Y Axis is inverted, so it has to be inverted here
+			var _dx = dcos(_dir)
+			var _dy = -dsin(_dir) 
+			// In GML, the Y Axis is inverted, so it has to be inverted here
 			
-			
-			hspd = _x * -other.pull_force
-			vspd = _y * -other.pull_force
+			hspd = _dx * -other.pull_force
+			vspd = _dy * -other.pull_force
 		}
-	}
+	} 
+} else {
+	_pulled_target = noone 
 }
 #region Katana
 	if WeaponType == "Katana"
