@@ -285,6 +285,7 @@
     {"id":{"name":"draw_self_color","path":"scripts/draw_self_color/draw_self_color.yy",},},
     {"id":{"name":"draw_sprite_ext_color","path":"scripts/draw_sprite_ext_color/draw_sprite_ext_color.yy",},},
     {"id":{"name":"free_aim","path":"scripts/free_aim/free_aim.yy",},},
+    {"id":{"name":"game_over","path":"scripts/game_over/game_over.yy",},},
     {"id":{"name":"get_delta_time_in_seconds","path":"scripts/get_delta_time_in_seconds/get_delta_time_in_seconds.yy",},},
     {"id":{"name":"InputBindingFind","path":"scripts/InputBindingFind/InputBindingFind.yy",},},
     {"id":{"name":"InputBindingFindCollisions","path":"scripts/InputBindingFindCollisions/InputBindingFindCollisions.yy",},},

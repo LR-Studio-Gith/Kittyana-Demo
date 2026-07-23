@@ -1,6 +1,6 @@
 xstart = x; ystart = y
 
-if (hp <= 0) room_restart()
+if (hp <= 0) game_over()
 
 if (not can_move) exit;
 var input = -InputX(INPUT_CLUSTER.NAVIGATION)
@@ -49,7 +49,6 @@ switch state {
 	break;
 	#endregion
 
-
 	#region Hooking Action
 	case ACTION_STATES.HOOKED:
 	// for some reason this only works when it not done w/ the inputreleased, idk why
@@ -94,7 +93,6 @@ switch state {
 		
 	break;
 	#endregion
-
 
 	#region Normal/No Action State
 	case ACTION_STATES.NONE: 
@@ -174,7 +172,6 @@ switch state {
 	break;
 	#endregion
 	
-	
 	#region Climbing Action
 	case ACTION_STATES.CLIMBING:
 		
@@ -223,7 +220,6 @@ switch state {
 		
 	break;
 	#endregion
-	
 	
 	#region Frozen "Action"
 	case ACTION_STATES.FROZEN:
@@ -284,12 +280,15 @@ if ceilray_f(col_obj) != noone or ceilray_b(col_obj) != noone {vsp = 0}
 
 #region Violence
 
-if InputLong(INPUT_VERB.HOOK) {
+#region Hook Grab
+if grab_cd > 0 {grab_cd -= get_delta_time_in_seconds()}
+if InputLong(INPUT_VERB.HOOK) and grab_cd <= 0 {
 	var _enemy = hookgrab_circlecast()
 	_pulled_target = _enemy // Ref for drawing the rope
+	pull_force = lerp(pull_force, pull_force_max, pull_accel)
 	
 	if _enemy != noone 
-	and abs(point_distance(x, y, _enemy.x, _enemy.y)) > grab_rad_min
+	and hookgrab_in_min_range(_enemy)
 	and collision_line(x,y, _enemy.x, _enemy.y, col_obj, false, true) != col_obj
 	{ // If someone is in range, and not too close or to far, GRAB THEM
 		with _enemy { // Pushes the enemy towards the player
@@ -297,14 +296,18 @@ if InputLong(INPUT_VERB.HOOK) {
 			var _dx = dcos(_dir)
 			var _dy = -dsin(_dir) 
 			// In GML, the Y Axis is inverted, so it has to be inverted here
-			
 			hspd = _dx * -other.pull_force
 			vspd = _dy * -other.pull_force
 		}
 	} 
-} else {
-	_pulled_target = noone 
+} else if InputLongReleased(INPUT_VERB.HOOK) or 
+hookgrab_in_min_range(_pulled_target) {
+	_pulled_target = noone;
+	pull_force = 0;
+	if grab_cd <= 0 {grab_cd = grab_cd_max}
 }
+#endregion
+
 #region Katana
 	if WeaponType == "Katana"
 	{

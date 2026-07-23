@@ -9,28 +9,8 @@ if alarm_get(3) != -1 { // -1 = alarm has stopped
 	draw_self_color(c_red, alarm_get(3)/max_hurt_time);
 }
 
-draw_set_colour(c_white)
-draw_circle(
-	x, y,
-	grab_rad_max,
-
-	true
-)
-
-draw_set_colour(c_blue)
-draw_circle(
-	x, y,
-	grab_rad_min,
-
-	true
-)
-
 if _pulled_target != noone {
-	var color = #633200
-	draw_line_width_colour(
-	x, y, 
-	_pulled_target.x+_pulled_target.sprite_width/2, 
-	_pulled_target.y+_pulled_target.sprite_height/2, 
-	2, 
-	color, color)
+	hookgrab_ropevisual()
 }
+
+hookgrab_drawtest();

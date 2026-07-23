@@ -226,6 +226,7 @@
     {"name":"draw_self_color","order":2,"path":"scripts/draw_self_color/draw_self_color.yy",},
     {"name":"draw_sprite_ext_color","order":3,"path":"scripts/draw_sprite_ext_color/draw_sprite_ext_color.yy",},
     {"name":"free_aim","order":9,"path":"scripts/free_aim/free_aim.yy",},
+    {"name":"game_over","order":10,"path":"scripts/game_over/game_over.yy",},
     {"name":"get_delta_time_in_seconds","order":3,"path":"scripts/get_delta_time_in_seconds/get_delta_time_in_seconds.yy",},
     {"name":"InputBindingFindCollisions","order":1,"path":"scripts/InputBindingFindCollisions/InputBindingFindCollisions.yy",},
     {"name":"InputBindingGet","order":2,"path":"scripts/InputBindingGet/InputBindingGet.yy",},
