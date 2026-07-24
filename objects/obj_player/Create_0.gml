@@ -192,12 +192,17 @@ image_xscale = scale;
 image_yscale = scale;
 facing = 1; // init. facing direction
 
-
-safe_gap = 20
+#region Safe Respawn
+safe_gap = 20 //px
 safety_rays = {
-cen :	collision_line_point(x, y, x, 1000, col_obj, false, true),
-lef :	collision_line_point(x+safe_gap, y, x+safe_gap, 1000, col_obj, false, true),
-rig :	collision_line_point(x-safe_gap, y, x-safe_gap, 1000, col_obj, false, true),
+	cen :	collision_line_point(x, y, x, 1000, col_obj, false, true),
+	lef :	collision_line_point(x+safe_gap, y, x+safe_gap, 1000, col_obj, false, true),
+	rig :	collision_line_point(x-safe_gap, y, x-safe_gap, 1000, col_obj, false, true),
+}
+
+safe_pos = {
+	x : safety_rays.cen.x,
+	y : safety_rays.cen.y,
 }
 
 function update_srays() {
@@ -211,7 +216,13 @@ function all_srays() {
 		return safety_rays.cen.id
 	} else {return noone}
 }
-safe_pos = {
-	x : safety_rays.cen.x,
-	y : safety_rays.cen.y,
+
+function safety_rays_draw() {
+	var color = #FFFFFF
+	draw_line_width_colour(x, y, safety_rays.cen.x, safety_rays.cen.y, 2, color, color)
+	draw_line_width_colour(x+safe_gap, y, safety_rays.lef.x, safety_rays.lef.y, 2, color, color)
+	draw_line_width_colour(x-safe_gap, y, safety_rays.rig.x, safety_rays.rig.y, 2, color, color)
+	draw_set_colour(c_purple)
+	draw_circle(safe_pos.x, safe_pos.y, 5, false)
 }
+#endregion
