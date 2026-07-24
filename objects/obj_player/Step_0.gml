@@ -16,6 +16,24 @@ if (input != 0) and state != ACTION_STATES.SLIDING
 if (dash_cooldown_timer > 0) {dash_cooldown_timer -= get_delta_time_in_seconds();}
 else {can_dash = true;}
 
+update_srays()
+
+if	all_srays() != noone // A ray can hit the ground
+and on_ground // the player is touching the ground
+{
+	safe_pos.x = safety_rays.cen.x
+	safe_pos.y = safety_rays.cen.y
+}
+
+function safety_rays_draw() {
+	var color = #FFFFFF
+	draw_line_width_colour(x, y, safety_rays.cen.x, safety_rays.cen.y, 2, color, color)
+	draw_line_width_colour(x+safe_gap, y, safety_rays.lef.x, safety_rays.lef.y, 2, color, color)
+	draw_line_width_colour(x-safe_gap, y, safety_rays.rig.x, safety_rays.rig.y, 2, color, color)
+	draw_set_colour(c_purple)
+	draw_circle(safe_pos.x, safe_pos.y, 5, false)
+}
+
 switch state {
 	#region Dashing Action
 	case ACTION_STATES.DASHING:

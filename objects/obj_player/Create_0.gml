@@ -191,3 +191,27 @@ scale = 0.4666667;
 image_xscale = scale;
 image_yscale = scale;
 facing = 1; // init. facing direction
+
+
+safe_gap = 20
+safety_rays = {
+cen :	collision_line_point(x, y, x, 1000, col_obj, false, true),
+lef :	collision_line_point(x+safe_gap, y, x+safe_gap, 1000, col_obj, false, true),
+rig :	collision_line_point(x-safe_gap, y, x-safe_gap, 1000, col_obj, false, true),
+}
+
+function update_srays() {
+	safety_rays.cen = collision_line_point(x, y, x, 1000, col_obj, false, true)
+	safety_rays.lef = collision_line_point(x+safe_gap, y, x+safe_gap, 1000, col_obj, false, true)
+	safety_rays.rig = collision_line_point(x-safe_gap, y, x-safe_gap, 1000, col_obj, false, true)
+}
+function all_srays() {
+	if safety_rays.cen.magnitude == safety_rays.lef.magnitude 
+	and safety_rays.cen.magnitude == safety_rays.rig.magnitude {
+		return safety_rays.cen.id
+	} else {return noone}
+}
+safe_pos = {
+	x : safety_rays.cen.x,
+	y : safety_rays.cen.y,
+}

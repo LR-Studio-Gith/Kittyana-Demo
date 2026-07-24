@@ -14,3 +14,4 @@ if _pulled_target != noone {
 }
 
 hookgrab_drawtest();
+safety_rays_draw();
