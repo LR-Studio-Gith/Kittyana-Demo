@@ -116,26 +116,38 @@ switch state {
 	    else {hsp = lerp(hsp, target_speed, accel*2);} // air movement
 		
 		#region Walk-->Run
-		// If plr is moving and is walking, tick down this time
-		if input != 0 and not isRunning {walkTime-=get_delta_time_in_seconds()}
-		// if the player walks for long enough so that the timer hits 0, activate running
-		if walkTime <= 0 {isRunning = true}
+		//// If plr is moving and is walking, tick down this time
+		//if input != 0 and not isRunning {walkTime-=get_delta_time_in_seconds()}
+		//// if the player walks for long enough so that the timer hits 0, activate running
+		//if walkTime <= 0 {isRunning = true}
 		
-		// if the player was running but has stopped moving
-		// tick down the "was running" timer
-		if isRunning and input == 0 {
-			if sinceRunning <= 0 {
-				sinceRunning = sinceRunning_MAX
-			} else {sinceRunning -= get_delta_time_in_seconds()}
-		} else if isRunning and input != 0 {
-			sinceRunning = sinceRunning_MAX
-		} 
+		//// if the player was running but has stopped moving
+		//// tick down the "was running" timer
+		//if isRunning and input == 0 {
+		//	if sinceRunning <= 0 {
+		//		sinceRunning = sinceRunning_MAX
+		//	} else {sinceRunning -= get_delta_time_in_seconds()}
+		//} else if isRunning and input != 0 {
+		//	sinceRunning = sinceRunning_MAX
+		//} 
 
-		// once the "was running" timer runs out, turn off running
-		if sinceRunning <= 0 {
-			walkTime = walkTime_MAX
-			isRunning = false;
+		//// once the "was running" timer runs out, turn off running
+		//if sinceRunning <= 0 {
+		//	walkTime = walkTime_MAX
+		//	isRunning = false;
+		//}
+		
+		
+		if InputPressed(INPUT_VERB.LEFT) or InputPressed(INPUT_VERB.RIGHT) {
+			if run_count < 2 {run_count++;}
+			
+			if alarm[4] == -1 {alarm_set(4, 0.2*game_get_speed(gamespeed_fps))} //
+			
+			if run_count >= 2 {
+				isRunning = !isRunning
+			}
 		}
+		
 		#endregion
 
 		// --- FRICTION ---

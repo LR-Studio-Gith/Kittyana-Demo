@@ -21,11 +21,13 @@ walk_speed = 5;
 run_speed = 10;
 accel = 0.25;
 
-walkTime_MAX = 1; // secs
-walkTime = walkTime_MAX;
+run_count = 0;
 
-sinceRunning_MAX = 5; // secs
-sinceRunning = sinceRunning_MAX;
+//walkTime_MAX = 1; // secs
+//walkTime = walkTime_MAX;
+
+//sinceRunning_MAX = 5; // secs
+//sinceRunning = sinceRunning_MAX;
 
 isRunning = false;
 
