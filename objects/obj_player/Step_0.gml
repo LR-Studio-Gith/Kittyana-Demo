@@ -16,8 +16,8 @@ if (input != 0) and state != ACTION_STATES.SLIDING
 if (dash_cooldown_timer > 0) {dash_cooldown_timer -= get_delta_time_in_seconds();}
 else {can_dash = true;}
 
-if on_ground {update_srays()}
-if	all_srays() != noone // all rays are touching the ground
+update_srays()
+if all_srays() != noone // all rays are touching the ground
 and on_ground // the player is confirmed to be on the ground
 {
 	safe_pos.x = safety_rays.cen.x
@@ -104,25 +104,53 @@ switch state {
 
 	#region Normal/No Action State
 	case ACTION_STATES.NONE: 
-	    target_speed = input * walk_speed;
-	    if (on_ground) {hsp = lerp(hsp, target_speed, accel);}
-	    else {hsp = lerp(hsp, target_speed, 0.1);}
+		// --- MOVING ---
+	    target_speed = input * run_speed;
+	    if (on_ground) {
+			if !isRunning {
+				hsp = lerp(hsp, input * walk_speed, accel*2); // you can get up to walking speed faster than you can when you run -S
+			} else {
+				hsp = lerp(hsp, input * run_speed, accel);
+			}
+		}
+	    else {hsp = lerp(hsp, target_speed, accel*2);} // air movement
+		
+		#region Walk-->Run
+		// If plr is moving and is walking, tick down this time
+		if input != 0 and not isRunning {walkTime-=get_delta_time_in_seconds()}
+		// if the player walks for long enough so that the timer hits 0, activate running
+		if walkTime <= 0 {isRunning = true}
+		
+		// if the player was running but has stopped moving
+		// tick down the "was running" timer
+		if isRunning and input == 0 {
+			if sinceRunning <= 0 {
+				sinceRunning = sinceRunning_MAX
+			} else {sinceRunning -= get_delta_time_in_seconds()}
+		} else if isRunning and input != 0 {
+			sinceRunning = sinceRunning_MAX
+		} 
 
-	    if (input == 0 && on_ground) hsp = lerp(hsp, 0, ground_friction);
-		else if (input == 0 && !on_ground) hsp = lerp(hsp, 0, air_friction);
+		// once the "was running" timer runs out, turn off running
+		if sinceRunning <= 0 {
+			walkTime = walkTime_MAX
+			isRunning = false;
+		}
+		#endregion
+
+		// --- FRICTION ---
+	    if (input == 0 && on_ground) hsp = lerp(hsp, 0, ground_friction);		// ground slowdown
+		else if (input == 0 && !on_ground) hsp = lerp(hsp, 0, air_friction);	// slowdown in air
 
 	    // --- GRAVITY ---
 		if (!on_ground) vsp += grv;
 		
-	    // --- WALL CLIMBING ---
-		
-		
 	    if not on_ground {
-			coyote_timer -= 1; // should update to be deltatime? this is a question
+			coyote_timer -= 1; // should update to be deltatime? this is a question -S
 	       
 			if wall_ray_front() != noone and InputPressed(INPUT_VERB.JUMP) and tile_is_climbable() {
 				state = ACTION_STATES.CLIMBING
-				vsp = -walk_speed;				// climb up
+				vsp = -run_speed;				// climb up
 		        jumps_left = max_jumps;			// reset double jump
 		        coyote_timer = coyote_time_max;	// allow jump off wall quickly
 			}
@@ -186,7 +214,7 @@ switch state {
 		if wall_ray_front() == noone or on_ground or !tile_is_climbable()
 		{state = ACTION_STATES.NONE} 
 		else {
-			vsp = InputY(INPUT_CLUSTER.NAVIGATION) * walk_speed	// climb up
+			vsp = InputY(INPUT_CLUSTER.NAVIGATION) * run_speed	// climb up
 			jumps_left = max_jumps;								// reset double jump
 			coyote_timer = coyote_time_max;						// allow jump off wall quickly
 			
@@ -209,7 +237,7 @@ switch state {
 			slideEnding = false
 		}
 	
-		var slideDir = (walk_speed * sign(image_xscale))
+		var slideDir = (run_speed * sign(image_xscale))
 
 		 // --- GRAVITY ---
 		if (!on_ground) vsp += grv*2;

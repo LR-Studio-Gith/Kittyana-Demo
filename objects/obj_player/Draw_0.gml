@@ -13,5 +13,5 @@ if _pulled_target != noone {
 	hookgrab_ropevisual()
 }
 
-hookgrab_drawtest();
-safety_rays_draw();
+//hookgrab_drawtest();
+//safety_rays_draw();
