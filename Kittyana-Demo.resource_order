@@ -77,6 +77,7 @@
   "ResourceOrderSettings":[
     {"name":"AnimationCurve2","order":9,"path":"animcurves/AnimationCurve2/AnimationCurve2.yy",},
     {"name":"__InputUpdateController","order":21,"path":"objects/__InputUpdateController/__InputUpdateController.yy",},
+    {"name":"COMETA_Camera1","order":17,"path":"objects/COMETA_Camera1/COMETA_Camera1.yy",},
     {"name":"obj_back","order":6,"path":"objects/obj_back/obj_back.yy",},
     {"name":"obj_button_continue2","order":1,"path":"objects/obj_button_continue2/obj_button_continue2.yy",},
     {"name":"obj_button_credit","order":2,"path":"objects/obj_button_credit/obj_button_credit.yy",},

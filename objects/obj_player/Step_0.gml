@@ -1,5 +1,8 @@
 xstart = x; ystart = y
 
+
+
+
 if (hp <= 0) game_over()
 
 if (not can_move) exit;
