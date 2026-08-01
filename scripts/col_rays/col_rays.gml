@@ -7,7 +7,7 @@ function col_ray_front(col = layer_tilemap_get_id("Collision"), _depth = 0) {
 		bbox_local_right() - sign(image_xscale), y,
 		bbox_local_right() - sign(image_xscale), bbox_bottom + (1 + _depth),
 		col,
-		true,
+		false,
 		true
 	)
 
@@ -18,7 +18,7 @@ function col_ray_behind(col = layer_tilemap_get_id("Collision"), _depth = 0) {
 		bbox_local_left() + sign(image_xscale), y,
 		bbox_local_left() + sign(image_xscale), bbox_bottom + (1 + _depth),
 		col,
-		true,
+		false,
 		true
 	)
 
@@ -32,7 +32,19 @@ function wall_ray_front(col = layer_tilemap_get_id("Collision")) {
 		bbox_center_x(), y,
 		bbox_local_right() + sign(image_xscale), y,
 		col,
-		true,
+		false,
+		true
+	)
+
+	return ray
+}
+
+function wall_ray_back(col = layer_tilemap_get_id("Collision")) {
+	var ray = collision_line(
+		bbox_center_x(), y,
+		bbox_local_left() + sign(image_xscale), y,
+		col,
+		false,
 		true
 	)
 
@@ -46,7 +58,7 @@ function ceilray_f(col = layer_tilemap_get_id("Collision")) {
 		bbox_local_right() - sign(image_xscale), y,
 		bbox_local_right() - sign(image_xscale), bbox_top - 1,
 		col,
-		true,
+		false,
 		true
 	)
 
@@ -57,7 +69,7 @@ function ceilray_b(col = layer_tilemap_get_id("Collision")) {
 		bbox_local_left() + sign(image_xscale), y,
 		bbox_local_left() + sign(image_xscale), bbox_top - 1,
 		col,
-		true,
+		false,
 		true
 	)
 

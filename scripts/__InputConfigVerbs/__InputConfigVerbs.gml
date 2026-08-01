@@ -17,6 +17,8 @@ function __InputConfigVerbs()
 		JUMP,
 		SLIDE,
 		
+		RUN, // kind of a action but not really
+		
 		// Menu Action
 		PAUSE,
 		
@@ -51,6 +53,8 @@ function __InputConfigVerbs()
 	InputDefineVerb(INPUT_VERB.JUMP, "jump", vk_space, gp_shoulderr); 
 	
 	InputDefineVerb(INPUT_VERB.SLIDE, "slide", [vk_down, "S"], gp_padd); // remove?
+	
+	InputDefineVerb(INPUT_VERB.RUN, "run", vk_shift, gp_face4); // remove?
     #endregion
 	
 	#region Menu Action

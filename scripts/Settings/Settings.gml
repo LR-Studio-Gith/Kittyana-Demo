@@ -8,6 +8,8 @@ global.GAME_SETTINGS = {
 	
 }
 
+global.isRunning = false;
+
 function update_settings() {
 	#region Audio [ALWAYS REMEMBER TO DIVIDE BY 100]
 	// For ALL Audio

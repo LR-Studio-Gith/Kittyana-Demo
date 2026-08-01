@@ -3,12 +3,16 @@
   "%Name":"tile_building",
   "autoTileSets":[],
   "macroPageTiles":{
-    "SerialiseHeight":0,
-    "SerialiseWidth":0,
-    "TileSerialiseData":[],
+    "SerialiseHeight":7,
+    "SerialiseWidth":9,
+    "TileCompressedData":[
+      -4,0,2,15,16,-7,0,5,17,18,0,15,16,-4,0,5,20,19,0,20,19,-4,0,5,21,22,0,21,22,-13,0,5,2,5,0,7,8,-4,0,5,
+      4,3,0,9,10,
+    ],
+    "TileDataFormat":1,
   },
   "name":"tile_building",
-  "out_columns":3,
+  "out_columns":5,
   "out_tilehborder":2,
   "out_tilevborder":2,
   "parent":{
@@ -18,8 +22,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"building_tilemap",
-    "path":"sprites/building_tilemap/building_tilemap.yy",
+    "name":"building_tiles",
+    "path":"sprites/building_tiles/building_tiles.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{
@@ -28,11 +32,11 @@
   },
   "tileAnimationFrames":[],
   "tileAnimationSpeed":15.0,
-  "tileHeight":20,
+  "tileHeight":32,
   "tilehsep":0,
   "tilevsep":0,
-  "tileWidth":20,
+  "tileWidth":32,
   "tilexoff":0,
   "tileyoff":0,
-  "tile_count":12,
+  "tile_count":25,
 }

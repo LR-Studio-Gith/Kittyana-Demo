@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Tween_Cos",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Tween_Cos",
+  "parent":{
+    "name":"Functions",
+    "path":"folders/Scripts/ASSET_Scripts/Tweens/Functions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Tween_LerpTime",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Tween_LerpTime",
+  "parent":{
+    "name":"Functions",
+    "path":"folders/Scripts/ASSET_Scripts/Tweens/Functions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"boundbox",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"boundbox",
+  "parent":{
+    "name":"Sprite",
+    "path":"folders/Scripts/ASSET_Scripts/Sprite.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

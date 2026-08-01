@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"NumericSpring_Get_Val",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"NumericSpring_Get_Val",
+  "parent":{
+    "name":"NumericSpring",
+    "path":"folders/Scripts/ASSET_Scripts/Tweens/NumericSpring.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

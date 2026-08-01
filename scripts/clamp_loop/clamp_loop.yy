@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"clamp_loop",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"clamp_loop",
+  "parent":{
+    "name":"General",
+    "path":"folders/Scripts/ASSET_Scripts/General.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

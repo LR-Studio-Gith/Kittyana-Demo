@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"pause",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"pause",
+  "parent":{
+    "name":"General",
+    "path":"folders/Scripts/ASSET_Scripts/General.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

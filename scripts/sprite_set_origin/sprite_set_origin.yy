@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"sprite_set_origin",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"sprite_set_origin",
+  "parent":{
+    "name":"Sprite",
+    "path":"folders/Scripts/ASSET_Scripts/Sprite.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

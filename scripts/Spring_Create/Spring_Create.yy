@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Spring_Create",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Spring_Create",
+  "parent":{
+    "name":"Spring",
+    "path":"folders/Scripts/ASSET_Scripts/Tweens/Spring.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

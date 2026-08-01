@@ -105,51 +105,27 @@ switch state {
 	#region Normal/No Action State
 	case ACTION_STATES.NONE: 
 		// --- MOVING ---
-	    target_speed = input * run_speed;
+	    target_speed = input * walk_speed;
 	    if (on_ground) {
-			if !isRunning {
+			if !global.isRunning {
 				hsp = lerp(hsp, input * walk_speed, accel*2); // you can get up to walking speed faster than you can when you run -S
 			} else {
 				hsp = lerp(hsp, input * run_speed, accel);
 			}
 		}
-	    else {hsp = lerp(hsp, target_speed, accel*2);} // air movement
-		
-		#region Walk-->Run
-		//// If plr is moving and is walking, tick down this time
-		//if input != 0 and not isRunning {walkTime-=get_delta_time_in_seconds()}
-		//// if the player walks for long enough so that the timer hits 0, activate running
-		//if walkTime <= 0 {isRunning = true}
-		
-		//// if the player was running but has stopped moving
-		//// tick down the "was running" timer
-		//if isRunning and input == 0 {
-		//	if sinceRunning <= 0 {
-		//		sinceRunning = sinceRunning_MAX
-		//	} else {sinceRunning -= get_delta_time_in_seconds()}
-		//} else if isRunning and input != 0 {
-		//	sinceRunning = sinceRunning_MAX
-		//} 
-
-		//// once the "was running" timer runs out, turn off running
-		//if sinceRunning <= 0 {
-		//	walkTime = walkTime_MAX
-		//	isRunning = false;
-		//}
-		
-		
-		if InputPressed(INPUT_VERB.LEFT) or InputPressed(INPUT_VERB.RIGHT) {
-			if run_count < 2 {run_count++;}
-			
-			if alarm[4] == -1 {alarm_set(4, 0.2*game_get_speed(gamespeed_fps))} //
-			
-			if run_count >= 2 {
-				isRunning = !isRunning
+	    else {  // air movement
+			if !global.isRunning {
+				hsp = lerp(hsp, input * walk_speed, accel*2); // you can get up to walking speed faster than you can when you run -S
+			} else {
+				hsp = lerp(hsp, input * run_speed, accel*2);
 			}
 		}
 		
-		#endregion
-
+		// Walk <--> Run
+		if InputPressed(INPUT_VERB.RUN) {
+			global.isRunning = !global.isRunning
+		}
+		
 		// --- FRICTION ---
 	    if (input == 0 && on_ground) hsp = lerp(hsp, 0, ground_friction);		// ground slowdown
 		else if (input == 0 && !on_ground) hsp = lerp(hsp, 0, air_friction);	// slowdown in air
@@ -180,16 +156,15 @@ switch state {
 		
 	    // --- JUMP / DOUBLE JUMP ---
 	    if ((InputPressed(INPUT_VERB.JUMP)) and jumps_left > 0) {
+			if global.isRunning	{vsp = jump_speed;}
+			else			{vsp = -walk_speed*1.5;}
+			
 			if (on_ground or coyote_timer > 0) {
-				vsp = jump_speed;
 	            can_dash = true;
 	            coyote_timer = 0;
-				jumps_left--;
 	        }
-	        else if (jumps_left > 0) {
-	            vsp = jump_speed;
-	            jumps_left--;
-	        }
+			
+			jumps_left--;
 	    }
 
 		// --- HOOK ---
@@ -254,12 +229,12 @@ switch state {
 		 // --- GRAVITY ---
 		if (!on_ground) vsp += grv*2;
 		
-		if hsp == slideDir*slideSpeed and not slideEnding {
+		if hsp == slideDir*slideSpdMul and not slideEnding {
 			slideEnding = true
 		}
 		
 		if not slideEnding {
-			hsp = lerp(hsp, slideDir*slideSpeed, accel)
+			hsp = lerp(hsp, slideDir*slideSpdMul, accel)
 		}
 		else {
 			hsp = lerp(hsp, 0, ground_friction*2)

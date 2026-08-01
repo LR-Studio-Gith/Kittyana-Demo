@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"collision_line_point",
   "parent":{
-    "name":"Functions",
-    "path":"folders/Scripts/Functions.yy",
+    "name":"General",
+    "path":"folders/Scripts/ASSET_Scripts/General.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

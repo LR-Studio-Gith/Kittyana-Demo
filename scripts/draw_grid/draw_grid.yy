@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"draw_grid",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"draw_grid",
+  "parent":{
+    "name":"Sprite",
+    "path":"folders/Scripts/ASSET_Scripts/Sprite.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

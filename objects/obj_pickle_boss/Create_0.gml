@@ -4,6 +4,8 @@ hspd = 0;
 vspd = 0;
 player = obj_player;
 
+push_f = 50
+
 // Functiosn
 function check_player_dir()
 {
@@ -45,8 +47,6 @@ they also die in one hit
 Body slam: launches itself into the air then fast falls back down
 
 */
-
-
 
 function isGrounded(downward_y=50) {
 	if !object_exists(self.object_index) {/*Wait until game starts*/} 
@@ -97,3 +97,34 @@ function slamAtk() {
 	})
 }
 #endregion
+
+
+function get_unstuck_goddamnit() {
+	// this will literally never be used anyone else i bet
+	if wall_ray_front(col_obj) != noone{
+	switch (sign(image_xscale)) {
+	    case 1: // Right
+	        move_contact_all(180, push_f)
+	        break;
+		case -1: // Left
+	        move_contact_all(360, push_f)
+	        break;	
+	    default: // If somehow neither
+	        move_contact_all(180, push_f)
+	        break;
+	}
+}
+else if wall_ray_back(col_obj) != noone{
+	switch (sign(image_xscale)) {
+	    case 1: // Left
+	        move_contact_all(360, push_f)
+	        break;
+		case -1: // Right
+	        move_contact_all(180, push_f)
+	        break;	
+	    default: // If somehow neither
+	        move_contact_all(360, push_f)
+	        break;
+	}
+}
+}

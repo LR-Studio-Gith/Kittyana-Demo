@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"doublepress_step",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"doublepress_step",
+  "parent":{
+    "name":"General",
+    "path":"folders/Scripts/ASSET_Scripts/General.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Approach_Loop",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Approach_Loop",
+  "parent":{
+    "name":"Functions",
+    "path":"folders/Scripts/ASSET_Scripts/Tweens/Functions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

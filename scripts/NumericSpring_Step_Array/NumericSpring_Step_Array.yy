@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"NumericSpring_Step_Array",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"NumericSpring_Step_Array",
+  "parent":{
+    "name":"NumericSpring",
+    "path":"folders/Scripts/ASSET_Scripts/Tweens/NumericSpring.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Spring_Set_Val",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Spring_Set_Val",
+  "parent":{
+    "name":"Spring",
+    "path":"folders/Scripts/ASSET_Scripts/Tweens/Spring.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

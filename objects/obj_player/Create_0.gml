@@ -17,25 +17,15 @@ hsp = 0;
 vsp = 0;
 
 grv = .45;
-walk_speed = 5;
+walk_speed = 5.5;
 run_speed = 10;
 accel = 0.25;
-
-run_count = 0;
-
-//walkTime_MAX = 1; // secs
-//walkTime = walkTime_MAX;
-
-//sinceRunning_MAX = 5; // secs
-//sinceRunning = sinceRunning_MAX;
-
-isRunning = false;
 
 // Friction
 ground_friction = 0.1;
 air_friction	= 0.05;
 
-#region Jumping
+// Jumping
 max_jumps = 2;  
 jumps_left = max_jumps;
 jump_speed = -15;
@@ -44,10 +34,9 @@ jump_speed = -15;
 coyote_time_max = 6; 
 coyote_timer = 0;
 can_move = true; // ???? -S
-#endregion
 
 // Slide
-slideSpeed = 2;
+slideSpdMul = 2; // multiplier to apply onto sliding. SlideSpd = run_spd * slideSpdMul
 slideEnding = false;
 
 #region Dash
@@ -199,11 +188,12 @@ function touching_top() { // outdated, old
 pause_exists();
 
 // Scaling
-scale = 0.4666667;
+scale = 0.4666667; // init. scale the player has across all rooms
 image_xscale = scale;
 image_yscale = scale;
 facing = 1; // init. facing direction
 
+// currently unused, falling into the void is impossible
 #region Safe Respawn
 safe_gap = 20; //px
 safety_rays = {

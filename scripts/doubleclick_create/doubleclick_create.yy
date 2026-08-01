@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"doubleclick_create",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"doubleclick_create",
+  "parent":{
+    "name":"General",
+    "path":"folders/Scripts/ASSET_Scripts/General.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
