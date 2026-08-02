@@ -174,6 +174,11 @@ function tile_is_oneway() {
 }
 #endregion
 
+#region Animations & Particles
+dustcloud = noone
+//part_system_position(dustcloud, x, bbox_bottom)
+#endregion
+
 function touching_top() { // outdated, old
 	if instance_exists_paused(obj_oneway) {
 		return obj_oneway.bbox_top - bbox_bottom + vsp + grv*2

@@ -13,6 +13,7 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Fonts","folderPath":"folders/Fonts.yy","name":"Fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Particles","folderPath":"folders/Particles.yy","name":"Particles","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Imports","folderPath":"folders/Imports.yy","name":"Imports","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Easy Overlay","folderPath":"folders/Imports/Easy Overlay.yy","name":"Easy Overlay","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Internal","folderPath":"folders/Imports/Easy Overlay/Internal.yy","name":"Internal","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -166,6 +167,7 @@
     {"id":{"name":"obj_unclimable","path":"objects/obj_unclimable/obj_unclimable.yy",},},
     {"id":{"name":"obj_viewpoint","path":"objects/obj_viewpoint/obj_viewpoint.yy",},},
     {"id":{"name":"obj_village_music","path":"objects/obj_village_music/obj_village_music.yy",},},
+    {"id":{"name":"part_dustcloud","path":"particles/part_dustcloud/part_dustcloud.yy",},},
     {"id":{"name":"rm_citty_city","path":"rooms/rm_citty_city/rm_citty_city.yy",},},
     {"id":{"name":"rm_cliff_ruins","path":"rooms/rm_cliff_ruins/rm_cliff_ruins.yy",},},
     {"id":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
@@ -547,6 +549,7 @@
     {"id":{"name":"blue_e","path":"sprites/blue_e/blue_e.yy",},},
     {"id":{"name":"building_tiles","path":"sprites/building_tiles/building_tiles.yy",},},
     {"id":{"name":"darkergrasstiles","path":"sprites/darkergrasstiles/darkergrasstiles.yy",},},
+    {"id":{"name":"dust_cloud","path":"sprites/dust_cloud/dust_cloud.yy",},},
     {"id":{"name":"eue","path":"sprites/eue/eue.yy",},},
     {"id":{"name":"grasstilesv2","path":"sprites/grasstilesv2/grasstilesv2.yy",},},
     {"id":{"name":"gray_e","path":"sprites/gray_e/gray_e.yy",},},

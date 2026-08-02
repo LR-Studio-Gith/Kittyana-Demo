@@ -1,6 +1,7 @@
 {
   "FolderOrderSettings":[
     {"name":"Fonts","order":10,"path":"folders/Fonts.yy",},
+    {"name":"Particles","order":17,"path":"folders/Particles.yy",},
     {"name":"Imports","order":16,"path":"folders/Imports.yy",},
     {"name":"Easy Overlay","order":1,"path":"folders/Imports/Easy Overlay.yy",},
     {"name":"Internal","order":1,"path":"folders/Imports/Easy Overlay/Internal.yy",},
@@ -464,6 +465,7 @@
     {"name":"blue_e","order":7,"path":"sprites/blue_e/blue_e.yy",},
     {"name":"building_tiles","order":3,"path":"sprites/building_tiles/building_tiles.yy",},
     {"name":"darkergrasstiles","order":15,"path":"sprites/darkergrasstiles/darkergrasstiles.yy",},
+    {"name":"dust_cloud","order":20,"path":"sprites/dust_cloud/dust_cloud.yy",},
     {"name":"eue","order":12,"path":"sprites/eue/eue.yy",},
     {"name":"grasstilesv2","order":1,"path":"sprites/grasstilesv2/grasstilesv2.yy",},
     {"name":"gray_e","order":8,"path":"sprites/gray_e/gray_e.yy",},

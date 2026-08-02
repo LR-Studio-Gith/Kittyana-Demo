@@ -420,12 +420,31 @@ else
 	else if (abs(hsp) > 0.1)
 	{
 	    sprite_index = spr_player_run;
-	    image_speed = 1;
+	    image_speed = 1;		
 	}
 	else
 	{
 	    sprite_index = spr_player_idle;
 	    image_speed = 1;
+	}
+}
+
+if (abs(hsp) > walk_speed*1.5) and on_ground {
+	if !part_system_exists(dustcloud) {
+		dustcloud = part_system_create(part_dustcloud);
+	} else {
+		part_system_position(dustcloud, bbox_local_left(), bbox_bottom-10)
+		ang = 25
+		if sign(image_xscale) == 1 { // left
+			part_system_angle(dustcloud, 90		- ang)
+		} else { // right
+			part_system_angle(dustcloud, 270	+ ang)
+		}
+	}
+} else {
+	if part_system_exists(dustcloud) {
+		part_system_destroy(dustcloud)
+		dustcloud = noone
 	}
 }
 #endregion
