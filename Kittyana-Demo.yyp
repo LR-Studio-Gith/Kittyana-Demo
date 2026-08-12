@@ -13,7 +13,6 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Fonts","folderPath":"folders/Fonts.yy","name":"Fonts","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Particles","folderPath":"folders/Particles.yy","name":"Particles","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Imports","folderPath":"folders/Imports.yy","name":"Imports","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Easy Overlay","folderPath":"folders/Imports/Easy Overlay.yy","name":"Easy Overlay","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Internal","folderPath":"folders/Imports/Easy Overlay/Internal.yy","name":"Internal","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -76,6 +75,7 @@
     {"$GMFolder":"","%Name":"Parent Objects","folderPath":"folders/Objects/Parent Objects.yy","name":"Parent Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Pause Objects","folderPath":"folders/Objects/Pause Objects.yy","name":"Pause Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Storyboards","folderPath":"folders/Objects/Storyboards.yy","name":"Storyboards","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Particles","folderPath":"folders/Particles.yy","name":"Particles","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Scripts","folderPath":"folders/Scripts.yy","name":"Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"ASSET_Scripts","folderPath":"folders/Scripts/ASSET_Scripts.yy","name":"ASSET_Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"General","folderPath":"folders/Scripts/ASSET_Scripts/General.yy","name":"General","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -151,6 +151,7 @@
     {"id":{"name":"obj_pause_quit","path":"objects/obj_pause_quit/obj_pause_quit.yy",},},
     {"id":{"name":"obj_pause_restart","path":"objects/obj_pause_restart/obj_pause_restart.yy",},},
     {"id":{"name":"obj_pause_resume","path":"objects/obj_pause_resume/obj_pause_resume.yy",},},
+    {"id":{"name":"obj_pause_runtype","path":"objects/obj_pause_runtype/obj_pause_runtype.yy",},},
     {"id":{"name":"obj_pause_screen","path":"objects/obj_pause_screen/obj_pause_screen.yy",},},
     {"id":{"name":"obj_pickle_boss","path":"objects/obj_pickle_boss/obj_pickle_boss.yy",},},
     {"id":{"name":"obj_pickle_bossbar","path":"objects/obj_pickle_bossbar/obj_pickle_bossbar.yy",},},

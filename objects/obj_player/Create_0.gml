@@ -1,3 +1,5 @@
+/// @desc Main
+
 // States
 enum ACTION_STATES { // States are based on if an action can't be done while doing any other action
 	NONE,
@@ -17,9 +19,19 @@ hsp = 0;
 vsp = 0;
 
 grv = .45;
-walk_speed = 5.5;
+walk_speed = 5;
 run_speed = 10;
 accel = 0.25;
+
+// Time it takes for a run to start up
+walkTime_MAX = 3; // secs
+walkTime = walkTime_MAX;
+
+// Tracks the time since you last started running
+sinceRunning_MAX = 5; // secs
+sinceRunning = sinceRunning_MAX;
+
+isRunning = false;
 
 // Friction
 ground_friction = 0.1;
@@ -150,7 +162,7 @@ function hookgrab_circlecast(_obj = obj_EnemyParent) {
 #region Collisions
 col_obj = layer_tilemap_get_id("Collision") // Collision ref
 
-/// @desc  Checks if the tile counts as an climbable one
+/// @desc  hecks if the tile counts as an climbable one
 /// @returns {bool}
 function tile_is_climbable() {
 	var _tile = tilemap_get_at_pixel(col_obj, bbox_local_right() + sign(image_xscale), y)
@@ -193,25 +205,33 @@ image_xscale = scale;
 image_yscale = scale;
 facing = 1; // init. facing direction
 
-// currently unused, falling into the void is impossible
-#region Safe Respawn
+
+#region Safe Respawn/Teleport
 safe_gap = 20; //px
+max_ray_dist = 1000; //px, way longer than needed tbh
+
+// A struct holding the rays used to detect wheither the ground is safe to TP back to.
+// Each ray holds a struct with info on what it hit, its distance, position, etc
 safety_rays = {
-	cen :	collision_line_point(x, y, x, y+1000, col_obj, false, true),
-	lef :	collision_line_point(x+safe_gap, y, x+safe_gap, y+1000, col_obj, false, true),
-	rig :	collision_line_point(x-safe_gap, y, x-safe_gap, y+1000, col_obj, false, true),
+/*Center*/		cen :	collision_line_point(x, y, x, y+max_ray_dist, col_obj, false, true),
+/*Leftmost*/	lef :	collision_line_point(x+safe_gap, y, x+safe_gap, y+max_ray_dist, col_obj, false, true),
+/*Rightmost*/	rig :	collision_line_point(x-safe_gap, y, x-safe_gap, y+max_ray_dist, col_obj, false, true),
 };
 
+// A struct holding the X & Y positions that has deemed safe for respawning on.
 safe_pos = {
 	x : safety_rays.cen.x,
 	y : safety_rays.cen.y,
 };
 
+/// @desc Updates the position of every ray held within the struct
 function update_srays() {
-	safety_rays.cen = collision_line_point(x, y, x, y+1000, col_obj, false, true);
-	safety_rays.lef = collision_line_point(x+safe_gap, y, x+safe_gap, y+1000, col_obj, false, true);
-	safety_rays.rig = collision_line_point(x-safe_gap, y, x-safe_gap, y+1000, col_obj, false, true);
+	safety_rays.cen = collision_line_point(x, y, x, y+max_ray_dist, col_obj, false, true);
+	safety_rays.lef = collision_line_point(x+safe_gap, y, x+safe_gap, y+max_ray_dist, col_obj, false, true);
+	safety_rays.rig = collision_line_point(x-safe_gap, y, x-safe_gap, y+max_ray_dist, col_obj, false, true);
 }
+
+/// @desc From what I can assume, if all rays hit something at the same height then its flat ground that's safe to tp to
 function all_srays() {
 	if safety_rays.cen.magnitude == safety_rays.lef.magnitude 
 	and safety_rays.cen.magnitude == safety_rays.rig.magnitude {
@@ -219,12 +239,19 @@ function all_srays() {
 	} else {return noone;}
 }
 
-function safety_rays_draw() {
-	var color = #FFFFFF;
+/// @desc TESTING TOOL | Draws every ray and collision point used for detect wheither a spot is safe to TP back to
+function safety_rays_draw(color = c_white) {
 	draw_line_width_colour(x, y, safety_rays.cen.x, safety_rays.cen.y, 2, color, color);
 	draw_line_width_colour(x+safe_gap, y, safety_rays.lef.x, safety_rays.lef.y, 2, color, color);
 	draw_line_width_colour(x-safe_gap, y, safety_rays.rig.x, safety_rays.rig.y, 2, color, color);
 	draw_set_colour(c_purple);
 	draw_circle(safe_pos.x, safe_pos.y, 5, false);
+}
+
+/// @desc Teleport the player to a safe position and take a bit of damage
+function safety_respawn(dmg = 1) {
+	hp -= abs(dmg)
+	x = safe_pos.x;
+	y = safe_pos.y - sprite_height/2; // so it doesnt spawn inside the floor
 }
 #endregion

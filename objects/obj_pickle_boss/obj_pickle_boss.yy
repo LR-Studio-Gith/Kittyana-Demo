@@ -48,6 +48,7 @@
   "tags":[
     "pauseable",
     "boss",
+    "heavy",
   ],
   "visible":true,
 }

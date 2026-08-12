@@ -1,2 +1,2 @@
-_hit = false;
-push_f = 10;
+//_hit = false;
+//push_f = 10;

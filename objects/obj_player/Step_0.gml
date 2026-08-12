@@ -16,6 +16,7 @@ if (input != 0) and state != ACTION_STATES.SLIDING
 if (dash_cooldown_timer > 0) {dash_cooldown_timer -= get_delta_time_in_seconds();}
 else {can_dash = true;}
 
+#region Safety Respawn/Teleport
 update_srays()
 if all_srays() != noone // all rays are touching the ground
 and on_ground // the player is confirmed to be on the ground
@@ -23,6 +24,7 @@ and on_ground // the player is confirmed to be on the ground
 	safe_pos.x = safety_rays.cen.x
 	safe_pos.y = safety_rays.cen.y
 }
+#endregion
 
 switch state {
 	#region Dashing Action
@@ -114,7 +116,7 @@ switch state {
 			}
 		}
 	    else {  // air movement
-			if !global.isRunning {
+			if !isRunning {
 				hsp = lerp(hsp, input * walk_speed, accel*2); // you can get up to walking speed faster than you can when you run -S
 			} else {
 				hsp = lerp(hsp, input * run_speed, accel*2);
@@ -122,9 +124,38 @@ switch state {
 		}
 		
 		// Walk <--> Run
-		if InputPressed(INPUT_VERB.RUN) {
-			global.isRunning = !global.isRunning
+		#region simple ver
+		if global.GAME_SETTINGS.RUNTYPE {
+			if InputPressed(INPUT_VERB.RUN) {
+				global.isRunning = !global.isRunning
+			}
 		}
+		#endregion
+		
+		#region build up ver
+		else {
+			global.isRunning = isRunning
+			// If plr is moving and is walking, tick down this time
+			if input != 0 and not isRunning {walkTime-=get_delta_time_in_seconds()}
+			// if the player walks for long enough so that the timer hits 0, activate running
+			if walkTime <= 0 {isRunning = true}
+		
+			// if the player was running but has stopped moving
+			// tick down the "was running" timer
+			if isRunning and input == 0 {
+				if sinceRunning <= 0 {
+					sinceRunning = sinceRunning_MAX
+				} else {sinceRunning -= get_delta_time_in_seconds()}
+			} else if isRunning and input != 0 {
+				sinceRunning = sinceRunning_MAX
+			} 
+		
+			if sinceRunning <= 0 {
+				walkTime = walkTime_MAX
+				isRunning = false;
+			}
+		}
+		#endregion
 		
 		// --- FRICTION ---
 	    if (input == 0 && on_ground) hsp = lerp(hsp, 0, ground_friction);		// ground slowdown
@@ -306,7 +337,12 @@ if ceilray_f(col_obj) != noone or ceilray_b(col_obj) != noone {vsp = 0}
 #region Hook Grab
 if grab_cd > 0 {grab_cd -= get_delta_time_in_seconds()}
 if InputLong(INPUT_VERB.HOOK) and grab_cd <= 0 {
-	var _enemy = hookgrab_circlecast()
+	var _enemy = noone
+	// set enemy to this if it doesn't have the heavy tag
+	if !asset_has_tags(hookgrab_circlecast(), "heavy", asset_object) or !asset_has_tags(hookgrab_circlecast(), "boss", asset_object) {
+		_enemy = hookgrab_circlecast()
+	}
+	
 	_pulled_target = _enemy // Ref for drawing the rope
 	pull_force = lerp(pull_force, pull_force_max, pull_accel)
 	
@@ -319,6 +355,7 @@ if InputLong(INPUT_VERB.HOOK) and grab_cd <= 0 {
 			var _dx = dcos(_dir)
 			var _dy = -dsin(_dir) 
 			// In GML, the Y Axis is inverted, so it has to be inverted here
+			
 			hspd = _dx * -other.pull_force
 			vspd = _dy * -other.pull_force
 		}
@@ -326,7 +363,8 @@ if InputLong(INPUT_VERB.HOOK) and grab_cd <= 0 {
 } else if InputLongReleased(INPUT_VERB.HOOK) or 
 hookgrab_in_min_range(_pulled_target) {
 	_pulled_target = noone;
-	pull_force = 0;
+	pull_force = lerp(pull_force, 0, pull_accel*5);
+	
 	if grab_cd <= 0 {grab_cd = grab_cd_max}
 }
 #endregion

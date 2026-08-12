@@ -5,6 +5,7 @@ global.GAME_SETTINGS = {
 	SFX_Volume		: 100,
 	
 	FREE_AIM		: false,
+	RUNTYPE			: false, // temp
 	
 }
 
