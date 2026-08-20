@@ -199,6 +199,11 @@ function touching_top() { // outdated, old
 // re-creates it if not
 pause_exists();
 
+function game_over(rm = room) {
+	room_goto(rm_gameover)
+	global.og_room = rm
+}
+
 // Scaling
 scale = 0.4666667; // init. scale the player has across all rooms
 image_xscale = scale;

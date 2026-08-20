@@ -54,7 +54,7 @@ function __InputConfigVerbs()
 	
 	InputDefineVerb(INPUT_VERB.SLIDE, "slide", [vk_down, "S"], gp_padd); // remove?
 	
-	InputDefineVerb(INPUT_VERB.RUN, "run", vk_shift, gp_face4); // remove?
+	InputDefineVerb(INPUT_VERB.RUN, "run", "X", gp_face4); // remove?
     #endregion
 	
 	#region Menu Action

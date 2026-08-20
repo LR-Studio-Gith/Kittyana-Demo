@@ -10,7 +10,9 @@ string_height(button[0].text)	for how tall our text is
 
 // Center menu
 x = window_get_width()/2 - width/2;
-y = window_get_height()/2 - height/2;
+if stay_centered {
+	y = window_get_height()/2 - height/2;
+}
 
 update_button_position();
 

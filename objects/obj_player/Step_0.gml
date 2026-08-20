@@ -1,6 +1,10 @@
 xstart = x; ystart = y
 
-if (hp <= 0) game_over()
+if (hp = 0) {
+	game_over()
+} else {
+	hp = clamp(hp, 0, 256)
+}
 
 if (not can_move) exit;
 var input = -InputX(INPUT_CLUSTER.NAVIGATION)
@@ -116,7 +120,7 @@ switch state {
 			}
 		}
 	    else {  // air movement
-			if !isRunning {
+			if !global.isRunning {
 				hsp = lerp(hsp, input * walk_speed, accel*2); // you can get up to walking speed faster than you can when you run -S
 			} else {
 				hsp = lerp(hsp, input * run_speed, accel*2);

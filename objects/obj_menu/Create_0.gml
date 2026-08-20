@@ -3,7 +3,7 @@ pos = 0;
 sprite_index = menu_sprite
 array_push(global.Active_Menus, id)
 
-
+stay_centered = true;
 
 // Get the amount of button options
 // Create buttons

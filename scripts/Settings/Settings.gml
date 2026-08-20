@@ -5,11 +5,12 @@ global.GAME_SETTINGS = {
 	SFX_Volume		: 100,
 	
 	FREE_AIM		: false,
-	RUNTYPE			: false, // temp
+	RUNTYPE			: true, // temp
 	
 }
 
 global.isRunning = false;
+global.og_room = noone;
 
 function update_settings() {
 	#region Audio [ALWAYS REMEMBER TO DIVIDE BY 100]
