@@ -51,6 +51,7 @@
     {"name":"Levels","order":5,"path":"folders/Levels.yy",},
     {"name":"Imgs","order":12,"path":"folders/Levels/Imgs.yy",},
     {"name":"Music","order":11,"path":"folders/Music.yy",},
+    {"name":"Amulet Objects","order":20,"path":"folders/Objects/Amulet Objects.yy",},
     {"name":"Buttons","order":10,"path":"folders/Objects/Buttons.yy",},
     {"name":"Button Children","order":2,"path":"folders/Objects/Buttons/Button Children.yy",},
     {"name":"Pause Buttons","order":6,"path":"folders/Objects/Buttons/Pause Buttons.yy",},
@@ -85,6 +86,10 @@
   "ResourceOrderSettings":[
     {"name":"AnimationCurve2","order":9,"path":"animcurves/AnimationCurve2/AnimationCurve2.yy",},
     {"name":"__InputUpdateController","order":21,"path":"objects/__InputUpdateController/__InputUpdateController.yy",},
+    {"name":"obj_amulet_dash","order":4,"path":"objects/obj_amulet_dash/obj_amulet_dash.yy",},
+    {"name":"obj_amulet_iframe","order":5,"path":"objects/obj_amulet_iframe/obj_amulet_iframe.yy",},
+    {"name":"obj_amulet_jump","order":3,"path":"objects/obj_amulet_jump/obj_amulet_jump.yy",},
+    {"name":"obj_amulet_spd","order":2,"path":"objects/obj_amulet_spd/obj_amulet_spd.yy",},
     {"name":"obj_back","order":6,"path":"objects/obj_back/obj_back.yy",},
     {"name":"obj_button_continue2","order":1,"path":"objects/obj_button_continue2/obj_button_continue2.yy",},
     {"name":"obj_button_credit","order":2,"path":"objects/obj_button_credit/obj_button_credit.yy",},

@@ -1,5 +1,4 @@
 /// @desc Main
-
 // States
 enum ACTION_STATES { // States are based on if an action can't be done while doing any other action
 	NONE,
@@ -10,6 +9,125 @@ enum ACTION_STATES { // States are based on if an action can't be done while doi
 	FROZEN, // aka a do nothing state, used for talking mostly
 }
 state = ACTION_STATES.NONE 
+
+
+var PlrStats = {
+	Base : {
+		spd: 10,
+		jump_height: 15,
+		jump_amount: 2,
+	
+		dash_amount: 1,
+		dash_cooldown: 1, //00%
+		dash_dis: 1,
+	
+		slide_dis: 2,
+		grab_range: 300,
+	
+		iframe_dur: 0.2, //00%
+	
+		money_earned: 1, //00%
+	
+		atk_size: 1,			// multiplier
+		atk_spd: 1,				// multiplier
+		damage: 1,				// multiplier
+		charge_windup: -1, // S- I don't know what the current windup is cuz theres no charge atk
+		weapon_hitbox_size: 1,	// multiplier
+	
+		drop_chance: 1, //00%
+	
+		hp: 1,
+		plr_hitbox_size: 1 // multiplier
+	},
+	Modifer : {
+		spd: 0,
+		jump_height: 0,
+		jump_amount: 0,
+	
+		dash_amount: 0,
+		dash_cooldown: 1, //00%
+		dash_dis: 0,
+	
+		slide_dis: 0,
+		grab_range: 0,
+	
+		iframe_dur: 1, //00%
+	
+		money_earned: 1, //00%
+	
+		atk_size: 1,			// multiplier
+		atk_spd: 1,				// multiplier
+		damage: 1,				// multiplier
+		charge_windup: -1, // S- I don't know what the current windup is cuz theres no charge atk
+		weapon_hitbox_size: 1,	// multiplier
+	
+		drop_chance: 1, //00%
+	
+		hp: 0,
+		plr_hitbox_size: 1 // multiplier
+	},
+}
+
+show_debug_message(PlrStats.Base)
+
+/*
+
+// not sure where to place this
+equipped_amulets = [];
+
+function equip_amulet(amulet, pos = array_length(equipped_amulets)-1) {
+	pos = clamp(pos, 0, array_length(equipped_amulets))
+	array_insert(equipped_amulets, pos, amulet);
+	update_stats();
+}
+
+function unequip_amulet(amulet) {
+	if not array_length(equipped_amulets) > 0 {
+		return // Return early
+	} else {
+		var _pos = undefined; // Init. value
+
+		// Looks through an the equipped amulets list to find the matching amulet's index
+		for (var i = 0; i < array_length(equipped_amulets); i++){
+			// if it's found it, store the index in _pos
+		    if (equipped_amulets[i] == amulet){ 
+				_pos = i;
+			}
+		}
+		
+		array_delete(equipped_amulets, _pos, 1);
+	}
+	update_stats();
+}
+
+function update_stats() {
+	max_jumps += global.modifers.jump_height
+	/* porblems:
+	i can't decide to add or multiply them.
+	
+	if i keep updating stats they will keep going upwards/downwards
+		sol: have a base value
+		hp_base = 9
+		hp_modifer = 2
+		hp = hp_base + hp_modifer
+		problem: lots of bases and modifers
+		
+		jm_base = 2
+		jm_modi = 3
+		jump_max = jm_base + jm_modi
+		
+		slidespd_b = ...
+		slidespd_m = ...
+		slidespd = b+m
+		
+		each would need to be typed in indiviually to be updated
+		
+		
+	
+
+	*/
+
+
 
 #region Movement
 on_ground = false;
@@ -23,6 +141,7 @@ walk_speed = 5;
 run_speed = 10;
 accel = 0.25;
 
+#region Running 
 // Time it takes for a run to start up
 walkTime_MAX = 3; // secs
 walkTime = walkTime_MAX;
@@ -32,6 +151,7 @@ sinceRunning_MAX = 5; // secs
 sinceRunning = sinceRunning_MAX;
 
 isRunning = false;
+#endregion
 
 // Friction
 ground_friction = 0.1;
@@ -73,8 +193,8 @@ hooking = false;
 
 // Controls (edit it if your a dev)
 hook_max_dist = 300; // Max distance in pixels the player can get from a hookpoint
-damping_rate = 0.99; //% How much speed the player loses per swing
-hook_accel_rate = 0.2; // How fast the player accelerates on a swing
+damping_rate = 0.80; //% How much speed the player loses per swing
+hook_accel_rate = 0.15; // How fast the player accelerates on a swing
 #endregion
 
 #endregion
@@ -195,8 +315,6 @@ function touching_top() { // outdated, old
 	} else {return 1} //Returning 1 will always make it true
 }
 
-// Checks for if the pause system exists in a room,
-// re-creates it if not
 pause_exists();
 
 function game_over(rm = room) {
