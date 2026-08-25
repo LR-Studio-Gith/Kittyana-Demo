@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_amulet_jump",
+  "%Name":"obj_amulet_base",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_amulet_jump",
+  "name":"obj_amulet_base",
   "overriddenProperties":[],
   "parent":{
     "name":"Amulet Objects",
