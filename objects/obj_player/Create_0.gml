@@ -11,64 +11,64 @@ enum ACTION_STATES { // States are based on if an action can't be done while doi
 state = ACTION_STATES.NONE 
 
 
-var PlrStats = {
-	Base : {
-		spd: 10,
-		jump_height: 15,
-		jump_amount: 2,
+//var PlrStats = {
+//	Base : {
+//		spd: 10,
+//		jump_height: 15,
+//		jump_amount: 2,
 	
-		dash_amount: 1,
-		dash_cooldown: 1, //00%
-		dash_dis: 1,
+//		dash_amount: 1,
+//		dash_cooldown: 1, //00%
+//		dash_dis: 1,
 	
-		slide_dis: 2,
-		grab_range: 300,
+//		slide_dis: 2,
+//		grab_range: 300,
 	
-		iframe_dur: 0.2, //00%
+//		iframe_dur: 0.2, //00%
 	
-		money_earned: 1, //00%
+//		money_earned: 1, //00%
 	
-		atk_size: 1,			// multiplier
-		atk_spd: 1,				// multiplier
-		damage: 1,				// multiplier
-		charge_windup: -1, // S- I don't know what the current windup is cuz theres no charge atk
-		weapon_hitbox_size: 1,	// multiplier
+//		atk_size: 1,			// multiplier
+//		atk_spd: 1,				// multiplier
+//		damage: 1,				// multiplier
+//		charge_windup: -1, // S- I don't know what the current windup is cuz theres no charge atk
+//		weapon_hitbox_size: 1,	// multiplier
 	
-		drop_chance: 1, //00%
+//		drop_chance: 1, //00%
 	
-		hp: 1,
-		plr_hitbox_size: 1 // multiplier
-	},
-	Modifer : {
-		spd: 0,
-		jump_height: 0,
-		jump_amount: 0,
+//		hp: 1,
+//		plr_hitbox_size: 1 // multiplier
+//	},
+//	Modifer : {
+//		spd: 0,
+//		jump_height: 0,
+//		jump_amount: 0,
 	
-		dash_amount: 0,
-		dash_cooldown: 1, //00%
-		dash_dis: 0,
+//		dash_amount: 0,
+//		dash_cooldown: 1, //00%
+//		dash_dis: 0,
 	
-		slide_dis: 0,
-		grab_range: 0,
+//		slide_dis: 0,
+//		grab_range: 0,
 	
-		iframe_dur: 1, //00%
+//		iframe_dur: 1, //00%
 	
-		money_earned: 1, //00%
+//		money_earned: 1, //00%
 	
-		atk_size: 1,			// multiplier
-		atk_spd: 1,				// multiplier
-		damage: 1,				// multiplier
-		charge_windup: -1, // S- I don't know what the current windup is cuz theres no charge atk
-		weapon_hitbox_size: 1,	// multiplier
+//		atk_size: 1,			// multiplier
+//		atk_spd: 1,				// multiplier
+//		damage: 1,				// multiplier
+//		charge_windup: -1, // S- I don't know what the current windup is cuz theres no charge atk
+//		weapon_hitbox_size: 1,	// multiplier
 	
-		drop_chance: 1, //00%
+//		drop_chance: 1, //00%
 	
-		hp: 0,
-		plr_hitbox_size: 1 // multiplier
-	},
-}
+//		hp: 0,
+//		plr_hitbox_size: 1 // multiplier
+//	},
+//}
 
-show_debug_message(PlrStats.Base)
+//show_debug_message(PlrStats.Base)
 
 /*
 
@@ -127,6 +127,8 @@ function update_stats() {
 
 	*/
 
+stat = new Stats(10);
+show_debug_message(stat.Get())
 
 
 #region Movement
