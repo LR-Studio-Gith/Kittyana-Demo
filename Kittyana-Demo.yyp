@@ -300,6 +300,7 @@
     {"id":{"name":"clamp_loop","path":"scripts/clamp_loop/clamp_loop.yy",},},
     {"id":{"name":"col_rays","path":"scripts/col_rays/col_rays.yy",},},
     {"id":{"name":"collision_line_point","path":"scripts/collision_line_point/collision_line_point.yy",},},
+    {"id":{"name":"Cometa_Toggles","path":"scripts/Cometa_Toggles/Cometa_Toggles.yy",},},
     {"id":{"name":"create_button","path":"scripts/create_button/create_button.yy",},},
     {"id":{"name":"create_menu","path":"scripts/create_menu/create_menu.yy",},},
     {"id":{"name":"createHitbox","path":"scripts/createHitbox/createHitbox.yy",},},

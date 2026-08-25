@@ -239,6 +239,7 @@
     {"name":"Bbox_Functions","order":5,"path":"scripts/Bbox_Functions/Bbox_Functions.yy",},
     {"name":"col_rays","order":7,"path":"scripts/col_rays/col_rays.yy",},
     {"name":"collision_line_point","order":6,"path":"scripts/collision_line_point/collision_line_point.yy",},
+    {"name":"Cometa_Toggles","order":10,"path":"scripts/Cometa_Toggles/Cometa_Toggles.yy",},
     {"name":"create_menu","order":1,"path":"scripts/create_menu/create_menu.yy",},
     {"name":"createHitbox","order":2,"path":"scripts/createHitbox/createHitbox.yy",},
     {"name":"doubleclick_create","order":1,"path":"scripts/doubleclick_create/doubleclick_create.yy",},

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Cometa_Toggles",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Cometa_Toggles",
+  "parent":{
+    "name":"Functions",
+    "path":"folders/Scripts/Functions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
