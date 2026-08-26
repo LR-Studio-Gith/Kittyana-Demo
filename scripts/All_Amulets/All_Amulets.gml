@@ -6,12 +6,14 @@ function All_Amulets(BaseStats = obj_player.BaseStats) constructor {
 		test_amu1 : new Amulet("Amulet of Testing", 
 		[
 			BaseStats.spd, 
+			BaseStats.walk_spd, 
 			BaseStats.dash_dis, 
 			BaseStats.jump_amount
 		],
 		[
+			new Modifier(1, math_ops.FLAT, 10),
 			new Modifier(5, math_ops.MULTIPLY, 10),
-			new Modifier(50, math_ops.ADD, 60),
+			new Modifier(10, math_ops.ADD, 60),
 			new Modifier(2, math_ops.ADD,),
 		]),
 	
@@ -30,10 +32,6 @@ function All_Amulets(BaseStats = obj_player.BaseStats) constructor {
 	#endregion
 	
 	#region Gold Amulets
-	gold = {
-		test_gold_1 : new GoldAmulet("John Kittyana's Amulet",
-		[BaseStats.hp, BaseStats.damage], 
-		[new Modifier(999, math_ops.FLAT), new Modifier(100, math_ops.FLAT)]) 
-	} // They will be added later since those require unique code.
+	gold = {} // They will be added later since those require unique code.
 	#endregion
 }
