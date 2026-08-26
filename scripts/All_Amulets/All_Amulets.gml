@@ -30,6 +30,10 @@ function All_Amulets(BaseStats = obj_player.BaseStats) constructor {
 	#endregion
 	
 	#region Gold Amulets
-	gold = {} // They will be added later since those require unique code.
+	gold = {
+		test_gold_1 : new GoldAmulet("John Kittyana's Amulet",
+		[BaseStats.hp, BaseStats.damage], 
+		[new Modifier(999, math_ops.FLAT), new Modifier(100, math_ops.FLAT)]) 
+	} // They will be added later since those require unique code.
 	#endregion
 }

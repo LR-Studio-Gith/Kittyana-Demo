@@ -315,6 +315,7 @@
     {"id":{"name":"free_aim","path":"scripts/free_aim/free_aim.yy",},},
     {"id":{"name":"Funcs_Amulets","path":"scripts/Funcs_Amulets/Funcs_Amulets.yy",},},
     {"id":{"name":"get_delta_time_in_seconds","path":"scripts/get_delta_time_in_seconds/get_delta_time_in_seconds.yy",},},
+    {"id":{"name":"GoldAmulet","path":"scripts/GoldAmulet/GoldAmulet.yy",},},
     {"id":{"name":"InputBindingFind","path":"scripts/InputBindingFind/InputBindingFind.yy",},},
     {"id":{"name":"InputBindingFindCollisions","path":"scripts/InputBindingFindCollisions/InputBindingFindCollisions.yy",},},
     {"id":{"name":"InputBindingGet","path":"scripts/InputBindingGet/InputBindingGet.yy",},},

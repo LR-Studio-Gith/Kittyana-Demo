@@ -33,9 +33,7 @@ function Amulet(_name, _stats, _modifiers) constructor{
 	mods = _modifiers;
 	
 	/// @desc Applies every modifier to every stat in the array one by one. So the first stat will have the first modifier applied. Second stat, second modifier, etc.
-	static ApplyModifiers = function() {
-		_s = stats;
-		_m = mods;
+	static ApplyModifiers = function(_s = stats, _m = mods) {
 		if array_length(mods) != array_length(stats) {
 			array_resize(_s, array_length(_m))
 		}
@@ -46,9 +44,7 @@ function Amulet(_name, _stats, _modifiers) constructor{
 	}
 	
 	/// @desc Removes every modifier the amulet is applying.
-	static RemoveModifiers = function() {
-		_s = stats;
-		_m = mods
+	static RemoveModifiers = function(_s = stats, _m = mods) {
 		if array_length(_m) != array_length(_s) {
 			array_resize(_m, array_length(_s))
 		}
