@@ -10,125 +10,41 @@ enum ACTION_STATES { // States are based on if an action can't be done while doi
 }
 state = ACTION_STATES.NONE 
 
-
-//var PlrStats = {
-//	Base : {
-//		spd: 10,
-//		jump_height: 15,
-//		jump_amount: 2,
+#region Stats
+BaseStats = {
+	spd: new Statistic(10),
+	walk_spd: new Statistic(5),
+	jump_height: new Statistic(15),
+	jump_amount: new Statistic(2),
+	grav : new Statistic(0.45), // not a percentage this time haha
 	
-//		dash_amount: 1,
-//		dash_cooldown: 1, //00%
-//		dash_dis: 1,
+	dash_amount: new Statistic(1),
+	dash_cd: new Statistic(.50), //%
+	dash_dis: new Statistic(.15), // actually changes how long a dash lasts
 	
-//		slide_dis: 2,
-//		grab_range: 300,
+	slide_dis: new Statistic(2),
+	grab_range: new Statistic(300),
 	
-//		iframe_dur: 0.2, //00%
+	iframe_dur: new Statistic(0.20), //%
 	
-//		money_earned: 1, //00%
+	money_earned: new Statistic(1.00), //%
 	
-//		atk_size: 1,			// multiplier
-//		atk_spd: 1,				// multiplier
-//		damage: 1,				// multiplier
-//		charge_windup: -1, // S- I don't know what the current windup is cuz theres no charge atk
-//		weapon_hitbox_size: 1,	// multiplier
+	atk_size: new Statistic(1),
+	atk_spd: new Statistic(1),	
+	damage: new Statistic(1),	
+	// S- I don't know what the current windup is cuz theres no charge atk
+	charge_windup: new Statistic(-1), 
+	weapon_hb_size: new Statistic(1),	
 	
-//		drop_chance: 1, //00%
+	drop_chance: new Statistic(1.00), //%
 	
-//		hp: 1,
-//		plr_hitbox_size: 1 // multiplier
-//	},
-//	Modifer : {
-//		spd: 0,
-//		jump_height: 0,
-//		jump_amount: 0,
-	
-//		dash_amount: 0,
-//		dash_cooldown: 1, //00%
-//		dash_dis: 0,
-	
-//		slide_dis: 0,
-//		grab_range: 0,
-	
-//		iframe_dur: 1, //00%
-	
-//		money_earned: 1, //00%
-	
-//		atk_size: 1,			// multiplier
-//		atk_spd: 1,				// multiplier
-//		damage: 1,				// multiplier
-//		charge_windup: -1, // S- I don't know what the current windup is cuz theres no charge atk
-//		weapon_hitbox_size: 1,	// multiplier
-	
-//		drop_chance: 1, //00%
-	
-//		hp: 0,
-//		plr_hitbox_size: 1 // multiplier
-//	},
-//}
-
-//show_debug_message(PlrStats.Base)
-
-/*
-
-// not sure where to place this
-equipped_amulets = [];
-
-function equip_amulet(amulet, pos = array_length(equipped_amulets)-1) {
-	pos = clamp(pos, 0, array_length(equipped_amulets))
-	array_insert(equipped_amulets, pos, amulet);
-	update_stats();
+	hp: new Statistic(9),
+	hb_size: new Statistic(1),
 }
+#endregion
 
-function unequip_amulet(amulet) {
-	if not array_length(equipped_amulets) > 0 {
-		return // Return early
-	} else {
-		var _pos = undefined; // Init. value
-
-		// Looks through an the equipped amulets list to find the matching amulet's index
-		for (var i = 0; i < array_length(equipped_amulets); i++){
-			// if it's found it, store the index in _pos
-		    if (equipped_amulets[i] == amulet){ 
-				_pos = i;
-			}
-		}
-		
-		array_delete(equipped_amulets, _pos, 1);
-	}
-	update_stats();
-}
-
-function update_stats() {
-	max_jumps += global.modifers.jump_height
-	/* porblems:
-	i can't decide to add or multiply them.
-	
-	if i keep updating stats they will keep going upwards/downwards
-		sol: have a base value
-		hp_base = 9
-		hp_modifer = 2
-		hp = hp_base + hp_modifer
-		problem: lots of bases and modifers
-		
-		jm_base = 2
-		jm_modi = 3
-		jump_max = jm_base + jm_modi
-		
-		slidespd_b = ...
-		slidespd_m = ...
-		slidespd = b+m
-		
-		each would need to be typed in indiviually to be updated
-		
-		
-	
-
-	*/
-
-stat = new Stats(10);
-show_debug_message(stat.Get())
+// Amulets
+amulets = new All_Amulets(); // A shorthand for looking through all the available amulets
 
 
 #region Movement
@@ -138,9 +54,9 @@ on_ground = false;
 hsp = 0;
 vsp = 0;
 
-grv = .45;
-walk_speed = 5;
-run_speed = 10;
+grv = BaseStats.grav;
+walk_speed = BaseStats.walk_spd;
+run_speed = BaseStats.spd;
 accel = 0.25;
 
 #region Running 
@@ -160,9 +76,9 @@ ground_friction = 0.1;
 air_friction	= 0.05;
 
 // Jumping
-max_jumps = 2;  
+max_jumps = BaseStats.jump_amount;  
 jumps_left = max_jumps;
-jump_speed = -15;
+jump_speed = BaseStats.jump_height;
 
 // CDs
 coyote_time_max = 6; 
@@ -170,16 +86,19 @@ coyote_timer = 0;
 can_move = true; // ???? -S
 
 // Slide
-slideSpdMul = 2; // multiplier to apply onto sliding. SlideSpd = run_spd * slideSpdMul
+slideSpdMul = BaseStats.slide_dis; // multiplier to apply onto sliding. SlideSpd = run_spd * slideSpdMul
 slideEnding = false;
 
 #region Dash
 // Motion
 dash_speed = 30;
-dash_time = .15;
+dash_time = BaseStats.dash_dis;
+
+max_dashs = BaseStats.dash_amount;  
+dashs_left = max_dashs;
 
 // Cooldowns
-dash_cooldown = 0.5;
+dash_cooldown = BaseStats.dash_cd;
 dash_timer = 0;
 dash_cooldown_timer = 0;
 
@@ -194,7 +113,7 @@ hook_target_y = undefined;
 hooking = false;
 
 // Controls (edit it if your a dev)
-hook_max_dist = 300; // Max distance in pixels the player can get from a hookpoint
+hook_max_dist = BaseStats.grab_range; // Max distance in pixels the player can get from a hookpoint
 damping_rate = 0.80; //% How much speed the player loses per swing
 hook_accel_rate = 0.15; // How fast the player accelerates on a swing
 #endregion
@@ -202,17 +121,19 @@ hook_accel_rate = 0.15; // How fast the player accelerates on a swing
 #endregion
 
 #region Combat
+hp = BaseStats.hp;
+
 max_hurt_time = 60 // Hurt flash timer
 hitbox = noone;
 
 // I-Frames
 invincible = false;
-invincibility_duration = .2;
+invincibility_duration = BaseStats.iframe_dur;
 
 #region Hook Grab
 // Range
-grab_rad_max = 300
-grab_rad_min = 75
+grab_rad_max = BaseStats.grab_range;
+grab_rad_min = grab_rad_max.GetValue()*0.25 // 25%
 
 // Force
 pull_force_max = 35; pull_force = 0; 
@@ -222,12 +143,13 @@ pull_accel = 0.2;
 grab_cd_max = 1.5; grab_cd = 0; 
 
 _pulled_target = noone // for the draw event really
-function hookgrab_drawtest() {	// for dev testing, lets you see the ranges of the grab
+/// for dev testing, lets you see the ranges of the grab
+function hookgrab_drawtest() {	
 	// bright green = max range
 	draw_set_colour(c_lime)
 	draw_circle(
 		x, y,
-		grab_rad_max,
+		grab_rad_max.GetValue(),
 
 		true
 	)
@@ -263,7 +185,7 @@ function hookgrab_in_min_range(_obj) {
 function hookgrab_circlecast(_obj = obj_EnemyParent) {
 	var _cols_list = ds_list_create() // data list to store all enemies in range
 	var _cols_nums = collision_circle_list(
-		x, y, grab_rad_max, 
+		x, y, grab_rad_max.GetValue(), 
 		_obj, 
 		false, true, _cols_list, true
 	); 
