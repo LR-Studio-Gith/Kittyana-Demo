@@ -42,7 +42,6 @@
       ],"multiselect":false,"name":"WeaponType","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"Katana\"","varType":6,},
     {"$GMObjectProperty":"v2","%Name":"Current_Atk","filters":[],"listItems":[],"multiselect":false,"name":"Current_Atk","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0.0","varType":0,},
     {"$GMObjectProperty":"v2","%Name":"Attack_Delay","filters":[],"listItems":[],"multiselect":false,"name":"Attack_Delay","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
-    {"$GMObjectProperty":"v2","%Name":"hp","filters":[],"listItems":[],"multiselect":false,"name":"hp","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"9","varType":1,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

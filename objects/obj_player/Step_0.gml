@@ -3,8 +3,17 @@ xstart = x; ystart = y
 if (hp = 0) {
 	game_over()
 } else {
-	hp = clamp(hp, 0, 256)
+	hp.current_value = clamp(hp.GetValue(), 0, 256)
 }
+
+if InputPressed(INPUT_VERB.ATTACK_2) {
+	show_debug_message(BaseStats.spd.GetValue())
+	
+	equip_amulet(amulets.bronze.test_amu1);
+	
+	show_debug_message(BaseStats.spd.GetValue())
+}
+
 
 if (not can_move) exit;
 var input = -InputX(INPUT_CLUSTER.NAVIGATION)
@@ -54,7 +63,7 @@ switch state {
 		}
 		
 		if (dash_timer <= 0) { // Once the dash has run out, reset
-		    dash_cooldown_timer = dash_cooldown;
+		    dash_cooldown_timer = dash_cooldown.GetValue();
 		    can_dash = false;
 			invincible = false
 			state = ACTION_STATES.NONE;
@@ -111,21 +120,23 @@ switch state {
 	#region Normal/No Action State
 	case ACTION_STATES.NONE: 
 		// --- MOVING ---
-	    target_speed = input * walk_speed;
+	    target_speed = input * walk_speed.GetValue();
 	    if (on_ground) {
 			if !global.isRunning {
-				hsp = lerp(hsp, input * walk_speed, accel*2); // you can get up to walking speed faster than you can when you run -S
+				hsp = lerp(hsp, input * walk_speed.GetValue(), accel*2); // you can get up to walking speed faster than you can when you run -S
 			} else {
-				hsp = lerp(hsp, input * run_speed, accel);
+				hsp = lerp(hsp, input * run_speed.GetValue(), accel);
 			}
 		}
 	    else {  // air movement
 			if !global.isRunning {
-				hsp = lerp(hsp, input * walk_speed, accel*2); // you can get up to walking speed faster than you can when you run -S
+				hsp = lerp(hsp, input * walk_speed.GetValue(), accel*2); // you can get up to walking speed faster than you can when you run -S
 			} else {
-				hsp = lerp(hsp, input * run_speed, accel*2);
+				hsp = lerp(hsp, input * run_speed.GetValue(), accel*2);
 			}
 		}
+		
+		
 		
 		// Walk <--> Run
 		#region simple ver
@@ -166,33 +177,33 @@ switch state {
 		else if (input == 0 && !on_ground) hsp = lerp(hsp, 0, air_friction);	// slowdown in air
 
 	    // --- GRAVITY ---
-		if (!on_ground) vsp += grv;
+		if (!on_ground) vsp += grv.GetValue();
 		
 	    if not on_ground {
 			coyote_timer -= 1; // should update to be deltatime? this is a question -S
 	       
 			if wall_ray_front() != noone and InputPressed(INPUT_VERB.JUMP) and tile_is_climbable() {
 				state = ACTION_STATES.CLIMBING
-				vsp = -run_speed;				// climb up
-		        jumps_left = max_jumps;			// reset double jump
+				vsp = -run_speed.GetValue();				// climb up
+		        jumps_left = max_jumps.GetValue();			// reset double jump
 		        coyote_timer = coyote_time_max;	// allow jump off wall quickly
 			}
 		}
 		else { 
-			jumps_left = max_jumps;
+			jumps_left = max_jumps.GetValue();
 			coyote_timer = coyote_time_max;
 		}
 
 		// --- DASH --- 
 		if InputPressed(INPUT_VERB.DASH) and can_dash and dash_cooldown_timer <= 0 {
 	        state = ACTION_STATES.DASHING;
-	        dash_timer = dash_time;
+	        dash_timer = dash_time.GetValue()
 	    }
 		
 	    // --- JUMP / DOUBLE JUMP ---
 	    if ((InputPressed(INPUT_VERB.JUMP)) and jumps_left > 0) {
-			if global.isRunning	{vsp = jump_speed;}
-			else			{vsp = -walk_speed*1.5;}
+			if global.isRunning	{vsp = -jump_speed.GetValue();}
+			else			{vsp = -walk_speed.GetValue()*1.5;}
 			
 			if (on_ground or coyote_timer > 0) {
 	            can_dash = true;
@@ -204,7 +215,7 @@ switch state {
 
 		// --- HOOK ---
 	    if (InputPressed(INPUT_VERB.HOOK)) {
-			hook_obj = collision_circle(x, y, hook_max_dist, obj_hookwall, false, true)
+			hook_obj = collision_circle(x, y, hook_max_dist.GetValue(), obj_hookwall, false, true)
 	        if (hook_obj != noone) 
 			{
 				state = ACTION_STATES.HOOKED;
@@ -236,14 +247,14 @@ switch state {
 		if wall_ray_front() == noone or on_ground or !tile_is_climbable()
 		{state = ACTION_STATES.NONE} 
 		else {
-			vsp = InputY(INPUT_CLUSTER.NAVIGATION) * run_speed	// climb up
-			jumps_left = max_jumps;								// reset double jump
+			vsp = InputY(INPUT_CLUSTER.NAVIGATION) * run_speed.GetValue()	// climb up
+			jumps_left = max_jumps.GetValue();					// reset double jump
 			coyote_timer = coyote_time_max;						// allow jump off wall quickly
 			
 			// Wall jump
 			if InputPressed(INPUT_VERB.JUMP) {
-				vsp = jump_speed;
-				hsp = (jump_speed/1.5)*sign(image_xscale)
+				vsp = -jump_speed.GetValue();
+				hsp = (-jump_speed.GetValue()/1.5)*sign(image_xscale)
 			    can_dash = true;
 			    coyote_timer = 0;
 				jumps_left--;
@@ -259,17 +270,17 @@ switch state {
 			slideEnding = false
 		}
 	
-		var slideDir = (run_speed * sign(image_xscale))
+		var slideDir = (run_speed.GetValue() * sign(image_xscale))
 
 		 // --- GRAVITY ---
-		if (!on_ground) vsp += grv*2;
+		if (!on_ground) vsp += grv.GetValue()*2;
 		
-		if hsp == slideDir*slideSpdMul and not slideEnding {
+		if hsp == slideDir*slideSpdMul.GetValue() and not slideEnding {
 			slideEnding = true
 		}
 		
 		if not slideEnding {
-			hsp = lerp(hsp, slideDir*slideSpdMul, accel)
+			hsp = lerp(hsp, slideDir*slideSpdMul.GetValue(), accel)
 		}
 		else {
 			hsp = lerp(hsp, 0, ground_friction*2)
@@ -373,6 +384,7 @@ hookgrab_in_min_range(_pulled_target) {
 }
 #endregion
 
+var atk_size = BaseStats.atk_size.GetValue()
 #region Katana
 	if WeaponType == "Katana"
 	{
@@ -381,7 +393,7 @@ hookgrab_in_min_range(_pulled_target) {
 			// Katana attack 1
 			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false
 			{
-				createHitbox(10, self, 100*facing, 0, 5, 2.5,4)
+				createHitbox(10, self, 100*facing, 0, 5, 2.5*atk_size ,4*atk_size)
 				alarm_set(1, 10);
 				alarm_set(0, 20);
 				Attack_Delay = true;
@@ -390,7 +402,7 @@ hookgrab_in_min_range(_pulled_target) {
 			// Katana attack 2
 			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 1 and Attack_Delay = false
 			{
-				createHitbox(20, self, 100*facing,0,5,4,2)
+				createHitbox(20, self, 100*facing,0,5,4*atk_size,2*atk_size)
 			
 				alarm_set(1, 25);
 				alarm_set(0, 40);
@@ -404,7 +416,7 @@ hookgrab_in_min_range(_pulled_target) {
 			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false
 			{
 				vsp = -grv
-				createHitbox(10, self, 100*aim_dir, 0, 5, 2.5,4)
+				createHitbox(10, self, 100*aim_dir, 0, 5, 2.5*atk_size,4*atk_size)
 				alarm_set(1, 10);
 				alarm_set(0, 20);
 				Attack_Delay = true;
@@ -414,7 +426,7 @@ hookgrab_in_min_range(_pulled_target) {
 			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 1 and Attack_Delay = false
 			{
 				vsp = -grv
-				createHitbox(20, self, 100*aim_dir,0,5,4,2)
+				createHitbox(20, self, 100*aim_dir,0,5,4*atk_size,2*atk_size)
 			
 				alarm_set(1, 25);
 				alarm_set(0, 40);
