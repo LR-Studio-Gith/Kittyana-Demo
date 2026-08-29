@@ -9,7 +9,7 @@ global.GAME_SETTINGS = {
 	
 }
 
-global.isRunning = false;
+global.isRunning = true;
 global.og_room = noone;
 
 function update_settings() {
