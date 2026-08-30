@@ -1,6 +1,6 @@
 xstart = x; ystart = y
 
-if (hp = 0) {
+if (hp.GetValue() = 0) {
 	game_over()
 } else {
 	hp.current_value = clamp(hp.GetValue(), 0, 256)

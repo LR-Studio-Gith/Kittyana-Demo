@@ -297,7 +297,7 @@ function safety_rays_draw(color = c_white) {
 
 /// @desc Teleport the player to a safe position and take a bit of damage
 function safety_respawn(dmg = 1) {
-	hp -= abs(dmg)
+	hp.current_value -= abs(dmg)
 	x = safe_pos.x;
 	y = safe_pos.y - sprite_height/2; // so it doesnt spawn inside the floor
 }
