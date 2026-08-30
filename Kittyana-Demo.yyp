@@ -111,7 +111,11 @@
     {"id":{"name":"AnimationCurve2","path":"animcurves/AnimationCurve2/AnimationCurve2.yy",},},
     {"id":{"name":"fnt_menu","path":"fonts/fnt_menu/fnt_menu.yy",},},
     {"id":{"name":"__InputUpdateController","path":"objects/__InputUpdateController/__InputUpdateController.yy",},},
+<<<<<<< Updated upstream
     {"id":{"name":"COMETA_Camera1","path":"objects/COMETA_Camera1/COMETA_Camera1.yy",},},
+=======
+    {"id":{"name":"COMETA_camera1","path":"objects/COMETA_camera1/COMETA_camera1.yy",},},
+>>>>>>> Stashed changes
     {"id":{"name":"obj_back","path":"objects/obj_back/obj_back.yy",},},
     {"id":{"name":"obj_button_continue1","path":"objects/obj_button_continue1/obj_button_continue1.yy",},},
     {"id":{"name":"obj_button_continue2","path":"objects/obj_button_continue2/obj_button_continue2.yy",},},

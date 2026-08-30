@@ -47,6 +47,7 @@
     {"name":"inst_59CB22A1","path":"rooms/rm_mainvillage/rm_mainvillage.yy",},
     {"name":"inst_39D0CA0F","path":"rooms/rm_mainvillage/rm_mainvillage.yy",},
     {"name":"inst_34BD91FA","path":"rooms/rm_mainvillage/rm_mainvillage.yy",},
+    {"name":"inst_7036410F","path":"rooms/rm_mainvillage/rm_mainvillage.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -333,6 +334,9 @@
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_74F7A498","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_74F7A498","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":2.6398067,"scaleY":2.6398067,"spriteId":{"name":"spr_testbg","path":"sprites/spr_testbg/spr_testbg.yy",},"x":7008.0,"y":896.0,},
       ],"depth":1100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Sky","properties":[],"resourceType":"GMRAssetLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":15.0,"animationSpeedType":0,"colour":4294954354,"depth":1200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":false,"inheritLayerDepth":true,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":false,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":null,"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":false,"x":0,"y":0,},
+    {"$GMRInstanceLayer":"","%Name":"COMETA2_CameraSys","depth":1300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
+        {"$GMRInstance":"v4","%Name":"inst_7036410F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7036410F","objectId":{"name":"COMETA_camera1","path":"objects/COMETA_camera1/COMETA_camera1.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":13632.0,"y":6144.0,},
+      ],"layers":[],"name":"COMETA2_CameraSys","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
   ],
   "name":"rm_mainvillage",
   "parent":{
@@ -357,7 +361,11 @@
   },
   "sequenceId":null,
   "views":[
+<<<<<<< Updated upstream
     {"hborder":1280,"hport":1080,"hspeed":-1,"hview":720,"inherit":false,"objectId":{"name":"COMETA_Camera1","path":"objects/COMETA_Camera1/COMETA_Camera1.yy",},"vborder":720,"visible":true,"vspeed":-1,"wport":1920,"wview":1280,"xport":0,"xview":20000,"yport":0,"yview":-9000,},
+=======
+    {"hborder":620,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":{"name":"COMETA_camera1","path":"objects/COMETA_camera1/COMETA_camera1.yy",},"vborder":780,"visible":true,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":20000,"yport":0,"yview":5900,},
+>>>>>>> Stashed changes
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
