@@ -84,8 +84,6 @@
     {"name":"Spring","order":3,"path":"folders/Scripts/ASSET_Scripts/Tweens/Spring.yy",},
 >>>>>>> Stashed changes
     {"name":"Functions","order":1,"path":"folders/Scripts/Functions.yy",},
-    {"name":"Shaders","order":9,"path":"folders/Shaders.yy",},
-    {"name":"Sprites","order":4,"path":"folders/Sprites.yy",},
     {"name":"Shaders","order":4,"path":"folders/Shaders.yy",},
     {"name":"Sprites","order":1,"path":"folders/Sprites.yy",},
     {"name":"Buttons","order":13,"path":"folders/Sprites/Buttons.yy",},
@@ -96,7 +94,6 @@
     {"name":"Player Sprites","order":2,"path":"folders/Sprites/Player Sprites.yy",},
     {"name":"Talking Sprites","order":14,"path":"folders/Sprites/Talking Sprites.yy",},
     {"name":"Tile Sprites","order":19,"path":"folders/Sprites/Tile Sprites.yy",},
-    {"name":"Tiles","order":14,"path":"folders/Tiles.yy",},
     {"name":"Tiles","order":7,"path":"folders/Tiles.yy",},
   ],
   "ResourceOrderSettings":[

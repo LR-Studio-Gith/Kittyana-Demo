@@ -70,6 +70,7 @@
     {"$GMFolder":"","%Name":"Button Children","folderPath":"folders/Objects/Buttons/Button Children.yy","name":"Button Children","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Pause Buttons","folderPath":"folders/Objects/Buttons/Pause Buttons.yy","name":"Pause Buttons","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Enemy Objects","folderPath":"folders/Objects/Enemy Objects.yy","name":"Enemy Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"COMETA2_Cameras","folderPath":"folders/Objects/COMETA2_Cameras.yy","name":"COMETA2_Cameras","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Hit Objects","folderPath":"folders/Objects/Hit Objects.yy","name":"Hit Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Level Objects","folderPath":"folders/Objects/Level Objects.yy","name":"Level Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Parent Objects","folderPath":"folders/Objects/Parent Objects.yy","name":"Parent Objects","resourceType":"GMFolder","resourceVersion":"2.0",},

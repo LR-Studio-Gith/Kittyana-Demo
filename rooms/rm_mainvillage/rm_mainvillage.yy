@@ -46,7 +46,6 @@
     {"name":"inst_3782A5E5","path":"rooms/rm_mainvillage/rm_mainvillage.yy",},
     {"name":"inst_59CB22A1","path":"rooms/rm_mainvillage/rm_mainvillage.yy",},
     {"name":"inst_39D0CA0F","path":"rooms/rm_mainvillage/rm_mainvillage.yy",},
-    {"name":"inst_34BD91FA","path":"rooms/rm_mainvillage/rm_mainvillage.yy",},
     {"name":"inst_7036410F","path":"rooms/rm_mainvillage/rm_mainvillage.yy",},
   ],
   "isDnd":false,
