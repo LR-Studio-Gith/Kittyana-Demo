@@ -57,6 +57,7 @@
     {"name":"Button Children","order":2,"path":"folders/Objects/Buttons/Button Children.yy",},
     {"name":"Pause Buttons","order":6,"path":"folders/Objects/Buttons/Pause Buttons.yy",},
     {"name":"Enemy Objects","order":4,"path":"folders/Objects/Enemy Objects.yy",},
+    {"name":"COMETA_Cameras","order":22,"path":"folders/Objects/COMETA_Cameras.yy",},
     {"name":"Hit Objects","order":3,"path":"folders/Objects/Hit Objects.yy",},
     {"name":"Level Objects","order":2,"path":"folders/Objects/Level Objects.yy",},
     {"name":"Parent Objects","order":7,"path":"folders/Objects/Parent Objects.yy",},
