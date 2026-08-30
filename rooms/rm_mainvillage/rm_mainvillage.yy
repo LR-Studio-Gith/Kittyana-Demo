@@ -54,7 +54,7 @@
         {"$GMRInstance":"v4","%Name":"inst_34BD91FA","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_34BD91FA","objectId":{"name":"COMETA_Camera1","path":"objects/COMETA_Camera1/COMETA_Camera1.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":13632.0,"y":6080.0,},
       ],"layers":[],"name":"COMETA_CameraSys","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMREffectLayer":"","%Name":"LMDA_RETRO_FILTER_PROT1","depth":100,"effectEnabled":true,"effectType":"_filter_pixelate","gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"LMDA_RETRO_FILTER_PROT1","properties":[
-        {"name":"g_CellSize","type":0,"value":"2",},
+        {"name":"g_CellSize","type":0,"value":"1.3",},
       ],"resourceType":"GMREffectLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Managers","depth":200,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_33907EF2","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_33907EF2","objectId":{"name":"obj_village_music","path":"objects/obj_village_music/obj_village_music.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":9712.0,"y":5360.0,},
@@ -357,7 +357,7 @@
   },
   "sequenceId":null,
   "views":[
-    {"hborder":1280,"hport":1080,"hspeed":-1,"hview":540,"inherit":false,"objectId":{"name":"COMETA_Camera1","path":"objects/COMETA_Camera1/COMETA_Camera1.yy",},"vborder":720,"visible":true,"vspeed":-1,"wport":1920,"wview":960,"xport":0,"xview":20000,"yport":0,"yview":-9000,},
+    {"hborder":1280,"hport":1080,"hspeed":-1,"hview":720,"inherit":false,"objectId":{"name":"COMETA_Camera1","path":"objects/COMETA_Camera1/COMETA_Camera1.yy",},"vborder":720,"visible":true,"vspeed":-1,"wport":1920,"wview":1280,"xport":0,"xview":20000,"yport":0,"yview":-9000,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
