@@ -1,7 +1,7 @@
 if other.master != self and array_contains(other.attacked, self) == false and not invincible{
 	array_push(other.attacked, self)
 	show_debug_message(other.damage)
-	hp -= other.damage;
+	hp.current_value -= other.damage;
 	//show_debug_message(hp);
 	alarm_set(2, 5)
 	
@@ -13,5 +13,5 @@ if other.master != self and array_contains(other.attacked, self) == false and no
 	
 	// I-frames
 	invincible = true
-	alarm_set(2, invincibility_duration*game_get_speed(gamespeed_fps))
+	alarm_set(2, invincibility_duration.GetValue()*game_get_speed(gamespeed_fps))
 }
