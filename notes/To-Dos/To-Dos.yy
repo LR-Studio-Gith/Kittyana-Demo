@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"v1",
+  "%Name":"To-Dos",
+  "name":"To-Dos",
+  "parent":{
+    "name":"Kittyana-Demo",
+    "path":"Kittyana-Demo.yyp",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

@@ -86,6 +86,7 @@
   ],
   "ResourceOrderSettings":[
     {"name":"AnimationCurve2","order":9,"path":"animcurves/AnimationCurve2/AnimationCurve2.yy",},
+    {"name":"To-Dos","order":18,"path":"notes/To-Dos/To-Dos.yy",},
     {"name":"__InputUpdateController","order":21,"path":"objects/__InputUpdateController/__InputUpdateController.yy",},
     {"name":"obj_back","order":6,"path":"objects/obj_back/obj_back.yy",},
     {"name":"obj_button_continue2","order":1,"path":"objects/obj_button_continue2/obj_button_continue2.yy",},

@@ -139,39 +139,10 @@ switch state {
 		
 		
 		// Walk <--> Run
-		#region simple ver
-		if global.GAME_SETTINGS.RUNTYPE {
-			if InputPressed(INPUT_VERB.RUN) {
-				global.isRunning = !global.isRunning
-			}
+		if InputPressed(INPUT_VERB.RUN) {
+			global.isRunning = !global.isRunning
 		}
-		#endregion
-		
-		#region build up ver
-		else {
-			global.isRunning = isRunning
-			// If plr is moving and is walking, tick down this time
-			if input != 0 and not isRunning {walkTime-=get_delta_time_in_seconds()}
-			// if the player walks for long enough so that the timer hits 0, activate running
-			if walkTime <= 0 {isRunning = true}
-		
-			// if the player was running but has stopped moving
-			// tick down the "was running" timer
-			if isRunning and input == 0 {
-				if sinceRunning <= 0 {
-					sinceRunning = sinceRunning_MAX
-				} else {sinceRunning -= get_delta_time_in_seconds()}
-			} else if isRunning and input != 0 {
-				sinceRunning = sinceRunning_MAX
-			} 
-		
-			if sinceRunning <= 0 {
-				walkTime = walkTime_MAX
-				isRunning = false;
-			}
-		}
-		#endregion
-		
+
 		// --- FRICTION ---
 	    if (input == 0 && on_ground) hsp = lerp(hsp, 0, ground_friction);		// ground slowdown
 		else if (input == 0 && !on_ground) hsp = lerp(hsp, 0, air_friction);	// slowdown in air
