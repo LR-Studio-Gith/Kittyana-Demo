@@ -1,1 +1,3 @@
 Fix Dialouge
+Fix Aimming
+Make dmg inside of the enemy
