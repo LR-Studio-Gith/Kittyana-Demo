@@ -172,6 +172,7 @@
     {"id":{"name":"obj_tempwall","path":"objects/obj_tempwall/obj_tempwall.yy",},},
     {"id":{"name":"obj_tutorial_mus","path":"objects/obj_tutorial_mus/obj_tutorial_mus.yy",},},
     {"id":{"name":"obj_unclimable","path":"objects/obj_unclimable/obj_unclimable.yy",},},
+    {"id":{"name":"obj_version","path":"objects/obj_version/obj_version.yy",},},
     {"id":{"name":"obj_viewpoint","path":"objects/obj_viewpoint/obj_viewpoint.yy",},},
     {"id":{"name":"obj_village_music","path":"objects/obj_village_music/obj_village_music.yy",},},
     {"id":{"name":"rm_citty_city","path":"rooms/rm_citty_city/rm_citty_city.yy",},},
