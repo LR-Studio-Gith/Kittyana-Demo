@@ -1,4 +1,4 @@
-if place_meeting(x, y, obj_player2)
+if place_meeting(x, y, obj_player)
 {
 	global.Area_number += 1
 	if next_level = 1 room_goto(Room3);

@@ -35,7 +35,9 @@ function unpause_game()
 {
 	obj_pause_manager.unpause_tag("pauseable");
 
-	instance_destroy(menu.object_index)
+	if instance_exists(menu.object_index) {
+		instance_destroy(menu.object_index)
+	}
 	menu = noone
 	
 	is_paused = false

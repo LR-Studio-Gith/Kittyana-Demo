@@ -645,10 +645,10 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
     {"roomId":{"name":"rm_citty_city","path":"rooms/rm_citty_city/rm_citty_city.yy",},},
     {"roomId":{"name":"rm_cliff_ruins","path":"rooms/rm_cliff_ruins/rm_cliff_ruins.yy",},},
     {"roomId":{"name":"rm_gameover","path":"rooms/rm_gameover/rm_gameover.yy",},},
-    {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
     {"roomId":{"name":"rm_mainvillage","path":"rooms/rm_mainvillage/rm_mainvillage.yy",},},
     {"roomId":{"name":"rm_tutorial_new","path":"rooms/rm_tutorial_new/rm_tutorial_new.yy",},},
     {"roomId":{"name":"rm_plateau_storm_station","path":"rooms/rm_plateau_storm_station/rm_plateau_storm_station.yy",},},

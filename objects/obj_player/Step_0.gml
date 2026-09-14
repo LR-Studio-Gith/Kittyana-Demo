@@ -357,7 +357,7 @@ hookgrab_in_min_range(_pulled_target) {
 
 var atk_size = BaseStats.atk_size.GetValue()
 #region Katana
-	if WeaponType == "Katana"
+	if WeaponType == "Katana" and state != ACTION_STATES.FROZEN
 	{
 		if global.GAME_SETTINGS.FREE_AIM == false
 		{
@@ -423,7 +423,7 @@ var atk_size = BaseStats.atk_size.GetValue()
 
 
 #region Animations
-if alarm_get(1) > 0
+if alarm_get(1) > 0 and state != ACTION_STATES.FROZEN
 {
 	if Current_Atk = 1
 	{

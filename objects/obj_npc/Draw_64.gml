@@ -174,6 +174,9 @@ if talking == true
 	}
 
 	// END
+	if current_text == 20 {
+		obj_player.state = ACTION_STATES.NONE
+	}
 	
 if current_text == 20
 {
@@ -198,6 +201,7 @@ if current_text = 21
 	
 	who_is_talking(2)
 	create_dialog("JINX", "I'm not talking to you again.")
+	obj_player.state = ACTION_STATES.NONE
 }
 if current_text = 22
 {
