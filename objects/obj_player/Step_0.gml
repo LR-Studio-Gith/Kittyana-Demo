@@ -361,49 +361,58 @@ var atk_size = BaseStats.atk_size.GetValue()
 	{
 		if global.GAME_SETTINGS.FREE_AIM == false
 		{
-			// Katana attack 1
-			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false
+			mouse_mode = facing
+		}
+		else
+		{
+			mouse_mode = aim_dir
+			if free_aim().x > 0
 			{
-				createHitbox(10, self, 100*facing, 0, 5, 2.5*atk_size ,4*atk_size)
-				alarm_set(1, 10);
-				alarm_set(0, 20);
-				Attack_Delay = true;
-				Current_Atk += 1;
+				aim_dir = 1;
 			}
-			// Katana attack 2
-			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 1 and Attack_Delay = false
+			if free_aim().x < 0
 			{
-				createHitbox(20, self, 100*facing,0,5,4*atk_size,2*atk_size)
+				aim_dir = -1;
+			}
+		}
+		// Katana attack 1
+		if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false and on_ground
+		{
+			createHitbox(10, self, 100*mouse_mode, 0, 5, 2.5*atk_size ,4*atk_size)
+			alarm_set(1, 10);
+			alarm_set(0, 20);
+			Attack_Delay = true;
+			Current_Atk += 1;
+		}
+		// Katana attack 2
+		if InputPressed(INPUT_VERB.ATTACK_2) and Current_Atk = 0 and Attack_Delay = false and on_ground
+		{
+			createHitbox(20, self, 100*mouse_mode,0,5,4*atk_size,2*atk_size)
 			
-				alarm_set(1, 25);
-				alarm_set(0, 40);
-				Attack_Delay = true;
-				Current_Atk += 1;
-			}
-		} else {
-			var aim_dir = free_aim().x
+			alarm_set(1, 25);
+			alarm_set(0, 40);
+			Attack_Delay = true;
+			Current_Atk += 1;
+		}
+		
+		if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false and not on_ground
+		{
+			createHitbox(20, self, 100*mouse_mode,0,5,8*atk_size,2*atk_size)
 			
-			// Katana attack 1
-			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false
-			{
-				vsp = -grv
-				createHitbox(10, self, 100*aim_dir, 0, 5, 2.5*atk_size,4*atk_size)
-				alarm_set(1, 10);
-				alarm_set(0, 20);
-				Attack_Delay = true;
-				Current_Atk += 1;
-			}
-			// Katana attack 2
-			if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 1 and Attack_Delay = false
-			{
-				vsp = -grv
-				createHitbox(20, self, 100*aim_dir,0,5,4*atk_size,2*atk_size)
+			alarm_set(1, 25);
+			alarm_set(0, 40);
+			Attack_Delay = true;
+			Current_Atk += 1;
+		}
+		
+		if InputPressed(INPUT_VERB.ATTACK_2) and Current_Atk = 0 and Attack_Delay = false and not on_ground
+		{
+			createHitbox(20, self, 1*mouse_mode,0,5,6*atk_size,6*atk_size)
 			
-				alarm_set(1, 25);
-				alarm_set(0, 40);
-				Attack_Delay = true;
-				Current_Atk += 1;
-			}
+			alarm_set(1, 25);
+			alarm_set(0, 40);
+			Attack_Delay = true;
+			Current_Atk += 1;
 		}
 	}
 #endregion Katana

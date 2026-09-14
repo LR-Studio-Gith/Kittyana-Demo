@@ -1,6 +1,6 @@
 draw_sprite(spr_uncle_c_sketch, 0, x, y);
 
-if (obj_player.x > x - 75 and obj_player.x < x + 75)
+if (obj_player.x > x - 75 and obj_player.x < x + 75) and (obj_player.y > y - 25 and obj_player.y < y + 25)
 {
 	draw_sprite(spr_Can_talk, 0, x, y - 90);
 	if InputPressed(INPUT_VERB.ATTACK_1)

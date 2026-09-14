@@ -302,3 +302,6 @@ function safety_respawn(dmg = 1) {
 	y = safe_pos.y - sprite_height/2; // so it doesnt spawn inside the floor
 }
 #endregion
+
+aim_dir = 1;
+mouse_mode = facing
