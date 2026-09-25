@@ -120,29 +120,13 @@ switch state {
 	#region Normal/No Action State
 	case ACTION_STATES.NONE: 
 		// --- MOVING ---
-	    target_speed = input * walk_speed.GetValue();
 	    if (on_ground) {
-			if !global.isRunning {
-				hsp = lerp(hsp, input * walk_speed.GetValue(), accel*2); // you can get up to walking speed faster than you can when you run -S
-			} else {
-				hsp = lerp(hsp, input * run_speed.GetValue(), accel);
-			}
+			hsp = lerp(hsp, input * run_speed.GetValue(), accel);
 		}
 	    else {  // air movement
-			if !global.isRunning {
-				hsp = lerp(hsp, input * walk_speed.GetValue(), accel*2); // you can get up to walking speed faster than you can when you run -S
-			} else {
-				hsp = lerp(hsp, input * run_speed.GetValue(), accel*2);
-			}
+			hsp = lerp(hsp, input * run_speed.GetValue(), accel*2);
 		}
 		
-		
-		
-		// Walk <--> Run
-		if InputPressed(INPUT_VERB.RUN) {
-			global.isRunning = !global.isRunning
-		}
-
 		// --- FRICTION ---
 	    if (input == 0 && on_ground) hsp = lerp(hsp, 0, ground_friction);		// ground slowdown
 		else if (input == 0 && !on_ground) hsp = lerp(hsp, 0, air_friction);	// slowdown in air
@@ -236,7 +220,7 @@ switch state {
 	
 	#region Sliding Action
 	case ACTION_STATES.SLIDING:
-		if InputReleased(INPUT_VERB.SLIDE) {//or (hsp == 0 and slideEnding) {
+		if InputReleased(INPUT_VERB.SLIDE) {
 			state = ACTION_STATES.NONE
 			slideEnding = false
 		}
@@ -250,11 +234,12 @@ switch state {
 			slideEnding = true
 		}
 		
-		if not slideEnding {
+		if not slideEnding and InputLong(INPUT_VERB.SLIDE) {
 			hsp = lerp(hsp, slideDir*slideSpdMul.GetValue(), accel)
 		}
 		else {
-			hsp = lerp(hsp, 0, ground_friction*2)
+			show_debug_message("slowdown")
+			hsp = lerp(hsp, 0, ground_friction/2)
 		}
 		
 		
@@ -454,12 +439,14 @@ else
 	else if (abs(hsp) > 0.1)
 	{
 	    sprite_index = spr_player_run;
-	    image_speed = 1;		
+	    image_speed = 1;	
 	}
 	else
 	{
 	    sprite_index = spr_player_idle;
 	    image_speed = 1;
+		
 	}
+	
 }
 #endregion

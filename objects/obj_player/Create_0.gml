@@ -20,7 +20,7 @@ BaseStats = {
 	
 	dash_amount: new Statistic(1),
 	dash_cd: new Statistic(.50), //%
-	dash_dis: new Statistic(.15), // actually changes how long a dash lasts
+	dash_dis: new Statistic(0.1), // actually changes how long a dash lasts
 	
 	slide_dis: new Statistic(2),
 	grab_range: new Statistic(300),
@@ -46,6 +46,11 @@ BaseStats = {
 // Amulets
 amulets = new All_Amulets(); // A shorthand for looking through all the available amulets
 
+t=0;
+function counter(){
+	t++;
+	show_debug_message(t);
+}
 
 #region Movement
 on_ground = false;
