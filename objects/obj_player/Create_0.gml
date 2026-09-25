@@ -46,12 +46,6 @@ BaseStats = {
 // Amulets
 amulets = new All_Amulets(); // A shorthand for looking through all the available amulets
 
-t=0;
-function counter(){
-	t++;
-	show_debug_message(t);
-}
-
 #region Movement
 on_ground = false;
 

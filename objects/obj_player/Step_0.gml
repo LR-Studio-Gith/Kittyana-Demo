@@ -238,7 +238,6 @@ switch state {
 			hsp = lerp(hsp, slideDir*slideSpdMul.GetValue(), accel)
 		}
 		else {
-			show_debug_message("slowdown")
 			hsp = lerp(hsp, 0, ground_friction/2)
 		}
 		
