@@ -20,7 +20,7 @@ BaseStats = {
 	
 	dash_amount: new Statistic(1),
 	dash_cd: new Statistic(.50), //%
-	dash_dis: new Statistic(0.1), // actually changes how long a dash lasts
+	dash_dis: new Statistic(0.05), // actually changes how long a dash lasts
 	
 	slide_dis: new Statistic(2),
 	grab_range: new Statistic(300),
@@ -58,18 +58,6 @@ walk_speed = BaseStats.walk_spd;
 run_speed = BaseStats.spd;
 accel = 0.25;
 
-#region Running 
-// Time it takes for a run to start up
-walkTime_MAX = 3; // secs
-walkTime = walkTime_MAX;
-
-// Tracks the time since you last started running
-sinceRunning_MAX = 5; // secs
-sinceRunning = sinceRunning_MAX;
-
-isRunning = false;
-#endregion
-
 // Friction
 ground_friction = 0.1;
 air_friction	= 0.05;
@@ -87,6 +75,7 @@ can_move = true; // ???? -S
 // Slide
 slideSpdMul = BaseStats.slide_dis; // multiplier to apply onto sliding. SlideSpd = run_spd * slideSpdMul
 slideEnding = false;
+drilling = false;
 
 #region Dash
 // Motion
@@ -113,8 +102,9 @@ hooking = false;
 
 // Controls (edit it if your a dev)
 hook_max_dist = BaseStats.grab_range; // Max distance in pixels the player can get from a hookpoint
-damping_rate = 0.80; //% How much speed the player loses per swing
-hook_accel_rate = 0.15; // How fast the player accelerates on a swing
+damping_rate = 0.99; //% How much speed the player loses per swing
+// Values >99% act strange, don't recommend decreasing it
+hook_accel_rate = 0.2; // How fast the player accelerates on a swing
 #endregion
 
 #endregion

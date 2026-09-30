@@ -28,7 +28,7 @@
   "properties":[
     {"$GMObjectProperty":"v2","%Name":"destination_room","filters":[
         "GMRoom",
-      ],"listItems":[],"multiselect":false,"name":"destination_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"destination_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"rm_tutorial_new","path":"rooms/rm_tutorial_new/rm_tutorial_new.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rm_tutorial_new","varType":5,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

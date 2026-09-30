@@ -48,7 +48,7 @@ function __InputConfigVerbs()
 	
 	InputDefineVerb(INPUT_VERB.HOOK, "hook", vk_shift, gp_face1);
 	
-	InputDefineVerb(INPUT_VERB.DASH, "dash", "F", gp_shoulderl);
+	InputDefineVerb(INPUT_VERB.DASH, "dash", "Q", gp_shoulderl);
 	
 	InputDefineVerb(INPUT_VERB.JUMP, "jump", vk_space, gp_shoulderr); 
 	

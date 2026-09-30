@@ -21,4 +21,4 @@ draw_set_valign(fa_middle)
 draw_text( 
 pos_x/2, 
 pos_y - width/2, 
-"Till the Dill King Snake")
+"Bill the Dill King Snake")

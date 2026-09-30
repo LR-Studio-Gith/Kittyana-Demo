@@ -1,3 +1,3 @@
 if InputPressed(INPUT_VERB.UP) {
-	room_goto(destination_room)
+	room_goto(rm_tutorial_new)
 }

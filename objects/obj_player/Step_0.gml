@@ -6,13 +6,13 @@ if (hp.GetValue() = 0) {
 	hp.current_value = clamp(hp.GetValue(), 0, 256)
 }
 
-if InputPressed(INPUT_VERB.ATTACK_2) {
-	show_debug_message(BaseStats.spd.GetValue())
+//if InputPressed(INPUT_VERB.ATTACK_2) {
+//	show_debug_message(BaseStats.spd.GetValue())
 	
-	equip_amulet(amulets.bronze.test_amu1);
+//	equip_amulet(amulets.bronze.test_amu1);
 	
-	show_debug_message(BaseStats.spd.GetValue())
-}
+//	show_debug_message(BaseStats.spd.GetValue())
+//}
 
 
 if (not can_move) exit;
@@ -90,11 +90,13 @@ switch state {
 		*/
 		
 		// interactivettttyyyyyy
-		_hookAngAccel += input * accel/10 // this here lets us accelerate and decel a bit when we're trying to move while grappling
+		_hookAngAccel += input * (accel*0.1)  // this here lets us accelerate and decel a bit when we're trying to move while grappling
 		hook_length += InputY(INPUT_CLUSTER.NAVIGATION)*2 // lets us move up and down
 		hook_length = max(hook_length, 60)
 		
-		angle_vel +=  _hookAngAccel;
+		show_debug_message(hook_length)
+		
+		angle_vel += _hookAngAccel;
 		hook_angle += angle_vel;
 		angle_vel *= damping_rate;
 	
@@ -188,7 +190,7 @@ switch state {
 	    }
 		
 		// --- SLIDE ---
-		if (InputPressed(INPUT_VERB.SLIDE)) {
+		if (InputPressed(INPUT_VERB.SLIDE)) and on_ground {
 			state = ACTION_STATES.SLIDING
 			hsp += 0.01 * sign(image_xscale)
 		}
@@ -223,6 +225,7 @@ switch state {
 		if InputReleased(INPUT_VERB.SLIDE) {
 			state = ACTION_STATES.NONE
 			slideEnding = false
+			drilling = false;
 		}
 	
 		var slideDir = (run_speed.GetValue() * sign(image_xscale))
