@@ -220,34 +220,6 @@ switch state {
 	break;
 	#endregion
 	
-	#region Sliding Action
-	case ACTION_STATES.SLIDING:
-		if InputReleased(INPUT_VERB.SLIDE) {
-			state = ACTION_STATES.NONE
-			slideEnding = false
-			drilling = false;
-		}
-	
-		var slideDir = (run_speed.GetValue() * sign(image_xscale))
-
-		 // --- GRAVITY ---
-		if (!on_ground) vsp += grv.GetValue()*2;
-		
-		if hsp == slideDir*slideSpdMul.GetValue() and not slideEnding {
-			slideEnding = true
-		}
-		
-		if not slideEnding and InputLong(INPUT_VERB.SLIDE) {
-			hsp = lerp(hsp, slideDir*slideSpdMul.GetValue(), accel)
-		}
-		else {
-			hsp = lerp(hsp, 0, ground_friction/2)
-		}
-		
-		
-	break;
-	#endregion
-	
 	#region Frozen "Action"
 	case ACTION_STATES.FROZEN:
 		hsp = 0;

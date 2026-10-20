@@ -1,17 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_shop",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_pbuild_B",
+  "eventList":[],
   "managed":true,
-  "name":"obj_shop",
+  "name":"obj_pbuild_B",
   "overriddenProperties":[],
   "parent":{
-    "name":"Shop",
-    "path":"folders/Objects/Shop.yy",
+    "name":"Purple Buildings",
+    "path":"folders/Objects/Shop/Purple Buildings.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_buildingParent",
+    "path":"objects/obj_buildingParent/obj_buildingParent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"shop_purple",
-    "path":"sprites/shop_purple/shop_purple.yy",
+    "name":"phouse_b",
+    "path":"sprites/phouse_b/phouse_b.yy",
   },
   "spriteMaskId":null,
   "visible":true,
