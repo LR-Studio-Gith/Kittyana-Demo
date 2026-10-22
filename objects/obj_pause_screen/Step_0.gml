@@ -4,7 +4,9 @@
 	Add the "unpauseable" tag if you create a new cutscene.
 */
 
-if InputPressed(INPUT_VERB.PAUSE) and not asset_has_tags(room_get_name(room), "cutscene") {
+if InputPressed(INPUT_VERB.PAUSE) 
+and not asset_has_tags(room_get_name(room), "cutscene")
+and not global.mid_transition {
 	is_paused = !is_paused;
 	
 	if is_paused == true {
@@ -15,4 +17,5 @@ if InputPressed(INPUT_VERB.PAUSE) and not asset_has_tags(room_get_name(room), "c
 }
 
 // This shouldn't be done inside of here but its late
+// they should be updated when the setting is finished updating
 update_settings();

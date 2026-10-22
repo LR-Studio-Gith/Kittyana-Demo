@@ -245,8 +245,8 @@
   ],
   "name":"rm_tutorial_new",
   "parent":{
-    "name":"Levels",
-    "path":"folders/Levels.yy",
+    "name":"Tutorial",
+    "path":"folders/Levels/Tutorial.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -32,8 +32,8 @@
   ],
   "name":"rm_main_menu",
   "parent":{
-    "name":"Levels",
-    "path":"folders/Levels.yy",
+    "name":"Menus",
+    "path":"folders/Levels/Menus.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -1,0 +1,1 @@
+TransitionStart(target_room, sq_fade_out, sq_fade_in);

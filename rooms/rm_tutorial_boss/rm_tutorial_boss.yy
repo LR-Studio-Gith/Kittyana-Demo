@@ -48,8 +48,8 @@
   ],
   "name":"rm_tutorial_boss",
   "parent":{
-    "name":"Levels",
-    "path":"folders/Levels.yy",
+    "name":"Tutorial",
+    "path":"folders/Levels/Tutorial.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -1,15 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_door",
+  "%Name":"obj_enter",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_door",
+  "name":"obj_enter",
   "overriddenProperties":[],
   "parent":{
-    "name":"Level Objects",
-    "path":"folders/Objects/Level Objects.yy",
+    "name":"Shop",
+    "path":"folders/Objects/Shop.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -26,16 +26,17 @@
   "physicsShapePoints":[],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v2","%Name":"destination_room","filters":[
+    {"$GMObjectProperty":"v2","%Name":"target_room","filters":[
         "GMRoom",
-      ],"listItems":[],"multiselect":false,"name":"destination_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":{"name":"rm_tutorial_new","path":"rooms/rm_tutorial_new/rm_tutorial_new.yy",},"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rm_tutorial_new","varType":5,},
+      ],"listItems":[],"multiselect":false,"name":"target_room","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"target_exit","filters":[],"listItems":[],"multiselect":false,"name":"target_exit","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"noone","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_door",
-    "path":"sprites/spr_door/spr_door.yy",
+    "name":"spr_enter",
+    "path":"sprites/spr_enter/spr_enter.yy",
   },
   "spriteMaskId":null,
   "visible":false,
