@@ -559,7 +559,7 @@
     {"id":{"name":"NumericSpring_Step_Array","path":"scripts/NumericSpring_Step_Array/NumericSpring_Step_Array.yy",},},
     {"id":{"name":"NumericSpring_Step","path":"scripts/NumericSpring_Step/NumericSpring_Step.yy",},},
     {"id":{"name":"pause_exists","path":"scripts/pause_exists/pause_exists.yy",},},
-    {"id":{"name":"pause","path":"scripts/pause/pause.yy",},},
+    {"id":{"name":"Pause_Functions","path":"scripts/Pause_Functions/Pause_Functions.yy",},},
     {"id":{"name":"random_index","path":"scripts/random_index/random_index.yy",},},
     {"id":{"name":"Room_data","path":"scripts/Room_data/Room_data.yy",},},
     {"id":{"name":"Settings","path":"scripts/Settings/Settings.yy",},},

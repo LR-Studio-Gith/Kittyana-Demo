@@ -7,13 +7,8 @@
 if InputPressed(INPUT_VERB.PAUSE) 
 and not asset_has_tags(room_get_name(room), "cutscene")
 and not global.mid_transition {
-	is_paused = !is_paused;
-	
-	if is_paused == true {
-		pause_game()
-	} else {
-		unpause_game()
-	}
+	if global.is_paused == false {open_pause_menu();} 
+	else {close_pause_menu();}
 }
 
 // This shouldn't be done inside of here but its late

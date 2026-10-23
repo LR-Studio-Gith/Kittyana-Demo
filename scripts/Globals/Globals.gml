@@ -1,2 +1,3 @@
+#macro DEBUG false
 global.isRunning = true;
-//global.og_room = noone;
+global.is_paused = false;

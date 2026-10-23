@@ -1,5 +1,9 @@
 xstart = x; ystart = y
 
+if global.transition_cd > 0 {
+	global.transition_cd -= get_delta_time_in_seconds()
+}
+
 if (hp.GetValue() = 0) {
 	game_over()
 } else {

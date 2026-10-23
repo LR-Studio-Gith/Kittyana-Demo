@@ -1,8 +1,6 @@
 if not audio_is_playing(snd_rainworld) {
-	show_debug_message("GML IS A BITCHHHHHHHHHHHHHHHH")
 	audio_play_sound(snd_rainworld, 100, true);
 }
-
 
 updateActs()
 var _device = InputPlayerGetDevice();
@@ -42,3 +40,4 @@ if InputDeviceIsGamepad(_device)
 		break;
 	}
 }
+

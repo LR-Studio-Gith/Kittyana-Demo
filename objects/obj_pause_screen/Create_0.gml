@@ -1,15 +1,16 @@
-is_paused = false;
 menu = noone;
 menu_height = 0;
+is_open = false;
 
 if not audio_group_is_loaded(audiogroup_sfx) {
 	audio_group_load(audiogroup_sfx)
 }
 
-function pause_game() 
+function open_pause_menu() 
 {
-	obj_pause_manager.pause_tag("pauseable");
-		
+	is_open = true;
+	pause();
+	
 	if menu == noone {
 		menu = create_menu(
 		spr_menu, [
@@ -19,26 +20,23 @@ function pause_game()
 			obj_pause_quit,
 		],
 		0, 0, 40, 80
-		) 
+		).id
 		// I can set the width/height to 0 since it literally doesn't matter
 		// The thing will just resize itself 
 		
 		menu_height = menu.y
 	}
 	
-	is_paused = true
-	
 	audio_play_sound(snd_pause_sfx, 1, false)
 }
 
-function unpause_game() 
+function close_pause_menu() 
 {
-	obj_pause_manager.unpause_tag("pauseable");
-
-	if instance_exists(menu.object_index) {
-		instance_destroy(menu.object_index)
+	is_open = false;
+	unpause();
+	
+	if instance_exists(menu) {
+		instance_destroy(menu)
 	}
 	menu = noone
-	
-	is_paused = false
 }

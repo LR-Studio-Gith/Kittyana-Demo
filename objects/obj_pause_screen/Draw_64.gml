@@ -1,4 +1,4 @@
-if not is_paused exit;
+if not is_open exit;
 
 // Draw background
 draw_set_alpha(0.5);
