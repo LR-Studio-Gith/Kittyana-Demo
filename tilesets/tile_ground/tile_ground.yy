@@ -1,14 +1,14 @@
 {
   "$GMTileSet":"v1",
-  "%Name":"tile_grass",
+  "%Name":"tile_ground",
   "autoTileSets":[],
   "macroPageTiles":{
     "SerialiseHeight":0,
     "SerialiseWidth":0,
     "TileSerialiseData":[],
   },
-  "name":"tile_grass",
-  "out_columns":2,
+  "name":"tile_ground",
+  "out_columns":4,
   "out_tilehborder":0,
   "out_tilevborder":0,
   "parent":{
@@ -18,8 +18,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"grass_tilemap",
-    "path":"sprites/grass_tilemap/grass_tilemap.yy",
+    "name":"ground_tile",
+    "path":"sprites/ground_tile/ground_tile.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{
@@ -34,5 +34,5 @@
   "tileWidth":16,
   "tilexoff":0,
   "tileyoff":0,
-  "tile_count":6,
+  "tile_count":18,
 }
