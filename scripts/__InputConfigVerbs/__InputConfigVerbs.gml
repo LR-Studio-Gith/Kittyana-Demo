@@ -15,7 +15,6 @@ function __InputConfigVerbs()
 		HOOK,
 		DASH,
 		JUMP,
-		SLIDE,
 		
 		RUN, // kind of a action but not really
 		
@@ -51,8 +50,6 @@ function __InputConfigVerbs()
 	InputDefineVerb(INPUT_VERB.DASH, "dash", "Q", gp_shoulderl);
 	
 	InputDefineVerb(INPUT_VERB.JUMP, "jump", vk_space, gp_shoulderr); 
-	
-	InputDefineVerb(INPUT_VERB.SLIDE, "slide", [vk_down, "S"], gp_padd); // remove?
 	
 	InputDefineVerb(INPUT_VERB.RUN, "run", "X", gp_face4); // remove?
     #endregion

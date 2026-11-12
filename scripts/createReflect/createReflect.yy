@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"createReflect",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"createReflect",
+  "parent":{
+    "name":"Functions",
+    "path":"folders/Scripts/Functions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

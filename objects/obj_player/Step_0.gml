@@ -23,7 +23,7 @@ if (not can_move) exit;
 var input = -InputX(INPUT_CLUSTER.NAVIGATION)
 
 // Flips the player's sprite
-if (input != 0) and state != ACTION_STATES.SLIDING
+if (input != 0)
 {
     image_xscale = sign(input) * scale;
 	facing = sign(image_xscale)
@@ -193,12 +193,6 @@ switch state {
 	        }
 	    }
 		
-		// --- SLIDE ---
-		if (InputPressed(INPUT_VERB.SLIDE)) and on_ground {
-			state = ACTION_STATES.SLIDING
-			hsp += 0.01 * sign(image_xscale)
-		}
-		
 	break;
 	#endregion
 	
@@ -317,10 +311,9 @@ hookgrab_in_min_range(_pulled_target) {
 	if grab_cd <= 0 {grab_cd = grab_cd_max}
 }
 #endregion
-
 var atk_size = BaseStats.atk_size.GetValue()
 #region Katana
-	if WeaponType == "Katana" and state != ACTION_STATES.FROZEN
+	if WeaponType == "Katana"
 	{
 		if global.GAME_SETTINGS.FREE_AIM == false
 		{
@@ -339,18 +332,18 @@ var atk_size = BaseStats.atk_size.GetValue()
 			}
 		}
 		// Katana attack 1
-		if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false and on_ground
+		if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false and on_ground and not state = ACTION_STATES.DASHING
 		{
-			createHitbox(10, self, 100*mouse_mode, 0, 5, 2.5*atk_size ,4*atk_size)
+			createHitbox(10, self, 100*mouse_mode, 0, 40, 3*atk_size ,3*atk_size)
 			alarm_set(1, 10);
 			alarm_set(0, 20);
 			Attack_Delay = true;
 			Current_Atk += 1;
 		}
 		// Katana attack 2
-		if InputPressed(INPUT_VERB.ATTACK_2) and Current_Atk = 0 and Attack_Delay = false and on_ground
+		if InputPressed(INPUT_VERB.ATTACK_2) and Current_Atk = 0 and Attack_Delay = false and on_ground and not state = ACTION_STATES.DASHING and charging = false
 		{
-			createHitbox(20, self, 100*mouse_mode,0,5,4*atk_size,2*atk_size)
+			createReflect(20, self, 100*mouse_mode,0,1,4*atk_size,2*atk_size)
 			
 			alarm_set(1, 25);
 			alarm_set(0, 40);
@@ -358,9 +351,9 @@ var atk_size = BaseStats.atk_size.GetValue()
 			Current_Atk += 1;
 		}
 		
-		if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false and not on_ground
+		if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false and not on_ground and not state = ACTION_STATES.DASHING
 		{
-			createHitbox(20, self, 100*mouse_mode,0,5,8*atk_size,2*atk_size)
+			createHitbox(20, self, 100*mouse_mode,0,40,8*atk_size,2*atk_size)
 			
 			alarm_set(1, 25);
 			alarm_set(0, 40);
@@ -368,14 +361,52 @@ var atk_size = BaseStats.atk_size.GetValue()
 			Current_Atk += 1;
 		}
 		
-		if InputPressed(INPUT_VERB.ATTACK_2) and Current_Atk = 0 and Attack_Delay = false and not on_ground
+		if InputPressed(INPUT_VERB.ATTACK_2) and Current_Atk = 0 and Attack_Delay = false and not on_ground and not state = ACTION_STATES.DASHING and charging = false
 		{
-			createHitbox(20, self, 1*mouse_mode,0,5,6*atk_size,6*atk_size)
+			createHitbox(20, self, 1*mouse_mode,0,40,6*atk_size,6*atk_size)
 			
 			alarm_set(1, 25);
 			alarm_set(0, 40);
 			Attack_Delay = true;
 			Current_Atk += 1;
+		}
+		
+		if InputPressed(INPUT_VERB.ATTACK_1) and Current_Atk = 0 and Attack_Delay = false and on_ground and state = ACTION_STATES.DASHING
+		{
+			createHitbox(20, self, 1*mouse_mode,0,40,6*atk_size,6*atk_size)
+			
+			alarm_set(1, 25);
+			alarm_set(0, 40);
+			Attack_Delay = true;
+			Current_Atk += 1;
+		}
+		if mouse_check_button(1) and Current_Atk = 0 and Attack_Delay = false and not state = ACTION_STATES.DASHING
+		{
+			
+			charging = true
+			Charge_timer += 1
+		}
+		if Charge_timer >= 20
+		{
+			image_blend = c_blue
+			if mouse_check_button_released(1)
+				{
+					createHitbox(20, self, 100*mouse_mode,0,150,6*atk_size,6*atk_size)
+			
+					alarm_set(1, 25);
+					alarm_set(0, 40);
+					Attack_Delay = true;
+					Current_Atk += 1;
+					charging = false
+					Charge_timer = 0
+					image_blend = c_white
+				}
+		}
+		if mouse_check_button_released(1) and Charge_timer < 20 or mouse_check_button(2) and charging = true
+		{
+			charging = false
+			Charge_timer = 0
+			image_blend = c_white
 		}
 	}
 #endregion Katana

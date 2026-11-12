@@ -15,7 +15,13 @@ function All_Amulets(BaseStats = obj_player.BaseStats) constructor {
 			new Modifier(5, math_ops.MULTIPLY, 10),
 			new Modifier(10, math_ops.ADD, 60),
 			new Modifier(2, math_ops.ADD,),
-		]),
+		]//,
+		//[
+		//	new Ability(???)
+		//]
+		
+		
+		),
 	
 		test_amu2 : new Amulet("Amulet of Testing II", 
 		[

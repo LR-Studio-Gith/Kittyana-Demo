@@ -115,6 +115,9 @@ hp = BaseStats.hp;
 max_hurt_time = 60 // Hurt flash timer
 hitbox = noone;
 
+Charge_timer = 0
+charging = false
+
 // I-Frames
 invincible = false;
 invincibility_duration = BaseStats.iframe_dur;
@@ -193,12 +196,12 @@ function hookgrab_circlecast(_obj = obj_EnemyParent) {
 #endregion
 
 #region Collisions
-col_obj = layer_tilemap_get_id("Collision") // Collision ref
+col_obj = [layer_tilemap_get_id("Collision"), obj_tempwall] // Collision ref
 
 /// @desc  hecks if the tile counts as an climbable one
 /// @returns {bool}
 function tile_is_climbable() {
-	var _tile = tilemap_get_at_pixel(col_obj, bbox_local_right() + sign(image_xscale), y)
+	var _tile = tilemap_get_at_pixel(col_obj[0], bbox_local_right() + sign(image_xscale), y)
 	
 	// One = The normal collision tile on the tilemap, the full one w/ out anything on it really
 	if _tile == 1 {return true}
@@ -206,8 +209,8 @@ function tile_is_climbable() {
 }
 
 function tile_is_oneway() {
-	var _tile_L = tilemap_get_at_pixel(col_obj, bbox_local_left(), bbox_bottom + 1)
-	var _tile_R = tilemap_get_at_pixel(col_obj, bbox_local_right(), bbox_bottom + 1)
+	var _tile_L = tilemap_get_at_pixel(col_obj[0], bbox_local_left(), bbox_bottom + 1)
+	var _tile_R = tilemap_get_at_pixel(col_obj[0], bbox_local_right(), bbox_bottom + 1)
 	
 	if _tile_L != _tile_R {return false} // if both arent the same kind of tile, false
 	else {

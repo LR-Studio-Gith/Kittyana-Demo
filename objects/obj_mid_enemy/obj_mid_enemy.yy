@@ -6,7 +6,7 @@
   "name":"obj_mid_enemy",
   "overriddenProperties":[
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_EnemyParent","path":"objects/obj_EnemyParent/obj_EnemyParent.yy",},"propertyId":{"name":"_movespeed","path":"objects/obj_EnemyParent/obj_EnemyParent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"3",},
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_EnemyParent","path":"objects/obj_EnemyParent/obj_EnemyParent.yy",},"propertyId":{"name":"_health","path":"objects/obj_EnemyParent/obj_EnemyParent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"40",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_EnemyParent","path":"objects/obj_EnemyParent/obj_EnemyParent.yy",},"propertyId":{"name":"_health","path":"objects/obj_EnemyParent/obj_EnemyParent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"160",},
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_EnemyParent","path":"objects/obj_EnemyParent/obj_EnemyParent.yy",},"propertyId":{"name":"sight_distance","path":"objects/obj_EnemyParent/obj_EnemyParent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"500",},
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_EnemyParent","path":"objects/obj_EnemyParent/obj_EnemyParent.yy",},"propertyId":{"name":"attack_length","path":"objects/obj_EnemyParent/obj_EnemyParent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"120",},
   ],
