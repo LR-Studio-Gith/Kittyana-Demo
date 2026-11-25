@@ -16,6 +16,7 @@ BaseStats = {
 	walk_spd: new Statistic(5),
 	jump_height: new Statistic(15),
 	jump_amount: new Statistic(2),
+	wall_jump_spd: new Statistic(1.5),
 	grav : new Statistic(0.45), // not a percentage this time haha
 	
 	dash_amount: new Statistic(1),

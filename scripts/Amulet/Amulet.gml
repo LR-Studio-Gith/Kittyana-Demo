@@ -1,7 +1,7 @@
 /* Amulet Template:
 
 	Please do remember to create amulets inside of the All_Amulets script, and look up what Structs are
-	ordered if you don't know how a GML Struct works.
+	if you don't know how a GML Struct works.
 	
 	And if you wanna know what stats are in the player just reference it quickly to see, or look through
 	it's list of stats which are at the top, sorry I couldn't make them show when typing, GML's IDE
@@ -23,7 +23,7 @@
 /**
  * @desc Creates an amulet with a set of stats it can affect and an matching array of modifiers that affect those stats.
  * @param {String} _name Name of the amulet to be displayed
- * @param {Array<Statistic>} _stats An array of player stats to modify. Use BaseStats to see the list of available stats.
+ * @param {Array<Statistic>} _stats An array of player stats to modify. Use "BaseStats" to see the list of available stats.
  * @param {Array<Modifier>} _modifiers An array of modifiers to apply to each stat. Use "new Modifier" to create a modifier.
  */
 

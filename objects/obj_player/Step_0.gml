@@ -138,17 +138,21 @@ switch state {
 		else if (input == 0 && !on_ground) hsp = lerp(hsp, 0, air_friction);	// slowdown in air
 
 	    // --- GRAVITY ---
-		if (!on_ground) vsp += grv.GetValue();
+		if (!on_ground) {
+			if InputPressed(INPUT_VERB.DOWN) {vsp += grv.GetValue()*25;}
+			else {vsp += grv.GetValue();}
+		}
 		
-	    if not on_ground {
-			coyote_timer -= 1; // should update to be deltatime? this is a question -S
-	       
-			if wall_ray_front() != noone and InputPressed(INPUT_VERB.JUMP) and tile_is_climbable() {
+		
+		if wall_ray_front() != noone and tile_is_climbable() {
 				state = ACTION_STATES.CLIMBING
 				vsp = -run_speed.GetValue();				// climb up
 		        jumps_left = max_jumps.GetValue();			// reset double jump
 		        coyote_timer = coyote_time_max;	// allow jump off wall quickly
-			}
+		}
+		
+	    if not on_ground {
+			coyote_timer -= 1; // should update to be deltatime? this is a question -S
 		}
 		else { 
 			jumps_left = max_jumps.GetValue();
@@ -163,8 +167,15 @@ switch state {
 		
 	    // --- JUMP / DOUBLE JUMP ---
 	    if ((InputPressed(INPUT_VERB.JUMP)) and jumps_left > 0) {
-			if global.isRunning	{vsp = -jump_speed.GetValue();}
-			else			{vsp = -walk_speed.GetValue()*1.5;}
+			//if InputLast(INPUT_VERB.DOWN) {
+			//	var pound_mul = 2
+			//	show_debug_message("boong")
+			//	if global.isRunning	{vsp = -jump_speed.GetValue()*pound_mul;}
+			//	else			{vsp = -walk_speed.GetValue()*1.5*pound_mul;}
+			//} else {
+				if global.isRunning	{vsp = -jump_speed.GetValue();}
+				else			{vsp = -walk_speed.GetValue()*1.5;}
+			//}
 			
 			if (on_ground or coyote_timer > 0) {
 	            can_dash = true;
@@ -198,18 +209,37 @@ switch state {
 	
 	#region Climbing Action
 	case ACTION_STATES.CLIMBING:
-		
-		if wall_ray_front() == noone or on_ground or !tile_is_climbable()
-		{state = ACTION_STATES.NONE} 
+		if wall_ray_front() == noone or !tile_is_climbable()
+			{
+				state = ACTION_STATES.NONE
+				show_debug_message("end climb")	
+			} 
+		//else if on_ground and InputX(INPUT_CLUSTER.NAVIGATION) = 0 and InputY(INPUT_CLUSTER.NAVIGATION) = 0 
+		//	{
+		//		state = ACTION_STATES.NONE
+		//		show_debug_message("end climb")	
+		//	} 
 		else {
-			vsp = InputY(INPUT_CLUSTER.NAVIGATION) * run_speed.GetValue()	// climb up
+			// Climb up
+			if InputX(INPUT_CLUSTER.NAVIGATION) != 0 {
+				vsp = InputX(INPUT_CLUSTER.NAVIGATION)*facing * run_speed.GetValue()
+			//} else if InputX(INPUT_CLUSTER.NAVIGATION) = 0 and InputY(INPUT_CLUSTER.NAVIGATION) = 0 {
+			//	vsp += grv.GetValue()*0.1
+			//	show_debug_message(vsp)
+			} else {
+				vsp = InputY(INPUT_CLUSTER.NAVIGATION) * run_speed.GetValue()
+			}
+			
+			
+			
+			
 			jumps_left = max_jumps.GetValue();					// reset double jump
 			coyote_timer = coyote_time_max;						// allow jump off wall quickly
 			
 			// Wall jump
-			if InputPressed(INPUT_VERB.JUMP) {
+			if InputPressed(INPUT_VERB.JUMP){
 				vsp = -jump_speed.GetValue();
-				hsp = (-jump_speed.GetValue()/1.5)*sign(image_xscale)
+				hsp = (-jump_speed.GetValue()*BaseStats.wall_jump_spd.GetValue())*sign(image_xscale)
 			    can_dash = true;
 			    coyote_timer = 0;
 				jumps_left--;
@@ -343,7 +373,7 @@ var atk_size = BaseStats.atk_size.GetValue()
 		// Katana attack 2
 		if InputPressed(INPUT_VERB.ATTACK_2) and Current_Atk = 0 and Attack_Delay = false and on_ground and not state = ACTION_STATES.DASHING and charging = false
 		{
-			createReflect(20, self, 100*mouse_mode,0,1,4*atk_size,2*atk_size)
+			createReflect(20, self, 100*mouse_mode,0, 40,4*atk_size,2*atk_size)
 			
 			alarm_set(1, 25);
 			alarm_set(0, 40);
