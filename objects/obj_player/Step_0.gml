@@ -23,7 +23,7 @@ if (not can_move) exit;
 var input = -InputX(INPUT_CLUSTER.NAVIGATION)
 
 // Flips the player's sprite
-if (input != 0)
+if (input != 0) and state != ACTION_STATES.CLIMBING
 {
     image_xscale = sign(input) * scale;
 	facing = sign(image_xscale)
@@ -139,20 +139,20 @@ switch state {
 
 	    // --- GRAVITY ---
 		if (!on_ground) {
-			if InputPressed(INPUT_VERB.DOWN) {vsp += grv.GetValue()*25;}
+			if InputPressed(INPUT_VERB.DOWN) {vsp += grv.GetValue()*15;}
 			else {vsp += grv.GetValue();}
 		}
 		
 		
 		if wall_ray_front() != noone and tile_is_climbable() {
 				state = ACTION_STATES.CLIMBING
-				vsp = -run_speed.GetValue();				// climb up
+				vsp = -run_speed.GetValue()-0.1;				// climb up
 		        jumps_left = max_jumps.GetValue();			// reset double jump
 		        coyote_timer = coyote_time_max;	// allow jump off wall quickly
 		}
 		
 	    if not on_ground {
-			coyote_timer -= 1; // should update to be deltatime? this is a question -S
+			coyote_timer -= get_delta_time_in_seconds(); // should update to be deltatime? this is a question -S
 		}
 		else { 
 			jumps_left = max_jumps.GetValue();
@@ -167,15 +167,8 @@ switch state {
 		
 	    // --- JUMP / DOUBLE JUMP ---
 	    if ((InputPressed(INPUT_VERB.JUMP)) and jumps_left > 0) {
-			//if InputLast(INPUT_VERB.DOWN) {
-			//	var pound_mul = 2
-			//	show_debug_message("boong")
-			//	if global.isRunning	{vsp = -jump_speed.GetValue()*pound_mul;}
-			//	else			{vsp = -walk_speed.GetValue()*1.5*pound_mul;}
-			//} else {
-				if global.isRunning	{vsp = -jump_speed.GetValue();}
-				else			{vsp = -walk_speed.GetValue()*1.5;}
-			//}
+			if global.isRunning	{vsp = -jump_speed.GetValue();}
+			else			{vsp = -walk_speed.GetValue()*1.5;}
 			
 			if (on_ground or coyote_timer > 0) {
 	            can_dash = true;
@@ -209,37 +202,58 @@ switch state {
 	
 	#region Climbing Action
 	case ACTION_STATES.CLIMBING:
-		if wall_ray_front() == noone or !tile_is_climbable()
-			{
-				state = ACTION_STATES.NONE
-				show_debug_message("end climb")	
-			} 
-		//else if on_ground and InputX(INPUT_CLUSTER.NAVIGATION) = 0 and InputY(INPUT_CLUSTER.NAVIGATION) = 0 
-		//	{
-		//		state = ACTION_STATES.NONE
-		//		show_debug_message("end climb")	
-		//	} 
-		else {
-			// Climb up
-			if InputX(INPUT_CLUSTER.NAVIGATION) != 0 {
-				vsp = InputX(INPUT_CLUSTER.NAVIGATION)*facing * run_speed.GetValue()
-			//} else if InputX(INPUT_CLUSTER.NAVIGATION) = 0 and InputY(INPUT_CLUSTER.NAVIGATION) = 0 {
-			//	vsp += grv.GetValue()*0.1
-			//	show_debug_message(vsp)
-			} else {
-				vsp = InputY(INPUT_CLUSTER.NAVIGATION) * run_speed.GetValue()
+		var wall_push_amount = 0.05
+		var wall_jump_reduce = 1.5
+	
+		if wall_ray_front() == noone or not tile_is_climbable() 
+		{state = ACTION_STATES.NONE} 
+		
+		else 
+		{
+			// If on the ground, reset the state to normal and push the player away from the wall
+			if on_ground {
+				state = ACTION_STATES.NONE;
+				hsp = (-jump_speed.GetValue() * (BaseStats.wall_jump_spd.GetValue() * wall_push_amount)) * facing
 			}
 			
+			#region Wall Movement
+			// If holding nothing, fall down
+		    if InputX(INPUT_CLUSTER.NAVIGATION) == 0 and InputY(INPUT_CLUSTER.NAVIGATION) == 0  
+			{
+				// Fall down
+				if !on_ground {vsp = lerp(vsp, run_speed.GetValue(), grv.GetValue()*0.05);}	
+			} 
 			
+			// If holding W or S, move in Up or Down
+			else if InputX(INPUT_CLUSTER.NAVIGATION) == 0 and InputY(INPUT_CLUSTER.NAVIGATION) != 0 
+			{
+				// Climb up
+				vsp = lerp(vsp, InputY(INPUT_CLUSTER.NAVIGATION) * run_speed.GetValue(), accel);
+			} 
 			
+			// If holding D or A towards the wall, move in Up or Down
+			// Depends on where your facing, so facing the wall makes D go UP, and A go Down
+			else if InputX(INPUT_CLUSTER.NAVIGATION) != 0 and InputY(INPUT_CLUSTER.NAVIGATION) == 0 
+			{
+				// Climb up
+				vsp = lerp(vsp, ((InputX(INPUT_CLUSTER.NAVIGATION))*facing) * run_speed.GetValue(), accel);
+			} 
 			
-			jumps_left = max_jumps.GetValue();					// reset double jump
-			coyote_timer = coyote_time_max;						// allow jump off wall quickly
+			// If holding both WD or SA (depends on which way your facing) move up or down
+			// Basically just a universal fix in case the player holds 2 directions at once
+			else {
+				// Climb up
+				vsp = lerp(vsp, (InputDistance(INPUT_CLUSTER.NAVIGATION)*-1) * run_speed.GetValue(), accel);
+			}
+			#endregion
+			
+			jumps_left = max_jumps.GetValue();	// reset double jump
+			coyote_timer = coyote_time_max;		// allow jump off wall quickly
 			
 			// Wall jump
 			if InputPressed(INPUT_VERB.JUMP){
-				vsp = -jump_speed.GetValue();
-				hsp = (-jump_speed.GetValue()*BaseStats.wall_jump_spd.GetValue())*sign(image_xscale)
+				vsp = -jump_speed.GetValue()/wall_jump_reduce;
+				hsp = (-jump_speed.GetValue() * (BaseStats.wall_jump_spd.GetValue())) * facing
 			    can_dash = true;
 			    coyote_timer = 0;
 				jumps_left--;
